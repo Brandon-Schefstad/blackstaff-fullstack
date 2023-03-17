@@ -1,21 +1,34 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
-    provider = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 datasource db {
-    provider = "sqlite"
-    url      = env("DATABASE_URL")
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
 }
 
 model Example {
-    id        String   @id @default(cuid())
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
+
 model ClassDescription {
-  id    Int     @id @default(autoincrement())
-  name String  @unique
+  id     Int     @id @default(autoincrement())
+  name   String  @unique
+  spells Spell[] @relation("ClassDescriptionToSpell")
+}
+
+model Spell {
+  id            Int                @id @default(autoincrement())
+  name          String             @unique
+  level         Int
+  school        String
+  range         Int
+  components    String
+  duration      Int
+  concentration Boolean?           @default(false)
+  ritual        Boolean?           @default(false)
+  description   String
+  classes       ClassDescription[] @relation("ClassDescriptionToSpell")
 }

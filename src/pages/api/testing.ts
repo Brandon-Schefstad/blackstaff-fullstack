@@ -1,11 +1,9 @@
-import type { ClassDescription, Spell } from "@prisma/client";
+import { ClassDescription, Spell } from "@prisma/client";
+import type { NextApiRequest, NextApiResponse } from "next";
 import {
   createClass,
   createSpell,
-  findSpell,
-} from "./config/functions-with-context";
-import { prismaMock } from "./config/singleton";
-
+} from "../../../testing/config/functions-with-context";
 const classModel: ClassDescription = {
   id: 1,
   name: "Artificer",
@@ -44,20 +42,13 @@ const spellModel2: Spell = {
   },
 };
 
-test("should create new Class ", async () => {
-  prismaMock.classDescription.create.mockResolvedValue(classModel);
-  await expect(createClass(classModel)).resolves.toEqual({
-    id: 1,
-    name: "Artificer",
-  });
-});
-test("should create new Spell ", async () => {
-  prismaMock.spell.create.mockResolvedValue(spellModel);
-  await expect(createSpell(spellModel)).resolves.toEqual(spellModel);
-});
-test("should attach ClassDescription to Spell ", async () => {
-  prismaMock.spell.create.mockResolvedValue(spellModel);
-  prismaMock.spell.create.mockResolvedValue(spellModel2);
-  prismaMock.spell.findMany.mockResolvedValue([spellModel]);
-  await expect(findSpell()).resolves.toEqual([spellModel]);
-});
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  await createClass(classModel);
+  await createClass(classModel2);
+  await createSpell(spellModel);
+  await createSpell(spellModel2);
+  res.json({ msg: "success" });
+}
