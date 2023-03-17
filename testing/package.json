@@ -1,0 +1,22 @@
+{
+  "name": "testing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "babel.config.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "jest": "^29.5.0"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-typescript": "^7.21.0",
+    "@types/jest": "^29.4.1",
+    "jest-mock-extended": "^2.0.4",
+    "ts-jest": "^29.0.5"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
