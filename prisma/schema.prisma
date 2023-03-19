@@ -16,7 +16,7 @@ model Example {
 model ClassDescription {
   id     Int     @id @default(autoincrement())
   name   String  @unique
-  spells Spell[] @relation("ClassDescriptionToSpell")
+  spells Spell[] @relation("ClassDescriptionToSpell") 
 }
 
 model Spell {
