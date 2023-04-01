@@ -21,12 +21,16 @@ model ClassDescription {
 
 model Spell {
   id            Int                @id @default(autoincrement())
-  name          String             @unique
-  level         Int
+  name          String            
+  level         String
   school        String
-  range         Int
-  components    String
-  duration      Int
+  castTime   String
+  spellRange    String
+  S             Boolean?
+  M             Boolean?
+  material      String?
+  V             Boolean?
+  duration      String
   concentration Boolean?           @default(false)
   ritual        Boolean?           @default(false)
   description   String
