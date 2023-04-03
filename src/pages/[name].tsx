@@ -16,6 +16,18 @@ const ClassSheet = () => {
     "Warlock",
     "Wizard",
   ];
+  interface spellState {
+    "0": Spell[];
+    "1": Spell[];
+    "2": Spell[];
+    "3": Spell[];
+    "4": Spell[];
+    "5": Spell[];
+    "6": Spell[];
+    "7": Spell[];
+    "8": Spell[];
+    "9": Spell[];
+  }
   const router = useRouter();
   const [spells, setSpells] = useState({
     "0": [],
@@ -28,14 +40,14 @@ const ClassSheet = () => {
     "7": [],
     "8": [],
     "9": [],
-  });
+  } as spellState);
 
   useEffect((): void => {
     if (!router.isReady) return;
 
     fetch(`/api/read/spell/${router.query.name}`)
       .then((res) => res.json())
-      .then((data) => {
+      .then((data: Spell[]) => {
         setSpells({
           0: data.filter((spell: Spell) => spell.level === "0"),
           1: data.filter((spell: Spell) => spell.level === "1st"),
