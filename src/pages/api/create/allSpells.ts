@@ -7,11 +7,13 @@ export default async function handler(
   res: NextApiResponse
 ) {
   spellsToSend.forEach(async (testSpell) => {
+    console.log(testSpell.name);
     if (testSpell?.classes.length) {
       testSpell.classes = testSpell.classes.map((className) => {
         // console.log(testSpell?.classes);
         return { name: className };
       });
+
       await prisma.spell.create({
         data: {
           ...testSpell,
