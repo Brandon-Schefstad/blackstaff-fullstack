@@ -1,4 +1,7 @@
-const SpellComponent = ({ spell }) => {
+import type { Spell } from "@prisma/client";
+//@ts-ignore
+const SpellComponent = (props) => {
+  const spell: Spell = props.spell;
   return (
     <section key={spell.id} className="mb-4  p-4">
       <h1 className="text-xl font-bold"> {spell.name}</h1>
@@ -14,7 +17,7 @@ const SpellComponent = ({ spell }) => {
         <p className="text-sm leading-6">
           {spell.description
             .split("  ")
-            .map((str: string, i: int) =>
+            .map((str: string, i: number) =>
               i !== 0 ? (
                 <p className="decoration-dotted first-letter:text-lg first-letter:underline first-line:mt-4">
                   {" "}
