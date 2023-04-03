@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import SpellComponent from "./components/SpellComponent";
 
-const classSheet = () => {
+const ClassSheet = () => {
   const names = [
     "Artificer",
     "Bard",
@@ -29,10 +29,10 @@ const classSheet = () => {
     "8": [],
     "9": [],
   });
-  const [name, setName] = useState(router.query.name);
-  useEffect(() => {
+
+  useEffect((): void => {
     if (!router.isReady) return;
-    setName(router.query.name);
+
     fetch(`/api/read/spell/${router.query.name}`)
       .then((res) => res.json())
       .then((data) => {
@@ -55,7 +55,7 @@ const classSheet = () => {
       <section className=" my-4 ml-16 flex gap-4">
         {names.map((name, i) => {
           return (
-            <Link key={i} passHref={true} replace={true} href={`/${name}`}>
+            <Link key={i} passHref={true} replace={true} href={"/" + name}>
               {name}
             </Link>
           );
@@ -94,4 +94,4 @@ const classSheet = () => {
   );
 };
 
-export default classSheet;
+export default ClassSheet;
