@@ -15,7 +15,7 @@ const SpellComponent = (props) => {
         {spell.concentration ? <h2>Concentration</h2> : <></>}
         {spell.ritual ? <h2>Ritual</h2> : <></>}
         <section className="grid ">
-          <p className="text-sm leading-6">
+          <p className="w-1/2 text-sm leading-6">
             {spell.description
               .split("  ")
               .map((str: string, i: number) =>
