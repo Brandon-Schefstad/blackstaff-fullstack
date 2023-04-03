@@ -49,16 +49,36 @@ const ClassSheet = () => {
       .then((res) => res.json())
       .then((data: Spell[]) => {
         setSpells({
-          0: data.filter((spell: Spell) => spell.level === "0"),
-          1: data.filter((spell: Spell) => spell.level === "1st"),
-          2: data.filter((spell: Spell) => spell.level === "2nd"),
-          3: data.filter((spell: Spell) => spell.level === "3rd"),
-          4: data.filter((spell: Spell) => spell.level === "4th"),
-          5: data.filter((spell: Spell) => spell.level === "5th"),
-          6: data.filter((spell: Spell) => spell.level === "6th"),
-          7: data.filter((spell: Spell) => spell.level === "7th"),
-          8: data.filter((spell: Spell) => spell.level === "8th"),
-          9: data.filter((spell: Spell) => spell.level === "9th"),
+          0: data
+            .filter((spell: Spell) => spell.level === "0")
+            .sort((a: Spell, b: Spell) => (a.name > b.name ? 1 : -1)),
+          1: data
+            .filter((spell: Spell) => spell.level === "1st")
+            .sort((a: Spell, b: Spell) => (a.name > b.name ? 1 : -1)),
+          2: data
+            .filter((spell: Spell) => spell.level === "2nd")
+            .sort((a: Spell, b: Spell) => (a.name > b.name ? 1 : -1)),
+          3: data
+            .filter((spell: Spell) => spell.level === "3rd")
+            .sort((a: Spell, b: Spell) => (a.name > b.name ? 1 : -1)),
+          4: data
+            .filter((spell: Spell) => spell.level === "4th")
+            .sort((a: Spell, b: Spell) => (a.name > b.name ? 1 : -1)),
+          5: data
+            .filter((spell: Spell) => spell.level === "5th")
+            .sort((a: Spell, b: Spell) => (a.name > b.name ? 1 : -1)),
+          6: data
+            .filter((spell: Spell) => spell.level === "6th")
+            .sort((a: Spell, b: Spell) => (a.name > b.name ? 1 : -1)),
+          7: data
+            .filter((spell: Spell) => spell.level === "7th")
+            .sort((a: Spell, b: Spell) => (a.name > b.name ? 1 : -1)),
+          8: data
+            .filter((spell: Spell) => spell.level === "8th")
+            .sort((a: Spell, b: Spell) => (a.name > b.name ? 1 : -1)),
+          9: data
+            .filter((spell: Spell) => spell.level === "9th")
+            .sort((a: Spell, b: Spell) => (a.name > b.name ? 1 : -1)),
         });
       });
   }, [router.isReady, router.query]);
@@ -85,16 +105,14 @@ const ClassSheet = () => {
                 <section className="grid ">
                   {
                     //@ts-ignore
-                    spells[key]
-                      .sort((a: Spell, b: Spell) => (a.name > b.name ? 1 : -1))
-                      .map((spell: Spell) =>
-                        //@ts-ignore
-                        spells[key].length ? (
-                          <SpellComponent spell={spell} />
-                        ) : (
-                          <h1>None</h1>
-                        )
+                    spells[key].map((spell: Spell) =>
+                      //@ts-ignore
+                      spells[key].length ? (
+                        <SpellComponent spell={spell} />
+                      ) : (
+                        <h1>None</h1>
                       )
+                    )
                   }
                 </section>
               </>
