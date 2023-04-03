@@ -1,9 +1,11 @@
 import { Spell } from "@prisma/client";
 import { type NextPage } from "next";
 import { useEffect, useState } from "react";
+import SpellComponent from "./components/SpellComponent";
 
 const SpellPages: NextPage = () => {
   const [data, setData] = useState([]);
+  const [name, setName] = useState("All");
   const [isLoading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
@@ -15,30 +17,35 @@ const SpellPages: NextPage = () => {
       });
   }, []);
 
+  function handleClick(name: string): void {
+    fetch(`/api/read/spell/${name}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data);
+        setName(name);
+        setLoading(false);
+      });
+  }
   return (
     <>
+      <section className=" my-4 ml-16 flex gap-4">
+        <button onClick={() => handleClick("Artificer")}>Artificer</button>
+        <button onClick={() => handleClick("Bard")}>Bard</button>
+        <button onClick={() => handleClick("Cleric")}>Cleric</button>
+        <button onClick={() => handleClick("Druid")}>Druid</button>
+        <button onClick={() => handleClick("Paladin")}>Paladin</button>
+        <button onClick={() => handleClick("Ranger")}>Ranger</button>
+        <button onClick={() => handleClick("Sorcerer")}>Sorcerer</button>
+        <button onClick={() => handleClick("Warlock")}>Warlock</button>
+        <button onClick={() => handleClick("Wizard")}>Wizard</button>
+      </section>
+      <h1>{name}</h1>
       {isLoading ? (
         <></>
       ) : (
-        <ul>
+        <ul className="m-auto w-[60%]">
           {data ? (
-            data.map((spell: Spell) => (
-              <li key={spell.id} className="mb-4 p-4">
-                {/* {JSON.stringify(spell)} */}
-                <h1 className="text-xl underline"> {spell.name}</h1>
-                <div className="flex gap-8">
-                  <h2>Level: {spell.level}</h2>
-                  <h2>{spell.school}</h2>
-                </div>
-                <h2>{[spell.S, spell.M, spell.V]}</h2>
-                <h2>Duration: {spell.duration} Minutes</h2>
-                {spell.concentration ? <h2>Concentration: True</h2> : <></>}
-                {spell.ritual ? <h2>Ritual: True</h2> : <></>}
-                <h2 className="my-1">Description: </h2>
-                <h3 className="text-sm">{spell.description}</h3>
-                <h2 className="my-1">Higher Level Casting: </h2>
-              </li>
-            ))
+            data.map((spell: Spell) => <SpellComponent spell={spell} />)
           ) : (
             <></>
           )}
