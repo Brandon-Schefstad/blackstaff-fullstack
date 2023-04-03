@@ -5,17 +5,21 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const name = req.query.name;
-  const newClass = await prisma.spell.findMany({
-    where: {
-      classes: {
-        some: {
-          name: `${name}`,
+  let newClass = {};
+  if (name) {
+    newClass = await prisma.spell.findMany({
+      where: {
+        classes: {
+          some: {
+            name: `${name}`,
+          },
         },
       },
-    },
-    orderBy: {
-      level: "desc",
-    },
-  });
+      orderBy: {
+        level: "desc",
+      },
+    });
+  }
+
   res.json(newClass);
 }
