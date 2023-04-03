@@ -37,16 +37,16 @@ const classSheet = () => {
       .then((res) => res.json())
       .then((data) => {
         setSpells({
-          0: data.filter((spell) => spell.level === "0"),
-          1: data.filter((spell) => spell.level === "1st"),
-          2: data.filter((spell) => spell.level === "2nd"),
-          3: data.filter((spell) => spell.level === "3rd"),
-          4: data.filter((spell) => spell.level === "4th"),
-          5: data.filter((spell) => spell.level === "5th"),
-          6: data.filter((spell) => spell.level === "6th"),
-          7: data.filter((spell) => spell.level === "7th"),
-          8: data.filter((spell) => spell.level === "8th"),
-          9: data.filter((spell) => spell.level === "9th"),
+          0: data.filter((spell: Spell) => spell.level === "0"),
+          1: data.filter((spell: Spell) => spell.level === "1st"),
+          2: data.filter((spell: Spell) => spell.level === "2nd"),
+          3: data.filter((spell: Spell) => spell.level === "3rd"),
+          4: data.filter((spell: Spell) => spell.level === "4th"),
+          5: data.filter((spell: Spell) => spell.level === "5th"),
+          6: data.filter((spell: Spell) => spell.level === "6th"),
+          7: data.filter((spell: Spell) => spell.level === "7th"),
+          8: data.filter((spell: Spell) => spell.level === "8th"),
+          9: data.filter((spell: Spell) => spell.level === "9th"),
         });
       });
   }, [router.isReady, router.query]);
@@ -71,13 +71,17 @@ const classSheet = () => {
                   {key === "0" ? "Cantrips" : key}
                 </h1>
                 <section className="grid ">
-                  {spells[key].map((spell: Spell) =>
-                    spells[key].length ? (
-                      <SpellComponent spell={spell} />
-                    ) : (
-                      <h1>None</h1>
+                  {
+                    //@ts-ignore
+                    spells[key].map((spell: Spell) =>
+                      //@ts-ignore
+                      spells[key].length ? (
+                        <SpellComponent spell={spell} />
+                      ) : (
+                        <h1>None</h1>
+                      )
                     )
-                  )}
+                  }
                 </section>
               </>
             ))}
