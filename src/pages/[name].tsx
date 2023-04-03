@@ -86,7 +86,7 @@ const ClassSheet = () => {
                   {
                     //@ts-ignore
                     spells[key]
-                      .sort((a: Spell, b: Spell) => (a.name < b.name ? 1 : -1))
+                      .sort((a: Spell, b: Spell) => (a.name > b.name ? 1 : -1))
                       .map((spell: Spell) =>
                         //@ts-ignore
                         spells[key].length ? (
