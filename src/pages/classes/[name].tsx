@@ -61,12 +61,14 @@ const ClassSheet = () => {
         {spells ? (
           <section>
             {Object.keys(spells).map((num) => {
+              // @ts-ignore
+              const spellList: Spell[] = spells[num];
               return (
                 <>
                   <h1 className="mt-8 text-center font-[amagro] text-xl">
                     {num === "0" ? "Cantrips" : `Level ${num}`}
                   </h1>
-                  <SpellSection spells={spells[num]} />
+                  <SpellSection spells={spellList} />
                 </>
               );
             })}
