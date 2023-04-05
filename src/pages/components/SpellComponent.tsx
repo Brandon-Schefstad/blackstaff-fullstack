@@ -8,7 +8,6 @@ const SpellComponent = (props) => {
         <h1 className=" text-2xl font-bold"> {spell.name}</h1>
         <section className="spell mx-8 ">
           <div className="flex flex-col gap-2 lg:flex-row lg:gap-8">
-            {/* <h2>Level: {spell.level}</h2> */}
             <h2>{spell.school} Spell</h2>
             <h2>
               Cast Time: {spell.castTime} {spell.ritual ? " (Ritual)" : ""}
