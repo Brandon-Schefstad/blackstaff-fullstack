@@ -1,18 +1,24 @@
 import { Spell } from "@prisma/client";
 import SpellComponent from "./SpellComponent";
-
 type SpellSectionProps = {
-  spells: Spell[];
+  spellList: Spell[];
 };
 
-const SpellSection = ({ spells }: SpellSectionProps) => {
+const SpellSection = ({ spellList }: SpellSectionProps) => {
   return (
     <>
-      <section className="grid ">
-        {spells.map((spell: Spell) =>
-          spells.length ? <SpellComponent spell={spell} /> : <h1>None</h1>
-        )}
-      </section>
+      {spellList ? (
+        <>
+          <section className="grid ">
+            {spellList.map((spellItem: Spell) => {
+              console.log(spellItem);
+              return <SpellComponent spell={spellItem} />;
+            })}
+          </section>
+        </>
+      ) : (
+        <></>
+      )}
     </>
   );
 };

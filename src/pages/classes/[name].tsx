@@ -18,6 +18,7 @@ const ClassSheet = () => {
     "9": Spell[];
   }
   const router = useRouter();
+  const [loaded, setLoaded] = useState(false);
   const [spells, setSpells] = useState({
     "0": [],
     "1": [],
@@ -49,6 +50,9 @@ const ClassSheet = () => {
           8: data.filter((spell: Spell) => spell.level === "8th"),
           9: data.filter((spell: Spell) => spell.level === "9th"),
         });
+      })
+      .then(() => {
+        setLoaded(true);
       });
   }, [router.isReady, router.query]);
   return (
@@ -58,17 +62,23 @@ const ClassSheet = () => {
         <h1 className="mb-12 text-center font-[amagro] text-3xl">
           {router.query.name}
         </h1>
-        {spells ? (
+        {spells && loaded ? (
           <section>
-            {Object.keys(spells).map((num) => {
+            {["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"].map((num) => {
               // @ts-ignore
               const spellList: Spell[] = spells[num];
+
               return (
                 <>
                   <h1 className="mt-8 text-center font-[amagro] text-xl">
                     {num === "0" ? "Cantrips" : `Level ${num}`}
                   </h1>
-                  <SpellSection spells={spellList} />
+
+                  {spellList.length > 0 ? (
+                    <SpellSection spellList={spellList} />
+                  ) : (
+                    <></>
+                  )}
                 </>
               );
             })}
