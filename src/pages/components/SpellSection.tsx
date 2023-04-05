@@ -9,12 +9,11 @@ const SpellSection = ({ spellList }: SpellSectionProps) => {
     <>
       {spellList ? (
         <>
-          <section className="grid ">
-            {spellList.map((spellItem: Spell) => {
-              console.log(spellItem);
-              return <SpellComponent spell={spellItem} />;
+          <ol className="grid ">
+            {spellList.map((spellItem: Spell, i) => {
+              return <SpellComponent spell={spellItem} id={i} />;
             })}
-          </section>
+          </ol>
         </>
       ) : (
         <></>
