@@ -16,8 +16,11 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const newClasses = req.body.names.map(async (className: string) => {
-    return await createClassDescription(className);
-  });
+  const { body } = req;
+  const newClasses: ClassDescription[] = await body.names.map(
+    async (className: string) => {
+      return await createClassDescription(className);
+    }
+  );
   res.json(newClasses);
 }
