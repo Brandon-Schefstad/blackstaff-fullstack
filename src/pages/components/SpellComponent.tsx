@@ -7,15 +7,26 @@ const SpellComponent = (props) => {
       <section key={spell.id} className="mb-4  p-4">
         <h1 className="text-xl font-bold"> {spell.name}</h1>
         <div className="flex gap-8">
-          <h2>Level: {spell.level}</h2>
-          <h2>{spell.school}</h2>
+          {/* <h2>Level: {spell.level}</h2> */}
+          <h2>{spell.school} Spell</h2>
+          <h2>
+            Cast Time: {spell.castTime} {spell.ritual ? " (Ritual)" : ""}
+            {spell.concentration ? " (Concentration)" : ""}
+          </h2>
+          <h2>Duration: {spell.duration}</h2>
         </div>
-        <h2>{[spell.S, spell.M, spell.V]}</h2>
-        <h2> {spell.duration}</h2>
-        {spell.concentration ? <h2>Concentration</h2> : <></>}
-        {spell.ritual ? <h2>Ritual</h2> : <></>}
+        <div className="flex gap-8">
+          <h2>Components:</h2>
+
+          <ul className="flex gap-8">
+            {spell.S ? <li> S</li> : <></>}
+            {spell.M ? <li>M ({spell.material})</li> : <></>}
+            {spell.V ? <li> V </li> : <></>}
+          </ul>
+        </div>
+
         <section className="grid ">
-          <p className="w-1/2 text-sm leading-6">
+          <p className=" m-auto max-w-[80ch] text-sm leading-6">
             {spell.description
               .split("  ")
               .map((str: string, i: number) =>

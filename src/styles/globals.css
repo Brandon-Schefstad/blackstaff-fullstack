@@ -5,3 +5,6 @@
   font-family: amagro;
   src: url(Amagro.ttf);
 }
+body {
+  padding-top: 32px;
+}

@@ -4,7 +4,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const name = req.query.name;
+  const name = req.query.classDescriptionName;
   let newClass = {};
   if (name) {
     newClass = await prisma.spell.findMany({
@@ -16,7 +16,7 @@ export default async function handler(
         },
       },
       orderBy: {
-        name: "asc",
+        level: "desc",
       },
     });
   }
