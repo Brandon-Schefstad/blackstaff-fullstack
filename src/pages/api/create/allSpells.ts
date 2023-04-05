@@ -1,6 +1,6 @@
 import prisma from "libs/prisma";
 import { NextApiRequest, NextApiResponse } from "next";
-import spells from "../../../../data/parsing/parsedAndClean";
+// import spells from "../../../../data/parsing/parsedAndClean";
 const spellsToSend = spells;
 
 async function connectSpell(testSpell: Spell) {
