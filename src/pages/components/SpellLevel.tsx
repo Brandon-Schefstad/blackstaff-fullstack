@@ -22,7 +22,7 @@ const SpellLevel = ({ level: level, spellList }: SpellLevelPropTypes) => {
       >
         <h1 className="" />
         {level === 0 ? "Cantrips" : `Level ${level}`}
-        <h4>({spellList.length})</h4>
+        <h4>({spellList ? spellList.length : 0})</h4>
         {open ? (
           <FontAwesomeIcon icon={faCaretDown} />
         ) : (
@@ -31,7 +31,7 @@ const SpellLevel = ({ level: level, spellList }: SpellLevelPropTypes) => {
       </button>
       {open ? (
         <ol>
-          {spellList.map((spell, key) => {
+          {spellList.map((spell: Spell, key) => {
             console.log(key);
             return <SpellComponent spell={spell} id={key} />;
           })}
