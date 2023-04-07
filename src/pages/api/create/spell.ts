@@ -8,6 +8,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const spellObject: Spell = req.body.spell;
+
   const newSpell = await prisma.spell.create({
     data: {
       ...spellObject,
