@@ -32,26 +32,30 @@ const ClassSheet = () => {
     "9": [],
   } as spellState);
 
+  const levelHashMap = {
+    "0": [],
+    "1": [],
+    "2": [],
+    "3": [],
+    "4": [],
+    "5": [],
+    "6": [],
+    "7": [],
+    "8": [],
+    "9": [],
+  };
   useEffect((): void => {
     if (!router.isReady) return;
-
     fetch(`/api/read/spell/${router.query.name}`)
       .then((res) => res.json())
       .then((data: Spell[]) => {
-        setSpells({
-          0: data.filter((spell: Spell) => spell.level === "0"),
-          1: data.filter((spell: Spell) => spell.level === "1st"),
-          2: data.filter((spell: Spell) => spell.level === "2nd"),
-          3: data.filter((spell: Spell) => spell.level === "3rd"),
-          4: data.filter((spell: Spell) => spell.level === "4th"),
-          5: data.filter((spell: Spell) => spell.level === "5th"),
-          6: data.filter((spell: Spell) => spell.level === "6th"),
-          7: data.filter((spell: Spell) => spell.level === "7th"),
-          8: data.filter((spell: Spell) => spell.level === "8th"),
-          9: data.filter((spell: Spell) => spell.level === "9th"),
+        data.forEach((spell) => {
+          //@ts-ignore
+          levelHashMap[spell.level].push(spell);
         });
       })
       .then(() => {
+        setSpells(levelHashMap);
         setLoaded(true);
       });
   }, [router.isReady, router.query]);
