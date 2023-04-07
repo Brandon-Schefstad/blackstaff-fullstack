@@ -1,5 +1,5 @@
 import { Spell } from "@prisma/client";
-import SpellComponent from "./SpellComponent";
+import SpellLevel from "./SpellLevel";
 type SpellSectionProps = {
   spellList: Spell[];
 };
@@ -7,17 +7,11 @@ type SpellSectionProps = {
 const SpellSection = ({ spellList }: SpellSectionProps) => {
   return (
     <>
-      {spellList ? (
-        <>
-          <ol className="grid ">
-            {spellList.map((spellItem: Spell, i) => {
-              return <SpellComponent spell={spellItem} id={i} />;
-            })}
-          </ol>
-        </>
-      ) : (
-        <></>
-      )}
+      <ol className="grid">
+        {spellList.map((spellItem: Spell, i) => {
+          return <SpellLevel spell={spellItem} id={i} />;
+        })}
+      </ol>
     </>
   );
 };
