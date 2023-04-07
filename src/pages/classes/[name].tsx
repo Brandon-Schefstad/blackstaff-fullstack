@@ -2,7 +2,7 @@ import { Spell } from "@prisma/client";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import NavBar from "../components/Navbar";
-import SpellSection from "../components/SpellSection";
+import SpellLevel from "../components/SpellLevel";
 
 const ClassSheet = () => {
   interface spellState {
@@ -55,6 +55,7 @@ const ClassSheet = () => {
         setLoaded(true);
       });
   }, [router.isReady, router.query]);
+
   return (
     <>
       <NavBar />
@@ -62,26 +63,24 @@ const ClassSheet = () => {
         <h1 className="mb-12 text-center font-[amagro] text-3xl">
           {router.query.name}
         </h1>
-        {spells && loaded ? (
-          <section>
+        {loaded ? (
+          <section className="m-auto flex flex-col">
             {["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"].map((num) => {
-              // @ts-ignore
-              const spellList: Spell[] = spells[num];
-
-              return (
-                <>
-                  <h1 className="mt-8 text-center font-[amagro] text-xl">
-                    {num === "0" ? "Cantrips" : `Level ${num}`}
-                  </h1>
-
-                  {spellList.length > 0 ? (
-                    <SpellSection spellList={spellList} />
-                  ) : (
-                    <></>
-                  )}
-                </>
-              );
-            })}
+              //@ts-ignore
+              const spellList = spells[num];
+              {
+                return spellList.length > 0 ? (
+                  <div className="flex justify-center ">
+                    <SpellLevel
+                      level={Number(num)}
+                      spellList={spellList ? spellList : []}
+                    />
+                  </div>
+                ) : (
+                  <></>
+                );
+              }
+            })}{" "}
           </section>
         ) : (
           <></>
