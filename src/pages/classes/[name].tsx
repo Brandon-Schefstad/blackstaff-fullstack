@@ -30,28 +30,25 @@ const ClassSheet = (levelHashMap: spellState) => {
         <h1 className="mb-12 text-center font-[amagro] text-3xl">
           {router.query.name}
         </h1>
-        {loaded ? (
-          <section className="m-auto flex flex-col">
-            {["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"].map((num) => {
-              //@ts-ignore
-              const spellList = levelHashMap[num];
-              {
-                return spellList.length > 0 ? (
-                  <div className="flex justify-center ">
-                    <SpellLevel
-                      level={Number(num)}
-                      spellList={spellList ? spellList : []}
-                    />
-                  </div>
-                ) : (
-                  <></>
-                );
-              }
-            })}{" "}
-          </section>
-        ) : (
-          <></>
-        )}
+
+        <section className="m-auto flex flex-col">
+          {["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"].map((num) => {
+            //@ts-ignore
+            const spellList = levelHashMap[num];
+            {
+              return spellList.length > 0 ? (
+                <div className="flex justify-center ">
+                  <SpellLevel
+                    level={Number(num)}
+                    spellList={spellList ? spellList : []}
+                  />
+                </div>
+              ) : (
+                <></>
+              );
+            }
+          })}{" "}
+        </section>
       </section>
     </>
   );
