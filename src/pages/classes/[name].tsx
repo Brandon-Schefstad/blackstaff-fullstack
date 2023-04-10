@@ -36,7 +36,7 @@ const ClassSheet = (levelHashMap: spellState) => {
             //@ts-ignore
             const spellList = levelHashMap[num];
             {
-              return spellList.length > 0 ? (
+              return spellList ? (
                 <div className="flex justify-center ">
                   <SpellLevel
                     level={Number(num)}
@@ -90,7 +90,7 @@ export async function getStaticPaths() {
     paths: [
       { params: { name: "Artificer" } },
       { params: { name: "Bard" } },
-      { params: { name: "Claric" } },
+      { params: { name: "Cleric" } },
       { params: { name: "Druid" } },
       { params: { name: "Paladin" } },
       { params: { name: "Ranger" } },
