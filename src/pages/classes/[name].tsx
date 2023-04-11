@@ -1,6 +1,5 @@
 import { Spell } from "@prisma/client";
 import { useRouter } from "next/router";
-import { useState } from "react";
 import NavBar from "../../components/Navbar";
 import SpellLevel from "../../components/SpellLevel";
 import { handler2 } from "../api/read/spell";
@@ -18,10 +17,7 @@ interface spellState {
 }
 
 const ClassSheet = (levelHashMap: spellState) => {
-  console.log(levelHashMap);
-
   const router = useRouter();
-  const [loaded, setLoaded] = useState(false);
 
   return (
     <>
@@ -32,9 +28,10 @@ const ClassSheet = (levelHashMap: spellState) => {
         </h1>
 
         <section className="m-auto flex flex-col">
-          {["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"].map((num) => {
+          {Object.keys(levelHashMap).map((num) => {
             //@ts-ignore
             const spellList = levelHashMap[num];
+
             {
               return spellList ? (
                 <div className="flex justify-center ">
