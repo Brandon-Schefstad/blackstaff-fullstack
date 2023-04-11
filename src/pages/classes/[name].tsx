@@ -16,9 +16,10 @@ interface spellState {
   "9": Spell[];
 }
 
-const ClassSheet = (levelHashMap: spellState) => {
+const ClassSheet = (props: any) => {
   const router = useRouter();
-
+  const { levelHashMap } = props;
+  console.log(Object.keys(levelHashMap));
   return (
     <>
       <NavBar />
