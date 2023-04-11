@@ -1,8 +1,8 @@
 import { type NextPage } from "next";
 import Image from "next/image";
 import bgmobile from "../../public/bg-skull-mobile.png";
-import Footer from "./components/Footer";
-import NavBar from "./components/Navbar";
+import Footer from "../components/Footer";
+import NavBar from "../components/Navbar";
 
 const Home: NextPage = () => {
   return (

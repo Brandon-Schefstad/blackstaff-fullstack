@@ -1,7 +1,7 @@
 import { type NextPage } from "next";
-import ClassListItem from "./components/ClassListItem";
-import Footer from "./components/Footer";
-import NavBar from "./components/Navbar";
+import ClassListItem from "../components/ClassListItem";
+import Footer from "../components/Footer";
+import NavBar from "../components/Navbar";
 
 const Classes: NextPage = () => {
   const names = [

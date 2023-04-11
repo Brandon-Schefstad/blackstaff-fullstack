@@ -16,26 +16,29 @@ const SpellLevel = ({ level: level, spellList }: SpellLevelPropTypes) => {
     "
     >
       <button
-        className="t mb-2 flex gap-2 px-4
+        className="mb-2 flex gap-2 px-4
                   text-center font-[amagro] text-xl hover:bg-black hover:text-white"
         onClick={() => setOpen(!open)}
       >
-        <h1 className="" />
-        {level === 0 ? "Cantrips" : `Level ${level}`}
-        <h4>({spellList ? spellList.length : 0})</h4>
-        {open ? (
-          <FontAwesomeIcon icon={faCaretDown} />
-        ) : (
-          <FontAwesomeIcon icon={faCaretRight} />
-        )}
+        <h1 className="m-auto text-center">
+          {" "}
+          {level === 0 ? "Cantrips" : `Level ${level}`}{" "}
+          {spellList && <span>({spellList.length})</span>}
+          {open ? (
+            <FontAwesomeIcon icon={faCaretDown} />
+          ) : (
+            <FontAwesomeIcon icon={faCaretRight} />
+          )}
+        </h1>
       </button>
       {open ? (
-        <ol>
-          {spellList.map((spell: Spell, key) => {
-            console.log(key);
-            return <SpellComponent spell={spell} id={key} />;
-          })}
-        </ol>
+        <section className="carousel w-screen overflow-x-scroll">
+          <ol className=" flex gap-8">
+            {spellList.map((spell: Spell, key) => {
+              return <SpellComponent spell={spell} id={key} />;
+            })}
+          </ol>
+        </section>
       ) : (
         <></>
       )}
