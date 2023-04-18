@@ -28,7 +28,7 @@ const ClassSheet = (props: any) => {
           {router.query.name}
         </h1>
 
-        <section className="m-auto flex flex-col">
+        <section className="m-auto flex flex-col gap-2">
           {Object.keys(levelHashMap).map((num) => {
             //@ts-ignore
             const spellList = levelHashMap[num];

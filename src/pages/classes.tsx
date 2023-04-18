@@ -21,7 +21,7 @@ const Classes: NextPage = () => {
       <NavBar />
       <div className="grid ">
         <h1 className="text-center text-2xl  ">Select Your Class</h1>
-        <ul className="flex flex-col gap-12 py-8 ">
+        <ul className="flex flex-col gap-12 py-8 text-sm">
           {names.map((name: string, i) => {
             return <ClassListItem name={name} i={i} />;
           })}
