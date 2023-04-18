@@ -25,7 +25,7 @@ model Spell {
   name          String            
   level         String
   school        String
-  castTime   String
+  castTime      String
   spellRange    String
   S             Boolean?
   M             Boolean?
@@ -35,5 +35,6 @@ model Spell {
   concentration Boolean?           @default(false)
   ritual        Boolean?           @default(false)
   description   String
+  quote         String?
   classes       ClassDescription[] @relation("ClassDescriptionToSpell")
 }
