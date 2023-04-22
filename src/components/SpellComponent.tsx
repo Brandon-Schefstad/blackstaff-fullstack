@@ -5,47 +5,74 @@ type SpellComponentTypes = {
   id: number;
 };
 
+function determineSpellBorder(spellSchool: string): string {
+  const spellColorHash = {
+    abjuration: "border-blue-600",
+    alteration: "border-orange-600",
+    conjuration: "border-green-600",
+    divination: "border-teal-600",
+    enchantment: "border-rose-600",
+    evocation: "border-yellow-600",
+    illusion: "border-cyan-600",
+    invocation: "border-indigo-600",
+    necromancy: "border-purple-600",
+    transmutation: "border-emerald-600",
+  };
+  // @ts-ignore
+  if (spellColorHash[spellSchool]) {
+    // @ts-ignore
+    return spellColorHash[spellSchool];
+  } else {
+    return spellColorHash["transmutation"];
+  }
+}
 function determineSpellColor(spellSchool: string, value: number) {
   let fallBackSpellSchool = "";
   if (spellSchool.at(-1) === ",") {
     fallBackSpellSchool = spellSchool.slice(0, -1);
   }
   const spellColorHash = {
-    abjuration: ["bg-blue-100", "bg-blue-200", "bg-blue-300", "bg-blue-400"],
+    abjuration: ["bg-blue-100", "bg-blue-200", "bg-blue-300", "text-blue-900"],
     alteration: [
       "bg-orange-100",
       "bg-orange-200",
       "bg-orange-300",
-      "bg-orange-400",
+      "text-orange-900",
     ],
     conjuration: [
       "bg-green-100",
       "bg-green-200",
       "bg-green-300",
-      "bg-green-400",
+      "text-green-900",
     ],
-    divination: ["bg-teal-100", "bg-teal-200", "bg-teal-300", "bg-teal-400"],
-    enchantment: ["bg-rose-100", "bg-rose-200", "bg-rose-300", "bg-rose-400"],
-    evocation: ["bg-blue-100", "bg-blue-200", "bg-blue-300", "bg-blue-400"],
-    illusion: ["bg-cyan-100", "bg-cyan-200", "bg-cyan-300", "bg-cyan-400"],
+    divination: ["bg-teal-100", "bg-teal-200", "bg-teal-300", "text-teal-900"],
+    enchantment: ["bg-rose-100", "bg-rose-200", "bg-rose-300", "text-rose-900"],
+    evocation: [
+      "bg-yellow-100",
+      "bg-yellow-200",
+      "bg-yellow-300",
+      "text-yellow-900",
+    ],
+    illusion: ["bg-cyan-100", "bg-cyan-200", "bg-cyan-300", "text-cyan-900"],
     invocation: [
       "bg-indigo-100",
       "bg-indigo-200",
       "bg-indigo-300",
-      "bg-indigo-400",
+      "text-indigo-900",
     ],
+
     necromancy: [
       "bg-purple-100",
       "bg-purple-200",
       "bg-purple-300",
-      "bg-purple-400",
+      "text-purple-900",
     ],
 
     transmutation: [
       "bg-emerald-100",
       "bg-emerald-200",
       "bg-emerald-300",
-      "bg-emerald-400",
+      "text-emerald-900",
     ],
   };
   console.warn(spellSchool);
@@ -65,37 +92,42 @@ const SpellComponent = ({ spell, id }: SpellComponentTypes) => {
   const spellColor2: string = determineSpellColor(spellSchool, 2);
   const spellColor3: string = determineSpellColor(spellSchool, 3);
   const spellColor4: string = determineSpellColor(spellSchool, 4);
+  const borderColor: string = determineSpellBorder(spellSchool);
 
   return (
     <section className="max-h-[650px] min-w-[300px] overflow-y-scroll border-2 border-solid border-yellow-700">
       {spell ? (
-        <li key={spell.id} className="min-h-full bg-yellow-50">
+        <li key={spell.id} className={"min-h-full " + spellColor1}>
           <section
-            className={inconsolata.className + " grid  gap-2  p-4 text-xs"}
+            className={
+              inconsolata.className + " grid justify-center gap-2  py-6 text-xs"
+            }
           >
             <h1 className="  ml-2 text-center font-[Amagro] text-base ">
               {JSON.stringify(id + 1)}. {spell.name ? spell.name : "None"}
             </h1>
-            <h3 className="m-auto mb-2 flex gap-2 font-bold">
-              {spell.school} {spell.concentration && <h2>| Concentration</h2>}
+            <h3 className={"m-auto mb-2 flex gap-2 font-bold " + spellColor4}>
+              <h2>{spell.school}</h2>
+              {spell.concentration && <h2>| Concentration</h2>}
               {spell.ritual && <h2>| Ritual</h2>}
             </h3>
             <div
               className={
-                " grid justify-center border-solid border-black p-2 " +
-                spellColor1
+                " m-auto mb-4 grid justify-center border-b-[2px]  border-solid bg-slate-100 p-2 " +
+                borderColor
               }
             >
-              <section className="flex flex-col ">
-                <section className="m-auto flex gap-1">
+              <section className="  flex flex-col items-center px-4 ">
+                <section className=" flex gap-1 ">
                   ({spell.S && <h3>S</h3>}
                   {spell.M && <h3> M</h3>}
                   {spell.V && <h3> V</h3>})
                 </section>
-                <h3> {spell.M && <> Material: {spell.material} </>}</h3>
+
+                {spell.M && <h3 className=""> Material: {spell.material} </h3>}
               </section>
             </div>
-            <section className={spellColor2}>
+            <section className={borderColor + " mb-2 border-b-2 bg-slate-50"}>
               <div className={"grid grid-cols-2 items-center gap-2 text-sm  "}>
                 {" "}
                 <section className="col-span-2 flex flex-col p-2">
@@ -109,8 +141,8 @@ const SpellComponent = ({ spell, id }: SpellComponentTypes) => {
             <section className="grid ">
               <section
                 className={
-                  spellColor3 +
-                  " m-auto max-w-[50ch]  p-4 text-left indent-3 text-sm leading-tight lg:max-w-[90ch]"
+                  spellColor4 +
+                  " m-auto max-w-[50ch] border-b-2 border-solid border-black  bg-slate-50 px-4 py-6 text-left indent-3 text-sm leading-tight text-white lg:max-w-[90ch] "
                 }
               >
                 {spellDescription[0] ? (
@@ -132,7 +164,11 @@ const SpellComponent = ({ spell, id }: SpellComponentTypes) => {
               </section>
             </section>
             {spellDescription[1] && (
-              <section className={"p-2 " + spellColor4}>
+              <section
+                className={
+                  borderColor + " border-b-2 border-solid p-2 " + spellColor2
+                }
+              >
                 {spellDescription[1]}
               </section>
             )}
