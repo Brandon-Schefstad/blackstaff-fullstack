@@ -4,24 +4,50 @@ type SpellComponentTypes = {
   spell: Spell;
   id: number;
 };
+
+function determineSpellColor(spellSchool: string, value: string) {
+  const spellColorHash = {
+    abjuration: "bg-blue-",
+    alteration: "bg-green-",
+    conjuration: "bg-yellow-",
+    divination: "bg-purple-",
+    enchantment: "bg-slate-",
+    evocation: "bg-red-",
+    illusion: "bg-pink-",
+    invocation: "bg-teal-",
+    necromancy: "bg-orange-",
+    transmutation: "bg-rose-",
+  };
+  //@ts-ignore
+  return spellColorHash[spellSchool] + value;
+}
 const inconsolata = Inconsolata({ subsets: ["latin"] });
 const SpellComponent = ({ spell, id }: SpellComponentTypes) => {
   const spellDescription = spell.description.split("At Higher Levels.");
-  console.log(spellDescription[0]);
-  console.log(spellDescription[1]);
+  const spellSchool = spell.school.toLowerCase();
+  const spellColor100: string = determineSpellColor(spellSchool, "100");
+  const spellColor200: string = determineSpellColor(spellSchool, "200");
+  const spellColor300: string = determineSpellColor(spellSchool, "300");
+  const spellColor400: string = determineSpellColor(spellSchool, "400");
+  // console.log(spell.name, spell.school, [
+  //   spellColor100,
+  //   spellColor200,
+  //   spellColor300,
+  //   spellColor400,
+  // ]);
   return (
-    <section className="  min-w-[300px]  border-2 border-solid border-black">
+    <section className="max-h-[400px] min-w-[300px] overflow-y-scroll border-2 border-solid border-black">
       {spell ? (
         <li
           key={spell.id}
-          className={inconsolata.className + " mb-4 grid p-4 text-xs"}
+          className={inconsolata.className + " mb-4 grid gap-2  p-4 text-xs"}
         >
-          <h1 className=" ml-2 text-center  font-[Amagro] text-lg ">
+          <h1 className="  ml-2  text-center font-[Amagro] text-lg ">
             {JSON.stringify(id + 1)}. {spell.name ? spell.name : "None"}
           </h1>
-          <h3>{spell.school}</h3>
+          <h3 className="">{spell.school}</h3>
 
-          <section className="spell mx-2 grid ">
+          <section className={spellColor100}>
             <div
               className={
                 "grid grid-cols-2 items-center gap-2 text-sm  lg:flex-row "
@@ -36,9 +62,14 @@ const SpellComponent = ({ spell, id }: SpellComponentTypes) => {
               </section>
             </div>
           </section>
-
-          <section className="grid gap-4 ">
-            <section className=" m-auto max-w-[50ch] px-2 pt-4 text-left indent-3  text-sm lg:max-w-[90ch]">
+          <span className={spellColor200}>he</span>
+          <section className="grid ">
+            <section
+              className={
+                spellColor200 +
+                " m-auto max-w-[50ch]  p-4 text-left indent-3 text-sm leading-tight lg:max-w-[90ch]"
+              }
+            >
               {spellDescription[0] ? (
                 spellDescription[0]
                   .split("  ")
@@ -56,14 +87,23 @@ const SpellComponent = ({ spell, id }: SpellComponentTypes) => {
                 <></>
               )}
             </section>
-            <section className="">{spellDescription[1]}</section>
           </section>
+          {spellDescription[1] && (
+            <section className={"p-2" + spellColor300}>
+              {spellDescription[1]}
+            </section>
+          )}
           {spell.quote ? (
-            <section className="mt-4 bg-red-100  p-2">{spell.quote}</section>
+            <section className={" p-2" + spellColor300}>{spell.quote}</section>
           ) : (
             <></>
           )}
-          <div className=" grid justify-center border-solid border-black  pl-2">
+          <div
+            className={
+              " grid justify-center border-solid border-black p-2" +
+              spellColor300
+            }
+          >
             <section className="flex flex-col">
               <section className="m-auto flex gap-1">
                 ({spell.S && <h3>S</h3>}
