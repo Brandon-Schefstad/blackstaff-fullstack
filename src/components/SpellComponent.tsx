@@ -7,13 +7,13 @@ type SpellComponentTypes = {
 
 function determineSpellBorder(spellSchool: string): string {
   const spellColorHash = {
-    abjuration: "border-blue-600",
-    alteration: "border-orange-600",
+    abjuration: "border-sky-600",
+    alteration: "border-yellow-600",
     conjuration: "border-green-600",
-    divination: "border-teal-600",
+    divination: "border-indigo-600",
     enchantment: "border-rose-600",
-    evocation: "border-yellow-600",
-    illusion: "border-cyan-600",
+    evocation: "border-red-600",
+    illusion: "border-pink-600",
     invocation: "border-indigo-600",
     necromancy: "border-purple-600",
     transmutation: "border-emerald-600",
@@ -32,12 +32,12 @@ function determineSpellColor(spellSchool: string, value: number) {
     fallBackSpellSchool = spellSchool.slice(0, -1);
   }
   const spellColorHash = {
-    abjuration: ["bg-blue-100", "bg-blue-200", "bg-blue-300", "text-blue-900"],
+    abjuration: ["bg-sky-100", "bg-sky-200", "bg-sky-300", "text-sky-900"],
     alteration: [
-      "bg-orange-100",
-      "bg-orange-200",
-      "bg-orange-300",
-      "text-orange-900",
+      "bg-yellow-100",
+      "bg-yellow-200",
+      "bg-yellow-300",
+      "text-yellow-900",
     ],
     conjuration: [
       "bg-green-100",
@@ -45,15 +45,15 @@ function determineSpellColor(spellSchool: string, value: number) {
       "bg-green-300",
       "text-green-900",
     ],
-    divination: ["bg-teal-100", "bg-teal-200", "bg-teal-300", "text-teal-900"],
-    enchantment: ["bg-rose-100", "bg-rose-200", "bg-rose-300", "text-rose-900"],
-    evocation: [
-      "bg-yellow-100",
-      "bg-yellow-200",
-      "bg-yellow-300",
-      "text-yellow-900",
+    divination: [
+      "bg-indigo-100",
+      "bg-indigo-200",
+      "bg-indigo-300",
+      "text-indigo-900",
     ],
-    illusion: ["bg-cyan-100", "bg-cyan-200", "bg-cyan-300", "text-cyan-900"],
+    enchantment: ["bg-rose-100", "bg-rose-200", "bg-rose-300", "text-rose-900"],
+    evocation: ["bg-red-100", "bg-red-200", "bg-red-300", "text-red-900"],
+    illusion: ["bg-pink-100", "bg-pink-200", "bg-pink-300", "text-pink-900"],
     invocation: [
       "bg-indigo-100",
       "bg-indigo-200",
@@ -95,7 +95,12 @@ const SpellComponent = ({ spell, id }: SpellComponentTypes) => {
   const borderColor: string = determineSpellBorder(spellSchool);
 
   return (
-    <section className="max-h-[650px] min-w-[300px] overflow-y-scroll border-2 border-solid border-yellow-700">
+    <section
+      className={
+        "spellCard max-h-[650px] min-w-[300px] overflow-y-scroll border-2 border-solid border-yellow-700 " +
+        spellColor1
+      }
+    >
       {spell ? (
         <li key={spell.id} className={"min-h-full " + spellColor1}>
           <section
