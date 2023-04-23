@@ -130,7 +130,9 @@ const SpellComponent = ({ spell, id }: SpellComponentTypes) => {
             <section className={borderColor + " mb-2 border-b-2 bg-slate-50"}>
               <div className={"grid grid-cols-2 items-center gap-2 text-sm  "}>
                 {" "}
-                <section className="col-span-2 flex flex-col p-2">
+                <section
+                  className={spellColor4 + " col-span-2 flex flex-col p-2"}
+                >
                   <h2>{spell.duration}</h2>
                   <h2>{spell.spellRange}</h2>
                   <span>{spell.castTime}</span>
@@ -139,12 +141,7 @@ const SpellComponent = ({ spell, id }: SpellComponentTypes) => {
             </section>
 
             <section className="grid ">
-              <section
-                className={
-                  spellColor4 +
-                  " m-auto max-w-[50ch] border-b-2 border-solid border-black  bg-slate-50 px-4 py-6 text-left indent-3 text-sm leading-tight text-white lg:max-w-[90ch] "
-                }
-              >
+              <section className=" m-auto max-w-[50ch]  bg-slate-50  px-4 py-6 text-left indent-3 text-sm leading-tight text-black lg:max-w-[90ch] ">
                 {spellDescription[0] ? (
                   spellDescription[0]
                     .split("  ")
