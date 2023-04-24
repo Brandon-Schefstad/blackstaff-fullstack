@@ -62,11 +62,15 @@ function determineSpellColor(
   };
   let returnString = "";
   if (text) {
+    // @ts-ignore
     returnString = `text-${spellColorHash[fallBackSpellSchool]}-${
+      // @ts-ignore
       ColorIntensityHash[JSON.stringify(value)]
     }`;
   } else {
+    // @ts-ignore
     returnString = `bg-${spellColorHash[fallBackSpellSchool]}-${
+      // @ts-ignore
       ColorIntensityHash[JSON.stringify(value)]
     }`;
   }
