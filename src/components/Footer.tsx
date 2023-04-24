@@ -9,8 +9,12 @@ const Footer = () => {
         <a href="/">
           <FontAwesomeIcon icon={faHome} />
         </a>
-        <FontAwesomeIcon icon={faTwitter} />
-        <FontAwesomeIcon icon={faLinkedin} />
+        <a href="https://twitter.com/bschefstad">
+          <FontAwesomeIcon icon={faTwitter} />
+        </a>
+        <a href="https://www.linkedin.com/in/brandon-schefstad/">
+          <FontAwesomeIcon icon={faLinkedin} />
+        </a>
       </section>
     </div>
   );
