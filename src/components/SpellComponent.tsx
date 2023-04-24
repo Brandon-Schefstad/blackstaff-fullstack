@@ -26,159 +26,188 @@ function determineSpellBorder(spellSchool: string): string {
     return spellColorHash["transmutation"];
   }
 }
-function determineSpellColor(spellSchool: string, value: number) {
-  let fallBackSpellSchool = "";
+function determineSpellColor(
+  text: boolean,
+  spellSchool: string,
+  value: number
+): string {
+  let fallBackSpellSchool = spellSchool;
   if (spellSchool.at(-1) === ",") {
     fallBackSpellSchool = spellSchool.slice(0, -1);
   }
   const spellColorHash = {
-    abjuration: ["bg-sky-100", "bg-sky-200", "bg-sky-300", "text-sky-900"],
-    alteration: [
-      "bg-yellow-100",
-      "bg-yellow-200",
-      "bg-yellow-300",
-      "text-yellow-900",
-    ],
-    conjuration: [
-      "bg-green-100",
-      "bg-green-200",
-      "bg-green-300",
-      "text-green-900",
-    ],
-    divination: [
-      "bg-indigo-100",
-      "bg-indigo-200",
-      "bg-indigo-300",
-      "text-indigo-900",
-    ],
-    enchantment: ["bg-rose-100", "bg-rose-200", "bg-rose-300", "text-rose-900"],
-    evocation: ["bg-red-100", "bg-red-200", "bg-red-300", "text-red-900"],
-    illusion: ["bg-pink-100", "bg-pink-200", "bg-pink-300", "text-pink-900"],
-    invocation: [
-      "bg-indigo-100",
-      "bg-indigo-200",
-      "bg-indigo-300",
-      "text-indigo-900",
-    ],
-
-    necromancy: [
-      "bg-purple-100",
-      "bg-purple-200",
-      "bg-purple-300",
-      "text-purple-900",
-    ],
-
-    transmutation: [
-      "bg-emerald-100",
-      "bg-emerald-200",
-      "bg-emerald-300",
-      "text-emerald-900",
-    ],
+    abjuration: "sky",
+    alteration: "yellow",
+    conjuration: "green",
+    divination: "indigo",
+    enchantment: "rose",
+    evocation: "red",
+    illusion: "pink",
+    invocation: "indigo",
+    necromancy: "purple",
+    transmutation: "emerald",
   };
-  console.warn(spellSchool);
-  // @ts-ignore
-  if (spellColorHash[spellSchool]) {
-    // @ts-ignore
-    return spellColorHash[spellSchool][value - 1];
+  const ColorIntensityHash = {
+    "0.5": "50",
+    "1": "100",
+    "2": "200",
+    "3": "300",
+    "4": "400",
+    "5": "500",
+    "6": "600",
+    "7": "700",
+    "8": "800",
+    "9": "900",
+    "9.5": "950",
+  };
+  let returnString = "";
+  if (text) {
+    returnString = `text-${spellColorHash[fallBackSpellSchool]}-${
+      ColorIntensityHash[JSON.stringify(value)]
+    }`;
   } else {
-    return spellColorHash["transmutation"][value - 1];
+    returnString = `bg-${spellColorHash[fallBackSpellSchool]}-${
+      ColorIntensityHash[JSON.stringify(value)]
+    }`;
   }
+  return returnString;
 }
+
 const inconsolata = Inconsolata({ subsets: ["latin"] });
 const SpellComponent = ({ spell, id }: SpellComponentTypes) => {
   const spellDescription = spell.description.split("At Higher Levels.");
   const spellSchool = spell.school.toLowerCase();
-  const spellColor1: string = determineSpellColor(spellSchool, 1);
-  const spellColor2: string = determineSpellColor(spellSchool, 2);
-  const spellColor3: string = determineSpellColor(spellSchool, 3);
-  const spellColor4: string = determineSpellColor(spellSchool, 4);
+  const spellColor1: string = determineSpellColor(false, spellSchool, 1);
+  const spellColor2: string = determineSpellColor(false, spellSchool, 2);
+  const spellColor3: string = determineSpellColor(false, spellSchool, 3);
+  const spellColor4: string = determineSpellColor(false, spellSchool, 4);
+  const spellColor9: string = determineSpellColor(false, spellSchool, 9);
+
+  const spellTextColor9: string = determineSpellColor(true, spellSchool, 9);
+
   const borderColor: string = determineSpellBorder(spellSchool);
 
   return (
     <section
       className={
-        "spellCard max-h-[650px] min-w-[300px] overflow-y-scroll border-2 border-solid border-yellow-700 " +
+        "min-w-[300px] border-2 border-solid border-yellow-700 lg:min-w-[400px]  " +
         spellColor1
       }
     >
       {spell ? (
-        <li key={spell.id} className={"min-h-full " + spellColor1}>
+        <li
+          key={spell.id}
+          className={"min-h-full  min-w-full bg-amber-100  " + spellColor1}
+        >
           <section
             className={
-              inconsolata.className + " grid justify-center gap-2  py-6 text-xs"
+              inconsolata.className +
+              " grid justify-center  bg-amber-100  text-xs"
             }
           >
-            <h1 className="  ml-2 text-center font-[Amagro] text-base ">
-              {JSON.stringify(id + 1)}. {spell.name ? spell.name : "None"}
-            </h1>
-            <h3 className={"m-auto mb-2 flex gap-2 font-bold " + spellColor4}>
-              <h2>{spell.school}</h2>
-              {spell.concentration && <h2>| Concentration</h2>}
-              {spell.ritual && <h2>| Ritual</h2>}
-            </h3>
-            <div
+            <h1
               className={
-                " m-auto mb-4 grid justify-center border-b-[2px]  border-solid bg-slate-100 p-2 " +
-                borderColor
+                spellColor9 +
+                "  min-w-full pt-6 pb-2 text-center font-[Amagro]  text-base text-amber-300 lg:text-lg  "
               }
             >
-              <section className="  flex flex-col items-center px-4 ">
-                <section className=" flex gap-1 ">
-                  ({spell.S && <h3>S</h3>}
-                  {spell.M && <h3> M</h3>}
-                  {spell.V && <h3> V</h3>})
-                </section>
-
-                {spell.M && <h3 className=""> Material: {spell.material} </h3>}
-              </section>
-            </div>
-            <section className={borderColor + " mb-2 border-b-2 bg-slate-50"}>
-              <div className={"grid grid-cols-2 items-center gap-2 text-sm  "}>
-                {" "}
-                <section
-                  className={spellColor4 + " col-span-2 flex flex-col p-2"}
-                >
-                  <h2>{spell.duration}</h2>
-                  <h2>{spell.spellRange}</h2>
-                  <span>{spell.castTime}</span>
-                </section>
-              </div>
-            </section>
-
-            <section className="grid ">
-              <section className=" m-auto max-w-[50ch]  bg-slate-50  px-4 py-6 text-left indent-3 text-sm leading-tight text-black lg:max-w-[90ch] ">
-                {spellDescription[0] ? (
-                  spellDescription[0]
-                    .split("  ")
-                    .map((str: string, i: number) =>
-                      i !== 0 ? (
-                        <p className="decoration-dotted first-letter:text-lg first-letter:underline first-line:mt-4">
-                          {" "}
-                          {str}
-                        </p>
-                      ) : (
-                        <p className="">{str}</p>
-                      )
-                    )
-                ) : (
-                  <></>
-                )}
-              </section>
-            </section>
-            {spellDescription[1] && (
+              {JSON.stringify(id + 1)}. {spell.name ? spell.name : "None"}
+            </h1>
+            <section className="spellCard grid max-h-[700px] bg-amber-100   pt-4 pb-2 lg:text-base">
               <section
                 className={
-                  borderColor + " border-b-2 border-solid p-2 " + spellColor2
+                  " m-auto  grid min-w-full grid-cols-6 items-center justify-center gap-2 px-8 pb-4 font-bold"
                 }
               >
-                {spellDescription[1]}
+                {!spell.ritual && !spell.concentration ? (
+                  <h2 className="col-span-6 ">{spell.school}</h2>
+                ) : spell.ritual && spell.concentration ? (
+                  <>
+                    <h2 className="col-span-2">{spell.school}</h2>
+
+                    <h2 className="col-span-2">Ritual</h2>
+
+                    <h2 className="col-span-2">Concentration</h2>
+                  </>
+                ) : (
+                  <>
+                    <h2 className="col-span-3">{spell.school}</h2>
+
+                    <h2 className="col-span-3">
+                      {spell.concentration ? "Concentration" : "Ritual"}
+                    </h2>
+                  </>
+                )}
               </section>
-            )}
-            {/* {spell.quote ? (
-              <section className={" p-2" + spellColor3}>{spell.quote}</section>
-            ) : (
-              <></>
-            )} */}
+
+              <section className={"  px-4 py-2"}>
+                <div className={" items-center gap-4  text-sm "}>
+                  {" "}
+                  <section className={"grid  lg:text-lg " + spellColor2}>
+                    <h2>{spell.duration}</h2>
+                    <h2>{spell.spellRange}</h2>
+                  </section>
+                </div>
+              </section>
+              <span className={spellTextColor9 + " mx-8 mb-4   md:text-base"}>
+                {spell.castTime}
+              </span>
+
+              <section className="grid ">
+                <section className=" m-auto mb-4 h-[300px] max-w-[50ch] overflow-y-scroll bg-slate-50  px-4 py-4 text-left indent-4 text-sm leading-tight text-black lg:max-w-[90ch] ">
+                  {spellDescription[0] ? (
+                    spellDescription[0]
+                      .split("  ")
+                      .map((str: string, i: number) =>
+                        i !== 0 ? (
+                          <p className="decoration-dotted first-letter:text-lg first-letter:underline first-line:mt-4">
+                            {" "}
+                            {str}
+                          </p>
+                        ) : (
+                          <p className="">{str}</p>
+                        )
+                      )
+                  ) : (
+                    <></>
+                  )}
+                </section>
+              </section>
+              <div className={"mb-4 grid justify-center " + borderColor}>
+                <section className="  mx-4 flex flex-col items-center  bg-amber-50 text-sm">
+                  <section className="  ">
+                    {spell.S || spell.M || spell.V ? (
+                      <section className=" flex gap-1 py-3 px-4 ">
+                        ({spell.S && <h3>S</h3>}
+                        {spell.M && <h3> M</h3>}
+                        {spell.V && <h3> V</h3>})
+                      </section>
+                    ) : (
+                      <></>
+                    )}
+                  </section>
+                  {spell.M && (
+                    <h3 className="px-6 py-2 "> Material: {spell.material} </h3>
+                  )}
+                </section>
+              </div>
+              {spellDescription[1] && (
+                <section
+                  className={
+                    borderColor +
+                    "  overflow-y-scroll bg-slate-100 p-2 text-left indent-4 text-sm leading-tight " +
+                    spellColor2
+                  }
+                >
+                  {spellDescription[1]}
+                </section>
+              )}
+              {/* {spell.quote ? (
+                <section className={" p-2" + spellColor3}>{spell.quote}</section>
+              ) : (
+                <></>
+              )} */}
+            </section>
           </section>
         </li>
       ) : (
