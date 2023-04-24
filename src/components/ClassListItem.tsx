@@ -8,13 +8,13 @@ const ClassListItem = ({ name, i }: ClassListItemProps) => {
   return (
     <li
       className={
-        "mx-8 border-b-2 border-solid border-black pt-2 hover:bg-black hover:text-white"
+        " grid items-center border-b-2 border-solid border-black bg-slate-300 pt-2 hover:bg-black hover:text-white sm:h-[100px]"
       }
       key={i}
     >
       <a className=" hover:text-white" href={`/classes/${name}`}>
-        <section className="flex justify-between pr-4 align-middle">
-          <span className="block px-2">{name}</span>
+        <section className="flex justify-between px-12 pr-4 align-middle sm:flex ">
+          <span className="block  sm:text-right">{name}</span>
           <FontAwesomeIcon icon={faArrowRight} className={"my-auto"} />
         </section>
       </a>
