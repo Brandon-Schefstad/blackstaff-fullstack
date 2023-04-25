@@ -72,7 +72,6 @@ export async function getStaticProps({ params }: any) {
   const data = await handler2(params.name);
 
   data.forEach((spell: Spell) => {
-    console.log(spell);
     //@ts-ignore
     levelHashMap[spell.level].push(spell);
   });
