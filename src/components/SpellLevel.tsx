@@ -35,7 +35,7 @@ const SpellLevel = ({ level: level, spellList }: SpellLevelPropTypes) => {
             </h1>
           </button>
           {open ? (
-            <section className="carousel  w-screen overflow-x-scroll ">
+            <section className="carousel  w-screen ">
               <ol className="flex min-h-[650px] gap-12 overflow-y-hidden  md:pl-12 ">
                 {spellList.map((spell: Spell, key) => {
                   return <SpellComponent spell={spell} id={key} />;
