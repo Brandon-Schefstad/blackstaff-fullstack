@@ -94,38 +94,40 @@ const SpellComponent = ({ spell, id }: SpellComponentTypes) => {
   const spellBlockStyle = " bg-white  px-2 font-bold text-base";
 
   return (
-    <section
-      className={"  min-w-[350px] border-2 lg:min-w-[400px]  " + spellColor1}
-    >
+    <section className={"   min-w-[350px] lg:min-w-[400px] " + spellColor1}>
       {spell ? (
         <li
           key={spell.id}
           className={
-            "flex max-h-[625px] min-h-[625px] min-w-full flex-col px-3  " +
-            spellColor9
+            "flex max-h-[625px] min-w-full flex-col px-3 pb-4   " + spellColor9
           }
         >
           <section
             className={
               inconsolata.className +
-              " flex flex-col justify-center  pt-4  text-xs"
+              " flex flex-col justify-center  pt-4  text-xs "
             }
           >
-            <h1 className="mx-2 rounded-t-lg bg-amber-100  pt-4 font-[Amagro]  text-base tracking-wider">
+            <h1 className="mx-2 rounded-t-lg  bg-amber-100  pt-4 font-[Amagro]  text-base tracking-wider">
               {JSON.stringify(id + 1)}. {spell.name ? spell.name : "None"}
             </h1>
 
             <section className="stats grid max-h-[700px] grid-cols-2 gap-[6px] p-2">
-              <h2 className={spellBlockStyle}>{spell.duration}</h2>
-              <h2 className={spellBlockStyle}>{spell.spellRange}</h2>
+              <h2 className={spellBlockStyle + " col-span-2 text-sm"}>
+                {spell.school}
+              </h2>
               <h2 className={spellBlockStyle + " col-span-2 text-sm"}>
                 {spell.castTime}
               </h2>
-
               <section className="col-span-2 grid grid-cols-5 gap-[6px]">
+                {spell.ritual && (
+                  <h2 className={spellBlockStyle + " col-span-2"}>Ritual</h2>
+                )}
                 {spell.S || spell.M || spell.V ? (
                   <section
-                    className={spellBlockStyle + "  flex justify-center"}
+                    className={
+                      spellBlockStyle + "  col-start-3 flex justify-center"
+                    }
                   >
                     {spell.S && <h3>S</h3>}
                     {spell.M && <h3>M</h3>}
@@ -134,25 +136,21 @@ const SpellComponent = ({ spell, id }: SpellComponentTypes) => {
                 ) : (
                   <></>
                 )}
-                {spell.ritual && (
-                  <h2 className={spellBlockStyle + " col-span-2"}>Ritual</h2>
-                )}
                 {spell.concentration && (
                   <h2 className={spellBlockStyle + " col-span-2 col-start-4 "}>
                     Concentration
                   </h2>
                 )}
               </section>
-              <h2 className={spellBlockStyle + " col-span-2 text-sm"}>
-                {spell.school}
-              </h2>
+              <h2 className={spellBlockStyle}>{spell.duration}</h2>
+              <h2 className={spellBlockStyle}>{spell.spellRange}</h2>
 
               <section
                 className={`description col-span-2 mt-4 overflow-y-scroll bg-white p-4 text-left indent-4 text-sm leading-tight text-black lg:max-w-[90ch] 
                   ${
                     spellDescription[1]
                       ? "max-h-[290px]"
-                      : "h-[390px] overflow-scroll  pb-8"
+                      : "h-[380px] overflow-scroll  pb-8"
                   }`}
               >
                 {spellDescription[0] ? (
