@@ -19,23 +19,23 @@ interface spellState {
 const ClassSheet = (props: any) => {
   const router = useRouter();
   const { levelHashMap } = props;
-  console.log(Object.keys(levelHashMap));
+
   return (
     <>
       <NavBar />
       <section>
-        <h1 className="mb-12 text-center font-[amagro] text-3xl">
+        <h1 className="mb-12 mt-4 text-center font-[amagro] text-3xl">
           {router.query.name}
         </h1>
 
-        <section className="m-auto flex flex-col gap-2">
+        <section className="m-auto flex flex-col gap-2 ">
           {Object.keys(levelHashMap).map((num) => {
             //@ts-ignore
             const spellList = levelHashMap[num];
 
             {
               return spellList ? (
-                <div className="flex justify-center ">
+                <div className="flex justify-center">
                   <SpellLevel
                     level={Number(num)}
                     spellList={spellList ? spellList : []}
@@ -72,6 +72,7 @@ export async function getStaticProps({ params }: any) {
   const data = await handler2(params.name);
 
   data.forEach((spell: Spell) => {
+    console.log(spell);
     //@ts-ignore
     levelHashMap[spell.level].push(spell);
   });
