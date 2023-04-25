@@ -95,7 +95,7 @@ const SpellComponent = ({ spell, id }: SpellComponentTypes) => {
 
   return (
     <section
-      className={"  min-w-[320px] border-2 lg:min-w-[400px]  " + spellColor1}
+      className={"  min-w-[350px] border-2 lg:min-w-[400px]  " + spellColor1}
     >
       {spell ? (
         <li
@@ -122,21 +122,23 @@ const SpellComponent = ({ spell, id }: SpellComponentTypes) => {
                 {spell.castTime}
               </h2>
 
-              <section className="col-span-2 grid grid-cols-3 gap-1">
+              <section className="col-span-2 grid grid-cols-5 gap-[6px]">
                 {spell.S || spell.M || spell.V ? (
                   <section
                     className={spellBlockStyle + "  flex justify-center"}
                   >
-                    ({spell.S && <h3>S</h3>}
-                    {spell.M && <h3> M</h3>}
-                    {spell.V && <h3> V</h3>})
+                    {spell.S && <h3>S</h3>}
+                    {spell.M && <h3>M</h3>}
+                    {spell.V && <h3>V</h3>}
                   </section>
                 ) : (
                   <></>
                 )}
-                {spell.ritual && <h2 className={spellBlockStyle}>Ritual</h2>}
+                {spell.ritual && (
+                  <h2 className={spellBlockStyle + " col-span-2"}>Ritual</h2>
+                )}
                 {spell.concentration && (
-                  <h2 className={spellBlockStyle + " col-start-3 text-sm"}>
+                  <h2 className={spellBlockStyle + " col-span-2 col-start-4 "}>
                     Concentration
                   </h2>
                 )}
