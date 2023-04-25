@@ -136,7 +136,7 @@ const SpellComponent = ({ spell, id }: SpellComponentTypes) => {
                 )}
                 {spell.ritual && <h2 className={spellBlockStyle}>Ritual</h2>}
                 {spell.concentration && (
-                  <h2 className={spellBlockStyle + " col-start-3"}>
+                  <h2 className={spellBlockStyle + " col-start-3 text-sm"}>
                     Concentration
                   </h2>
                 )}
