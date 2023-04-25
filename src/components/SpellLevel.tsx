@@ -10,39 +10,46 @@ type SpellLevelPropTypes = {
 };
 const SpellLevel = ({ level: level, spellList }: SpellLevelPropTypes) => {
   const [open, setOpen] = useState(false);
+
   return (
-    <section
-      className=" flex flex-col gap-2 text-center
+    <>
+      {spellList.length ? (
+        <section
+          className=" flex flex-col gap-2 text-center
     "
-    >
-      <button
-        className="mb-2 flex gap-2 px-4
-                  text-center font-[amagro] text-xl hover:bg-black hover:text-white"
-        onClick={() => setOpen(!open)}
-      >
-        <h1 className="m-auto text-center">
-          {" "}
-          {level === 0 ? "Cantrips" : `Level ${level}`}{" "}
-          {spellList && <span>({spellList.length})</span>}
+        >
+          <button
+            className="m-auto mb-2 flex gap-2 py-2 px-2 text-center
+                  font-[amagro] text-xl hover:bg-black hover:text-white sm:w-[350px]"
+            onClick={() => setOpen(!open)}
+          >
+            <h1 className="m-auto text-center">
+              {" "}
+              {level === 0 ? "Cantrips" : `Level ${level}`}{" "}
+              {<span>({spellList.length})</span>}
+              {open ? (
+                <FontAwesomeIcon icon={faCaretDown} />
+              ) : (
+                <FontAwesomeIcon icon={faCaretRight} />
+              )}
+            </h1>
+          </button>
           {open ? (
-            <FontAwesomeIcon icon={faCaretDown} />
+            <section className="carousel  w-screen ">
+              <ol className="flex min-h-[650px] gap-12 overflow-y-hidden  md:pl-12 ">
+                {spellList.map((spell: Spell, key) => {
+                  return <SpellComponent spell={spell} id={key} />;
+                })}
+              </ol>
+            </section>
           ) : (
-            <FontAwesomeIcon icon={faCaretRight} />
+            <></>
           )}
-        </h1>
-      </button>
-      {open ? (
-        <section className="carousel w-screen overflow-x-scroll">
-          <ol className=" flex gap-8">
-            {spellList.map((spell: Spell, key) => {
-              return <SpellComponent spell={spell} id={key} />;
-            })}
-          </ol>
         </section>
       ) : (
         <></>
       )}
-    </section>
+    </>
   );
 };
 

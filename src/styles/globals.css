@@ -6,5 +6,179 @@
   src: url(Amagro.ttf);
 }
 body {
-  padding-top: 32px;
+  padding-top: 24px;
+  max-width: 2000px;
+  margin: auto;
+}
+.text-emerald-900 {
+  color: #064e3b;
+}
+.text-sky-900 {
+  color: #0c4a6e;
+}
+.text-yellow-900 {
+  color: #713f12;
+}
+.text-green-900 {
+  color: #14532d;
+}
+.text-indigo-900 {
+  color: #312e81;
+}
+.text-rose-900 {
+  color: #881337;
+}
+.text-red-900 {
+  color: #7f1d1d;
+}
+.text-pink-900 {
+  color: #831843;
+}
+.text-purple-900 {
+  color: #581c87;
+}
+
+.bg-emerald-900 {
+  background-color: #064e3b;
+}
+.bg-sky-900 {
+  background-color: #0c4a6e;
+}
+.bg-yellow-900 {
+  background-color: #713f12;
+}
+.bg-green-900 {
+  background-color: #14532d;
+}
+.bg-indigo-900 {
+  background-color: #312e81;
+}
+.bg-rose-900 {
+  background-color: #881337;
+}
+.bg-red-900 {
+  background-color: #7f1d1d;
+}
+.bg-pink-900 {
+  background-color: #831843;
+}
+.bg-purple-900 {
+  background-color: #581c87;
+}
+
+section.bg-emerald-100 {
+  scrollbar-color: rgb(254 243 199) #064e3b;
+}
+section.bg-sky-100 {
+  scrollbar-color: rgb(254 243 199) #0c4a6e;
+}
+section.bg-yellow-100 {
+  scrollbar-color: rgb(254 243 199) #713f12;
+}
+section.bg-green-100 {
+  scrollbar-color: rgb(254 243 199) #14532d;
+}
+section.bg-indigo-100 {
+  scrollbar-color: rgb(254 243 199) #312e81;
+}
+section.bg-rose-100 {
+  scrollbar-color: rgb(254 243 199) #881337;
+}
+section.bg-red-100 {
+  scrollbar-color: rgb(254 243 199) #7f1d1d;
+}
+section.bg-pink-100 {
+  scrollbar-color: rgb(254 243 199) #831843;
+}
+section.bg-purple-100 {
+  scrollbar-color: rgb(254 243 199) #581c87;
+}
+*::-webkit-scrollbar {
+  width: 1px;
+}
+*::-webkit-scrollbar-track {
+  background: var(--primary);
+  border-radius: 5px;
+}
+
+.description {
+  scrollbar-width: thin;
+  /* padding-right: 4px; */
+  /* padding-left: 14px;
+  padding-right: 4px; */
+}
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
