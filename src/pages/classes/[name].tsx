@@ -21,10 +21,10 @@ const ClassSheet = (props: any) => {
   const { levelHashMap } = props;
 
   return (
-    <>
+    <section className="min-h-screen bg-black">
       <NavBar />
       <section>
-        <h1 className="mb-12 mt-4 text-center font-[amagro] text-3xl">
+        <h1 className="mb-12 mt-4 text-center font-[amagro] text-3xl  font-bold text-white underline">
           {router.query.name}
         </h1>
 
@@ -35,7 +35,7 @@ const ClassSheet = (props: any) => {
 
             {
               return spellList ? (
-                <div className="m-auto  flex md:m-0 md:pl-8  ">
+                <div className="m-auto  flex md:m-0 md:pl-8   ">
                   <SpellLevel
                     level={Number(num)}
                     spellList={spellList ? spellList : []}
@@ -48,7 +48,7 @@ const ClassSheet = (props: any) => {
           })}{" "}
         </section>
       </section>
-    </>
+    </section>
   );
 };
 

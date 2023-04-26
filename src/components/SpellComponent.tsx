@@ -99,23 +99,19 @@ const SpellComponent = ({ spell, id }: SpellComponentTypes) => {
   const borderColor: string = determineSpellBorder(spellSchool);
 
   const spellBlockStyle =
-    "flex flex-col justify-center bg-white px-2  text-base  ";
+    "flex flex-col justify-center bg-amber-100 px-2  text-base  ";
 
   return (
-    <section className={"   min-w-[350px] lg:min-w-[400px]" + spellColor1}>
+    <section className={"   min-w-[375px]  rounded-lg   "}>
       {spell ? (
         <li
           key={spell.id}
-          className={"  min-w-full  flex-col rounded-xl bg-white "}
+          className={"  relative   min-w-full flex-col rounded-xl  "}
         >
           <section
-            className={
-              "  rounded-t-lg bg-black px-4 pb-2 pt-6 text-left font-[Amagro]  text-base tracking-wider text-white underline"
-            }
+            className={`  rounded-t-lg  bg-white bg-opacity-80 px-4 pb-2 pt-4  text-left font-[Amagro] text-base tracking-wider underline`}
           >
-            <h1>
-              {JSON.stringify(id + 1)}. {spell.name ? spell.name : "None"}
-            </h1>
+            <h1>{spell.name ? spell.name : "None"}</h1>
             {/* <Image
               src={spellLogo}
               height={60}
@@ -126,20 +122,21 @@ const SpellComponent = ({ spell, id }: SpellComponentTypes) => {
           <section
             className={
               inconsolata.className +
-              "      flex max-h-[675px] min-h-[675px]  flex-col justify-start bg-black  px-2  align-top text-xs  "
+              `flex max-h-[675px] min-h-[675px]  flex-col justify-start    align-top text-xs  `
             }
           >
-            <section className=" stats relative flex h-[675px] flex-col gap-4  p-4">
+            <section
+              className={
+                " stats flex h-[635px] flex-col  gap-4  px-6 py-4 " +
+                spellColor9
+              }
+            >
               <section
                 className={
                   spellBlockStyle +
-                  " grid grid-cols-4 items-center gap-[6px]  p-2  text-sm"
+                  " grid grid-cols-4 items-center gap-[6px]  p-2  text-sm  text-black outline outline-2 outline-black"
                 }
               >
-                {/* <h2 className={spellBlockStyle + "  text-sm"}>
-                  {spell.school}
-                </h2> */}
-
                 <Image
                   src={durationLogo}
                   height={20}
@@ -165,7 +162,7 @@ const SpellComponent = ({ spell, id }: SpellComponentTypes) => {
               </section>
               <section className="  flex  flex-col gap-4">
                 <section
-                  className={`description col-span-2  overflow-y-scroll bg-white p-4 text-left indent-4 text-base leading-tight text-black lg:max-w-[90ch]
+                  className={`description col-span-2  overflow-y-scroll bg-amber-50 bg-opacity-80 p-4 text-left indent-4 text-base leading-tight text-black outline outline-2 outline-black lg:max-w-[90ch]
                    ${
                      spellDescription[1] ? "max-h-[290px]" : "max-h-[400px] "
                    } `}
@@ -190,98 +187,54 @@ const SpellComponent = ({ spell, id }: SpellComponentTypes) => {
                 {spellDescription[1] && (
                   <section
                     className={
-                      " description col-span-2  max-h-[100px] overflow-y-scroll  bg-white p-2  text-left indent-4 text-sm leading-tight "
+                      " description col-span-2 max-h-[100px]  overflow-y-scroll bg-amber-50 bg-opacity-90 p-2 text-left  indent-4 text-sm leading-tight text-gray-800 text-black outline outline-2 outline-black"
                     }
                   >
                     <span>{spellDescription[1]}</span>
                   </section>
                 )}
+              </section>
+            </section>
+            <section
+              className={` bottom-0 right-[0rem] grid min-h-[50px] w-full grid-cols-3 justify-center rounded-b-lg bg-white bg-opacity-80  ${
+                spell.ritual || spell.concentration ? " " : " "
+              } 
+                `}
+            >
+              {spell.ritual && (
+                <Image
+                  src={ritualLogo}
+                  alt={"Ritual"}
+                  height={35}
+                  width={35}
+                  className="col-start-1 m-auto  self-center"
+                />
+              )}
 
+              {spell.concentration && (
+                <Image
+                  src={concentrationLogo}
+                  // height={35}
+                  width={35}
+                  className="col-start-2 m-auto self-center"
+                  alt={"Concentration"}
+                />
+              )}
+              {spell.S || spell.M || spell.V ? (
                 <section
-                  className={` absolute  bottom-0 right-[-0.5rem] grid min-h-[50px] min-w-[104%] grid-cols-3 justify-center  ${
-                    spell.ritual || spell.concentration ? "bg-white" : ""
+                  className={
+                    " col-start-3 m-auto flex min-h-[50px] min-w-full flex-col justify-center self-center   bg-none px-2 text-base"
                   }
-                `}
                 >
-                  {spell.ritual && (
-                    <Image
-                      src={ritualLogo}
-                      alt={"Ritual"}
-                      height={35}
-                      width={35}
-                      className="col-start-1 m-auto  self-center"
-                    />
-                  )}
-
-                  {spell.concentration && (
-                    <Image
-                      src={concentrationLogo}
-                      // height={35}
-                      width={35}
-                      className="col-start-2 m-auto self-center"
-                      alt={"Concentration"}
-                    />
-                  )}
-                  {spell.S || spell.M || spell.V ? (
-                    <section
-                      className={
-                        spellBlockStyle +
-                        " col-start-3 m-auto   min-h-[50px] min-w-full self-center"
-                      }
-                    >
-                      <section className="  m-auto flex flex-row">
-                        {spell.S && <h3 className="">S</h3>}
-                        {spell.M && <h3>M</h3>}
-                        {spell.V && <h3>V</h3>}
-                      </section>
-                    </section>
-                  ) : (
-                    <></>
-                  )}
-                </section>
-              </section>
-              <section
-                className={` absolute  bottom-0 right-[0rem] grid min-h-[50px] w-full grid-cols-3 justify-center  ${
-                  spell.ritual || spell.concentration ? "bg-white" : ""
-                }
-                `}
-              >
-                {spell.ritual && (
-                  <Image
-                    src={ritualLogo}
-                    alt={"Ritual"}
-                    height={35}
-                    width={35}
-                    className="col-start-1 m-auto  self-center"
-                  />
-                )}
-
-                {spell.concentration && (
-                  <Image
-                    src={concentrationLogo}
-                    // height={35}
-                    width={35}
-                    className="col-start-2 m-auto self-center"
-                    alt={"Concentration"}
-                  />
-                )}
-                {spell.S || spell.M || spell.V ? (
-                  <section
-                    className={
-                      spellBlockStyle +
-                      " col-start-3 m-auto   min-h-[50px] min-w-full self-center"
-                    }
-                  >
-                    <section className="  m-auto flex flex-row">
-                      {spell.S && <h3 className="">S</h3>}
-                      {spell.M && <h3>M</h3>}
-                      {spell.V && <h3>V</h3>}
-                    </section>
+                  <section className="  m-auto flex flex-row">
+                    {spell.S && <h3 className="">S</h3>}
+                    {spell.M && <h3>M</h3>}
+                    {spell.V && <h3>V</h3>}
                   </section>
-                ) : (
-                  <></>
-                )}
-              </section>
+                </section>
+              ) : (
+                <></>
+              )}
             </section>
             {/* {spell.quote ? (
                 <section className={" p-2" + spellColor3}>{spell.quote}</section>
