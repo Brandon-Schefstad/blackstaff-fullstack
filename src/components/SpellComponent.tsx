@@ -111,7 +111,6 @@ const SpellComponent = ({ spell, id }: SpellComponentTypes) => {
           <section
             className={
               "  rounded-t-lg bg-black px-4 pb-2 pt-6 text-left font-[Amagro]  text-base tracking-wider text-white underline"
-              // spellColor9
             }
           >
             <h1>
