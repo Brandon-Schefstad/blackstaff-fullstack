@@ -141,14 +141,29 @@ const SpellComponent = ({ spell, id }: SpellComponentTypes) => {
                   {spell.school}
                 </h2> */}
 
-                <Image src={durationLogo} height={20} className=" m-auto" />
+                <Image
+                  src={durationLogo}
+                  height={20}
+                  className=" m-auto"
+                  alt="duration"
+                />
                 <h2 className="col-span-2">{spell.duration}</h2>
-                <Image src={rangeLogo} height={20} className="m-auto " />
+                <Image
+                  src={rangeLogo}
+                  height={20}
+                  className="m-auto "
+                  alt="range"
+                />
                 <h2 className={spellBlockStyle + " col-span-2"}>
                   {" "}
                   {spell.spellRange}
                 </h2>
-                <Image src={castTimeLogo} height={20} className=" m-auto" />
+                <Image
+                  src={castTimeLogo}
+                  height={20}
+                  className=" m-auto"
+                  alt="casting time"
+                />
 
                 <h2 className="col-span-2">{spell.castTime}</h2>
               </section>
