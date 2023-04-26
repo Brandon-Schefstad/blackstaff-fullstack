@@ -240,6 +240,48 @@ const SpellComponent = ({ spell, id }: SpellComponentTypes) => {
                   )}
                 </section>
               </section>
+              <section
+                className={` absolute  bottom-0 right-[0rem] grid min-h-[50px] w-full grid-cols-3 justify-center  ${
+                  spell.ritual || spell.concentration ? "bg-white" : ""
+                }
+                `}
+              >
+                {spell.ritual && (
+                  <Image
+                    src={ritualLogo}
+                    alt={"Ritual"}
+                    height={35}
+                    width={35}
+                    className="col-start-1 m-auto  self-center"
+                  />
+                )}
+
+                {spell.concentration && (
+                  <Image
+                    src={concentrationLogo}
+                    // height={35}
+                    width={35}
+                    className="col-start-2 m-auto self-center"
+                    alt={"Concentration"}
+                  />
+                )}
+                {spell.S || spell.M || spell.V ? (
+                  <section
+                    className={
+                      spellBlockStyle +
+                      " col-start-3 m-auto   min-h-[50px] min-w-full self-center"
+                    }
+                  >
+                    <section className="  m-auto flex flex-row">
+                      {spell.S && <h3 className="">S</h3>}
+                      {spell.M && <h3>M</h3>}
+                      {spell.V && <h3>V</h3>}
+                    </section>
+                  </section>
+                ) : (
+                  <></>
+                )}
+              </section>
             </section>
             {/* {spell.quote ? (
                 <section className={" p-2" + spellColor3}>{spell.quote}</section>
