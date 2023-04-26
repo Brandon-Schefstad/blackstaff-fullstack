@@ -35,7 +35,7 @@ const ClassSheet = (props: any) => {
 
             {
               return spellList ? (
-                <div className="flex justify-center">
+                <div className="m-auto  flex md:m-0 md:pl-8  ">
                   <SpellLevel
                     level={Number(num)}
                     spellList={spellList ? spellList : []}
