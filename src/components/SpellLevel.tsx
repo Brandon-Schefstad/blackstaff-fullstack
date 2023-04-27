@@ -20,7 +20,9 @@ const SpellLevel = ({ level: level, spellList }: SpellLevelPropTypes) => {
         >
           <button
             className="  flex gap-2 py-2 px-2 text-center
+
                   font-[amagro] text-xl text-white hover:bg-black hover:text-white sm:w-[350px]"
+
             onClick={() => setOpen(!open)}
           >
             <h1 className=" text-center">
@@ -36,7 +38,9 @@ const SpellLevel = ({ level: level, spellList }: SpellLevelPropTypes) => {
           </button>
           {open ? (
             <section className="carousel  w-screen ">
+
               <ol className="flex h-[775px] gap-16 overflow-y-hidden  py-2 align-middle md:pl-12 ">
+
                 {spellList.map((spell: Spell, key) => {
                   return <SpellComponent spell={spell} id={key} />;
                 })}
