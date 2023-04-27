@@ -168,18 +168,31 @@ const SpellComponent = ({ spell, id }: SpellComponentTypes) => {
                    } `}
                 >
                   {spellDescription[0] ? (
-                    spellDescription[0]
-                      .split("  ")
-                      .map((str: string, i: number) =>
-                        i !== 0 ? (
-                          <p className="decoration-dotted first-letter:text-lg first-letter:underline first-line:mt-4">
-                            {" "}
-                            {str}
-                          </p>
-                        ) : (
-                          <p className="">{str}</p>
-                        )
-                      )
+                    <ul>
+                      {spellDescription[0]
+
+                        //this creates lists!  
+                        //
+                        .split(String.fromCodePoint(61618))
+                        .map((str: string, i: number) =>
+                          i !== 0 ? (
+                            <li className="decoration-dotted first-letter:text-lg first-letter:underline first-line:mt-4">
+                              + {str}
+                            </li>
+                          ) : (
+                            <p className="">
+                              {str.split(" ").map((word) => {
+                                const regexp = /[1-9]+d[0-9]+/gm;
+                                return regexp.test(word) ? (
+                                  <span className="font-bold"> {word}</span>
+                                ) : (
+                                  <>{word} </>
+                                );
+                              })}
+                            </p>
+                          )
+                        )}
+                    </ul>
                   ) : (
                     <></>
                   )}
@@ -187,7 +200,7 @@ const SpellComponent = ({ spell, id }: SpellComponentTypes) => {
                 {spellDescription[1] && (
                   <section
                     className={
-                      " description col-span-2 max-h-[100px]  overflow-y-scroll bg-amber-50 bg-opacity-90 p-2 text-left  indent-4 text-sm leading-tight text-gray-800 text-black outline outline-2 outline-black"
+                      " description col-span-2 max-h-[100px]  overflow-y-scroll bg-amber-50 bg-opacity-90 p-2 text-left  indent-4 text-sm leading-tight text-gray-800  outline outline-2 outline-black"
                     }
                   >
                     <span>{spellDescription[1]}</span>
