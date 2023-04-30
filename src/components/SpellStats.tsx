@@ -12,7 +12,7 @@ const SpellStats = ({
   spellColor: string;
 }) => {
   const spellBlockStyle =
-    "flex flex-col justify-center bg-amber-100 px-2  text-base  ";
+    "flex flex-col justify-center bg-amber-50 px-2  text-base  ";
 
   return (
     <>
@@ -20,7 +20,7 @@ const SpellStats = ({
         <section
           className={
             spellBlockStyle +
-            " grid grid-cols-4 items-center gap-[6px]  p-2  text-sm  text-black outline outline-2 outline-black"
+            " grid grid-cols-4 items-center gap-[6px]  p-2  text-sm  text-gray-900 outline outline-2 outline-black"
           }
         >
           <Image
