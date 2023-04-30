@@ -21,23 +21,21 @@ const ClassSheet = (props: any) => {
   const { levelHashMap } = props;
 
   return (
-    <section className="min-h-screen bg-black">
+    <section className="min-h-screen overflow-x-hidden bg-black ">
       <NavBar />
-      <section>
-        <h1 className="mb-12 mt-4 text-center font-[amagro] text-3xl  font-bold text-white underline">
+      <section className="p-4">
+        <h1 className="mb-12 mt-4 text-left font-[amagro] text-3xl  font-bold text-white underline">
           {router.query.name}
         </h1>
 
-        <section className="m-auto flex flex-col gap-2 ">
+        <section className="flex flex-col gap-2  ">
           {Object.keys(levelHashMap).map((num) => {
             //@ts-ignore
             const spellList = levelHashMap[num];
 
             {
               return spellList ? (
-
                 <div className="m-auto  flex md:m-0 md:pl-8  ">
-
                   <SpellLevel
                     level={Number(num)}
                     spellList={spellList ? spellList : []}

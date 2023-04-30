@@ -4,7 +4,7 @@ const NavBar: NextPage = () => {
   const liClass = `border-b-2 border-transparent hover:border-b-2 hover:border-solid hover:border-black`;
   return (
     <nav>
-      <ul className="flex w-full justify-evenly border-b-2 border-solid border-black bg-white pb-6 font-[Amagro] text-xs">
+      <ul className="flex w-full justify-evenly border-b-2 border-solid border-black bg-white pb-6 font-[Amagro] text-xs text-black">
         <a className={liClass} href="/classes">
           <li>Classes</li>
         </a>
