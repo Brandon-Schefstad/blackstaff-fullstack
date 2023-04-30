@@ -1,5 +1,9 @@
 import { Spell } from "@prisma/client";
 import { Inconsolata } from "next/font/google";
+import SpellDescription from "./SpellDescription";
+import SpellFooter from "./SpellFooter";
+import SpellStats from "./SpellStats";
+
 type SpellComponentTypes = {
   spell: Spell;
   id: number;
@@ -90,115 +94,35 @@ const SpellComponent = ({ spell, id }: SpellComponentTypes) => {
   const spellTextColor9: string = determineSpellColor(true, spellSchool, 9);
 
   const borderColor: string = determineSpellBorder(spellSchool);
-
-  const spellBlockStyle =
-    "flex flex-col justify-center bg-white  px-2 font-bold text-base";
-
+  const longCastTime = spell.castTime.includes(", which you take when");
   return (
-    <section className={"   min-w-[350px] lg:min-w-[400px] " + spellColor1}>
-      {spell ? (
-        <li
-          key={spell.id}
-          className={
-            "flex   max-h-[700px] min-h-[700px] min-w-full flex-col  px-3   pb-4 " +
-            spellColor9
-          }
+    <li
+      key={spell.id}
+      className={
+        " relative flex-col rounded-xl    outline outline-4 " + spellColor9
+      }
+    >
+      <div className=" card-compact max-h-full min-w-[325px] rounded-t-lg">
+        <span
+          className={` card-title mb-[-0.25rem] flex h-[45px] rounded-t-lg bg-black py-[0.75rem] pl-2  text-left font-[Amagro] text-white ${
+            spell.name.length > 23 ? "text-sm" : "text-lg "
+          }`}
         >
-          <section
-            className={
-              inconsolata.className +
-              " flex  max-h-[700px]  min-h-[700px] flex-col justify-center   pt-4  text-xs  "
-            }
-          >
-            <h1 className="mx-2 rounded-t-lg  bg-amber-100  pt-4 font-[Amagro]  text-base tracking-wider">
-              {JSON.stringify(id + 1)}. {spell.name ? spell.name : "None"}
-            </h1>
-
-            <section className="stats grid min-h-[625px] grid-rows-4  p-2">
-              <section className=" row-span-1 grid grid-cols-2 gap-[6px]">
-                <h2 className={spellBlockStyle + "  text-sm"}>
-                  {spell.school}
-                </h2>
-                {spell.S || spell.M || spell.V ? (
-                  <section className={spellBlockStyle}>
-                    <section className="flex flex-row justify-center">
-                      {spell.S && <h3>S</h3>}
-                      {spell.M && <h3>M</h3>}
-                      {spell.V && <h3>V</h3>}
-                    </section>
-                  </section>
-                ) : (
-                  <></>
-                )}
-                <h2 className={spellBlockStyle + " col-span-2 text-sm"}>
-                  {spell.castTime}
-                </h2>
-                <h2 className={spellBlockStyle}>{spell.duration}</h2>
-                <h2 className={spellBlockStyle}>{spell.spellRange}</h2>
-                <section className="col-span-2 mb-4 grid grid-cols-2 gap-[6px]">
-                  {spell.ritual && (
-                    <h2 className={spellBlockStyle + " font-normal "}>
-                      Ritual
-                    </h2>
-                  )}
-
-                  {spell.concentration && (
-                    <h2
-                      className={
-                        spellBlockStyle + " col-start-2  py-0 font-normal "
-                      }
-                    >
-                      Concentration
-                    </h2>
-                  )}
-                </section>
-              </section>
-
-              <section className=" row-span-3 grid min-h-full grid-rows-4 gap-4">
-                <section
-                  className={`description col-span-2 row-span-full  max-h-full overflow-y-scroll bg-white p-4 text-left indent-4 text-base leading-tight text-black lg:max-w-[90ch]
-                    `}
-                >
-                  {spellDescription[0] ? (
-                    spellDescription[0]
-                      .split("  ")
-                      .map((str: string, i: number) =>
-                        i !== 0 ? (
-                          <p className="decoration-dotted first-letter:text-lg first-letter:underline first-line:mt-4">
-                            {" "}
-                            {str}
-                          </p>
-                        ) : (
-                          <p className="">{str}</p>
-                        )
-                      )
-                  ) : (
-                    <></>
-                  )}
-                </section>
-                {spellDescription[1] && (
-                  <section
-                    className={
-                      borderColor +
-                      " description col-span-2 max-h-[125px] flex-1 overflow-y-scroll bg-slate-100 px-3 py-2  text-left indent-4 text-sm leading-tight "
-                    }
-                  >
-                    {spellDescription[1]}
-                  </section>
-                )}
-              </section>
-            </section>
-            {/* {spell.quote ? (
-                <section className={" p-2" + spellColor3}>{spell.quote}</section>
-              ) : (
-                <></>
-              )} */}
+          {spell.name} {spell.name.length}
+        </span>
+        <section className={inconsolata.className + "    mt-[-0.25rem]  "}>
+          <section className={""}>
+            <SpellStats spell={spell} spellColor={spellColor9} />
+            <SpellDescription
+              font={inconsolata.className}
+              spellDescription={spellDescription}
+              longCastTime={longCastTime}
+            />
           </section>
-        </li>
-      ) : (
-        <></>
-      )}
-    </section>
+        </section>
+        <SpellFooter spell={spell} />
+      </div>
+    </li>
   );
 };
 

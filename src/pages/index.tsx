@@ -6,8 +6,9 @@ import NavBar from "../components/Navbar";
 
 const Home: NextPage = () => {
   return (
-    <section className="flex h-full flex-col justify-evenly font-[amagro]">
+    <section className="flex h-full flex-col justify-evenly  font-[amagro]">
       <NavBar />
+
       <div className="main">
         <div className=" bottom -[18%] absolute grid min-w-full bg-black px-4  py-4 text-center  text-sm text-white ">
           <span className="">Blackstaff's Spell Emporium</span>

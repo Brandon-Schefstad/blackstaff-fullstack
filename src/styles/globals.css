@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @font-face {
   font-family: amagro;
   src: url(Amagro.ttf);
@@ -9,6 +10,7 @@ body {
   padding-top: 24px;
   max-width: 2000px;
   margin: auto;
+  background-color: white;
 }
 .text-emerald-900 {
   color: #064e3b;
@@ -38,74 +40,75 @@ body {
   color: #581c87;
 }
 
+.bg-emerald-900-box {
+  background-color: rgba(6, 78, 59);
+  box-shadow: inset 0px 0px 18px rgb(166, 242, 207, 0.85);
+}
+.bg-sky-900-box {
+  background-color: rgba(12, 74, 110);
+  box-shadow: inset 0px 0px 18px rgb(191, 219, 254, 0.85);
+}
+.bg-yellow-900-box {
+  background-color: rgba(113, 63, 18);
+  box-shadow: inset 0px 0px 18px rgb(254, 240, 138, 0.85);
+}
+.bg-green-900-box {
+  background-color: rgb(20, 83, 45);
+  box-shadow: inset 0px 0px 18px rgb(187, 247, 208, 0.85);
+}
+.bg-indigo-900-box {
+  background-color: rgb(49, 46, 129);
+  box-shadow: inset 0px 0px 18px rgb(199, 210, 254, 0.85);
+}
+.bg-rose-900-box {
+  background-color: rgb(136, 19, 55);
+  box-shadow: inset 0px 0px 18px rgb(254, 205, 211, 0.85);
+}
+.bg-red-900-box {
+  background-color: rgb(127, 29, 29);
+  box-shadow: inset 0px 0px 18px rgb(254, 202, 202, 0.85);
+}
+.bg-pink-900-box {
+  background-color: rgb(131, 24, 67);
+  box-shadow: inset 0px 0px 18px rgb(251, 207, 232, 0.85);
+}
+.bg-purple-900-box {
+  background-color: rgb(88, 28, 135);
+  box-shadow: inset 0px 0px 18px rgb(233, 213, 255, 0.85);
+}
 .bg-emerald-900 {
-  background-color: #064e3b;
+  background-color: rgba(6, 78, 59, 0.9);
 }
 .bg-sky-900 {
-  background-color: #0c4a6e;
+  background-color: rgba(12, 74, 110, 0.5);
 }
 .bg-yellow-900 {
-  background-color: #713f12;
+  background-color: rgba(113, 63, 18, 0.5);
 }
 .bg-green-900 {
-  background-color: #14532d;
+  background-color: rgb(20, 83, 45, 0.5);
 }
 .bg-indigo-900 {
-  background-color: #312e81;
+  background-color: rgb(49, 46, 129, 0.5);
 }
 .bg-rose-900 {
-  background-color: #881337;
+  background-color: rgb(136, 19, 55, 0.5);
 }
 .bg-red-900 {
-  background-color: #7f1d1d;
+  background-color: rgb(127, 29, 29, 0.5);
 }
 .bg-pink-900 {
-  background-color: #831843;
+  background-color: rgb(131, 24, 67, 0.5);
 }
 .bg-purple-900 {
-  background-color: #581c87;
-}
-
-section.bg-emerald-100 {
-  scrollbar-color: rgb(254 243 199) #064e3b;
-}
-section.bg-sky-100 {
-  scrollbar-color: rgb(254 243 199) #0c4a6e;
-}
-section.bg-yellow-100 {
-  scrollbar-color: rgb(254 243 199) #713f12;
-}
-section.bg-green-100 {
-  scrollbar-color: rgb(254 243 199) #14532d;
-}
-section.bg-indigo-100 {
-  scrollbar-color: rgb(254 243 199) #312e81;
-}
-section.bg-rose-100 {
-  scrollbar-color: rgb(254 243 199) #881337;
-}
-section.bg-red-100 {
-  scrollbar-color: rgb(254 243 199) #7f1d1d;
-}
-section.bg-pink-100 {
-  scrollbar-color: rgb(254 243 199) #831843;
-}
-section.bg-purple-100 {
-  scrollbar-color: rgb(254 243 199) #581c87;
-}
-*::-webkit-scrollbar {
-  width: 1px;
-}
-*::-webkit-scrollbar-track {
-  background: var(--primary);
-  border-radius: 5px;
+  background-color: rgb(88, 28, 135, 0.5);
 }
 
 .description {
   scrollbar-width: thin;
-  /* padding-right: 4px; */
-  /* padding-left: 14px;
-  padding-right: 4px; */
+}
+.description::-webkit-scrollbar {
+  background: transparent;
 }
 
 /* Box sizing rules */
