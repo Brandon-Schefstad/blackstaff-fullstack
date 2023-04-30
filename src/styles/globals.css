@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @font-face {
   font-family: amagro;
   src: url(Amagro.ttf);
@@ -9,6 +10,7 @@ body {
   padding-top: 24px;
   max-width: 2000px;
   margin: auto;
+  background-color: white;
 }
 .text-emerald-900 {
   color: #064e3b;
@@ -38,60 +40,68 @@ body {
   color: #581c87;
 }
 
-.bg-emerald-900 {
-  background-color: rgba(6, 78, 59, 0.95);
-}
-.bg-sky-900 {
-  background-color: rgba(12, 74, 110, 0.95);
-}
-.bg-yellow-900 {
-  background-color: rgba(113, 63, 18, 0.95);
-}
-.bg-green-900 {
-  background-color: rgb(20, 83, 45, 0.95);
-}
-.bg-indigo-900 {
-  background-color: rgb(49, 46, 129, 0.95);
-}
-.bg-rose-900 {
-  background-color: rgb(136, 19, 55, 0.95);
-}
-.bg-red-900 {
-  background-color: rgb(127, 29, 29, 0.95);
-}
-.bg-pink-900 {
-  background-color: rgb(131, 24, 67, 0.95);
-}
-.bg-purple-900 {
-  background-color: rgb(88, 28, 135, 0.95);
-}
-
-.bg-emerald-900 {
+.bg-emerald-900-box {
+  background-color: rgba(6, 78, 59);
   box-shadow: inset 0px 0px 18px rgb(166, 242, 207, 0.85);
 }
-.bg-sky-900 {
+.bg-sky-900-box {
+  background-color: rgba(12, 74, 110);
   box-shadow: inset 0px 0px 18px rgb(191, 219, 254, 0.85);
 }
-.bg-yellow-900 {
+.bg-yellow-900-box {
+  background-color: rgba(113, 63, 18);
   box-shadow: inset 0px 0px 18px rgb(254, 240, 138, 0.85);
 }
-.bg-green-900 {
+.bg-green-900-box {
+  background-color: rgb(20, 83, 45);
   box-shadow: inset 0px 0px 18px rgb(187, 247, 208, 0.85);
 }
-.bg-indigo-900 {
+.bg-indigo-900-box {
+  background-color: rgb(49, 46, 129);
   box-shadow: inset 0px 0px 18px rgb(199, 210, 254, 0.85);
 }
-.bg-rose-900 {
+.bg-rose-900-box {
+  background-color: rgb(136, 19, 55);
   box-shadow: inset 0px 0px 18px rgb(254, 205, 211, 0.85);
 }
-.bg-red-900 {
+.bg-red-900-box {
+  background-color: rgb(127, 29, 29);
   box-shadow: inset 0px 0px 18px rgb(254, 202, 202, 0.85);
 }
-.bg-pink-900 {
+.bg-pink-900-box {
+  background-color: rgb(131, 24, 67);
   box-shadow: inset 0px 0px 18px rgb(251, 207, 232, 0.85);
 }
-.bg-purple-900 {
+.bg-purple-900-box {
+  background-color: rgb(88, 28, 135);
   box-shadow: inset 0px 0px 18px rgb(233, 213, 255, 0.85);
+}
+.bg-emerald-900 {
+  background-color: rgba(6, 78, 59, 0.9);
+}
+.bg-sky-900 {
+  background-color: rgba(12, 74, 110, 0.5);
+}
+.bg-yellow-900 {
+  background-color: rgba(113, 63, 18, 0.5);
+}
+.bg-green-900 {
+  background-color: rgb(20, 83, 45, 0.5);
+}
+.bg-indigo-900 {
+  background-color: rgb(49, 46, 129, 0.5);
+}
+.bg-rose-900 {
+  background-color: rgb(136, 19, 55, 0.5);
+}
+.bg-red-900 {
+  background-color: rgb(127, 29, 29, 0.5);
+}
+.bg-pink-900 {
+  background-color: rgb(131, 24, 67, 0.5);
+}
+.bg-purple-900 {
+  background-color: rgb(88, 28, 135, 0.5);
 }
 
 .description {

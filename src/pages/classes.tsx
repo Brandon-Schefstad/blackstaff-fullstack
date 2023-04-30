@@ -17,7 +17,7 @@ const Classes: NextPage = () => {
   ];
 
   return (
-    <div className="font-[amagro]">
+    <div className="font-[amagro] text-black">
       <NavBar />
       <div className="mt-4 grid   ">
         <h1 className="text-center text-2xl  ">Select Your Class</h1>
