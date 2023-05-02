@@ -13,7 +13,7 @@ const ClassListItem = ({ name, i }: ClassListItemProps) => {
       key={i}
     >
       <a className=" hover:text-white" href={`/classes/${name}`}>
-        <section className="flex justify-between px-12 pr-4 align-middle sm:flex ">
+        <section className="flex justify-between  px-4 pr-4 align-middle sm:flex ">
           <span className="block  sm:text-right">{name}</span>
           <FontAwesomeIcon icon={faArrowRight} className={"my-auto"} />
         </section>

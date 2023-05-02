@@ -1,7 +1,8 @@
 import { Spell } from "@prisma/client";
 import { useRouter } from "next/router";
+import { useState } from "react";
+import SpellLevel from "~/components/SpellLevel";
 import NavBar from "../../components/Navbar";
-import SpellLevel from "../../components/SpellLevel";
 import { handler2 } from "../api/read/spell";
 interface spellState {
   "0": Spell[];
@@ -18,34 +19,49 @@ interface spellState {
 
 const ClassSheet = (props: any) => {
   const router = useRouter();
-  const { levelHashMap } = props;
-
+  const { levelHashMap }: { levelHashMap: spellState } = props;
+  const [level, setLevel] = useState("0");
+  const [drawer, setDrawer] = useState(false);
+  const handleOptionChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setLevel(event.target.value);
+  };
   return (
-    <section className="min-h-screen overflow-x-hidden bg-black ">
+
+    <section className="overflow-x-hidden text-black ">
       <NavBar />
-      <section className="p-4">
-        <h1 className="mb-12 mt-4 text-left font-[amagro] text-3xl  font-bold text-white underline">
+      <section className="relative ">
+        <h1 className=" mt-4 text-center font-[amagro] text-3xl font-bold   underline lg:text-6xl">
           {router.query.name}
         </h1>
+        <h1 className="mb-8  text-center font-[amagro] text-xl font-bold  lg:text-6xl">
+          {level === "0" ? "Cantrips" : `Level ${level}`}
+        </h1>
+        <select
+          name="level"
+          id="level"
+          className="m-auto mb-8 block  w-24 rounded-lg p-2 text-center text-white"
+          onChange={(e) => handleOptionChange(e)}
+          value={level}
+        >
+          {Object.keys(levelHashMap)
+            .filter((level) => {
+              //@ts-ignore
+              return levelHashMap[level].length;
+            })
+            .map((level) => {
+              return (
+                <option value={level} className="">
+                  {level === "0" ? "Cantrips" : "Level " + level}
+                </option>
 
-        <section className="flex flex-col gap-2  ">
-          {Object.keys(levelHashMap).map((num) => {
-            //@ts-ignore
-            const spellList = levelHashMap[num];
-
-            {
-              return spellList ? (
-                <div className="m-auto  flex md:m-0 md:pl-8  ">
-                  <SpellLevel
-                    level={Number(num)}
-                    spellList={spellList ? spellList : []}
-                  />
-                </div>
-              ) : (
-                <></>
               );
-            }
-          })}{" "}
+            })}
+        </select>
+        <section className="chooseSpell  relative min-w-full gap-12">
+          <section className="artBoard min-h-screen min-w-full   border-y-2 border-zinc-800 bg-zinc-600  text-white">
+            {/* @ts-ignore */}
+            <SpellLevel spellList={levelHashMap[level]} level={level} />
+          </section>
         </section>
       </section>
     </section>
