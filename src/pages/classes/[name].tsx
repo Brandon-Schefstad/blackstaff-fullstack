@@ -33,7 +33,7 @@ const ClassSheet = (props: any) => {
           {router.query.name}
         </h1>
         <h1 className="mb-8  text-center font-[amagro] text-xl font-bold  lg:text-6xl">
-          {level == 0 ? "Cantrips" : `Level ${level}`}
+          {level === "0" ? "Cantrips" : `Level ${level}`}
         </h1>
         <select
           name="level"
@@ -57,6 +57,7 @@ const ClassSheet = (props: any) => {
         </select>
         <section className="chooseSpell  relative min-w-full gap-12">
           <section className="artBoard min-h-screen min-w-full   border-y-2 border-zinc-800 bg-zinc-600  text-white">
+            {/* @ts-ignore */}
             <SpellLevel spellList={levelHashMap[level]} level={level} />
           </section>
         </section>
