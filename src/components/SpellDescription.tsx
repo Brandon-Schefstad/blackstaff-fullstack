@@ -11,7 +11,9 @@ const SpellDescription = ({
 }) => {
   const [higherCast, setHigherCast] = useState(false);
   return (
+
     <section className=" flex max-h-[490px] flex-col gap-2 p-3">
+
       <section
         className={
           font +
@@ -21,25 +23,31 @@ const SpellDescription = ({
                ? "max-h-[270px]"
                : spellDescription[1]
                ? "max-h-[385px]"
+
                : longCastTime
                ? "max-h-[370px]"
+
                : "max-h-full"
            } `
         }
       >
         {spellDescription[0] ? (
+
           <p>
+
             {spellDescription[0]
               //this creates lists!  
               //
               .split(String.fromCodePoint(61618))
               .map((str: string, i: number) =>
                 i !== 0 ? (
+
                   <p className="first-letter:underne decoration-dotted first-letter:text-lg first-line:mt-4">
                     + {str}
                   </p>
                 ) : (
                   <>
+
                     {str.split(" ").map((word) => {
                       const regexp = /[1-9]+d[0-9]+/gm;
                       return regexp.test(word) ? (
@@ -48,10 +56,12 @@ const SpellDescription = ({
                         <>{word} </>
                       );
                     })}
+
                   </>
                 )
               )}
           </p>
+
         ) : (
           <></>
         )}

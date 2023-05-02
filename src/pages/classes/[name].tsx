@@ -26,6 +26,7 @@ const ClassSheet = (props: any) => {
     setLevel(event.target.value);
   };
   return (
+
     <section className="overflow-x-hidden text-black ">
       <NavBar />
       <section className="relative ">
@@ -52,6 +53,7 @@ const ClassSheet = (props: any) => {
                 <option value={level} className="">
                   {level === "0" ? "Cantrips" : "Level " + level}
                 </option>
+
               );
             })}
         </select>

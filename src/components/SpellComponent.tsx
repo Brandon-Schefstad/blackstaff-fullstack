@@ -103,13 +103,16 @@ const SpellComponent = ({ spell, id }: SpellComponentTypes) => {
       }
     >
       <div className=" card-compact max-h-full min-w-[325px] rounded-t-lg">
+
         <h3
+
           className={` card-title mb-[-0.25rem] flex h-[45px] rounded-t-lg bg-black py-[0.75rem] pl-2  text-left font-[Amagro] text-white ${
             spell.name.length > 23 ? "text-sm" : "text-lg "
           }`}
         >
           {spell.name}
         </h3>
+
         <section className={inconsolata.className + "    mt-[-0.25rem]  "}>
           <section className={""}>
             <SpellStats spell={spell} spellColor={spellColor9} />

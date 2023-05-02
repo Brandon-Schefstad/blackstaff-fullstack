@@ -18,6 +18,7 @@ const SpellLevel = ({ level: level, spellList }: SpellLevelPropTypes) => {
               return <SpellComponent spell={spell} id={key} />;
             })}
           </ol>
+
         </section>
       ) : (
         <></>
