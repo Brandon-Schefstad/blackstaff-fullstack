@@ -6,7 +6,7 @@ import ritualLogo from "../../public/ritual.svg";
 const SpellFooter = ({ spell }: { spell: Spell }) => {
   return (
     <section
-      className={` absolute bottom-0  grid  w-full  grid-cols-3 justify-center rounded-b-lg pt-4 text-zinc-900  ${
+      className={` absolute bottom-0 grid min-w-full  grid-cols-3  items-center  justify-center rounded-b-lg  text-center text-zinc-900  ${
         spell.ritual || spell.concentration || spell.S || spell.M || spell.V
           ? "bg-white "
           : ""
@@ -39,7 +39,7 @@ const SpellFooter = ({ spell }: { spell: Spell }) => {
       {spell.S || spell.M || spell.V ? (
         <section
           className={
-            " col-start-3 m-auto  min-h-[50px] min-w-full self-center font-bold"
+            " col-start-3  grid min-h-[50px] min-w-full items-center justify-center font-bold"
           }
         >
           <div className="tooltip" data-tip={spell.material}>
