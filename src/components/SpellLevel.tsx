@@ -10,10 +10,10 @@ const SpellLevel = ({ level: level, spellList }: SpellLevelPropTypes) => {
     <>
       {spellList ? (
         <section
-          className="carousel w-screen  p-4
+          className="carousel w-screen p-2 md:p-4
            "
         >
-          <ol className="flex h-[775px] gap-16 overflow-x-scroll p-2  align-middle   md:pl-12">
+          <ol className="flex h-[775px] gap-16 overflow-x-scroll bg-black  p-4 align-middle   md:pl-12">
             {spellList.map((spell: Spell, key) => {
               return <SpellComponent spell={spell} id={key} />;
             })}
