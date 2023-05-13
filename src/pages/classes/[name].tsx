@@ -20,7 +20,9 @@ interface spellState {
 const ClassSheet = (props: any) => {
   const router = useRouter();
   const { levelHashMap }: { levelHashMap: spellState } = props;
-  const [level, setLevel] = useState("0");
+  const startingLevel = levelHashMap["0"].length === 0 ? "1" : "0";
+
+  const [level, setLevel] = useState(startingLevel);
   const [drawer, setDrawer] = useState(false);
   const handleOptionChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setLevel(event.target.value);
