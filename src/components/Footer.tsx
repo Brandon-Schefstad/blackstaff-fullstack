@@ -6,13 +6,16 @@ const Footer = () => {
   return (
     <div className="sticky bottom-0 grid min-w-full grid-cols-7 bg-black  px-8 py-2  text-xs text-white ">
       <section className="socials m-auto flex w-full justify-end gap-2">
-        <a href="/">
+        <a href="/" aria-label="Home">
           <FontAwesomeIcon icon={faHome} />
         </a>
-        <a href="https://twitter.com/bschefstad">
+        <a href="https://twitter.com/bschefstad" aria-label="Twitter">
           <FontAwesomeIcon icon={faTwitter} />
         </a>
-        <a href="https://www.linkedin.com/in/brandon-schefstad/">
+        <a
+          href="https://www.linkedin.com/in/brandon-schefstad/"
+          aria-label="Linkedin"
+        >
           <FontAwesomeIcon icon={faLinkedin} />
         </a>
       </section>

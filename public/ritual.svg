@@ -1,26 +1,18 @@
-<?xml version="1.0" ?>
-<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-<svg width="800px" height="800px" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-<defs>
-<style>.cls-1{fill:none;stroke:#000000;stroke-linejoin:round;stroke-width:2px;}</style>
-</defs>
-<title/>
-<g data-name="Layer 26" id="Layer_26">
-<rect class="cls-1" height="4" width="26" x="19" y="58"/>
-<rect class="cls-1" height="4" width="22" x="21" y="54"/>
-<rect class="cls-1" height="4" width="26" x="19" y="28"/>
-<rect class="cls-1" height="4" width="22" x="21" y="32"/>
-<line class="cls-1" x1="23" x2="23" y1="54" y2="36"/>
-<line class="cls-1" x1="32" x2="32" y1="50" y2="54"/>
-<path class="cls-1" d="M32,50h0a2.41,2.41,0,0,0,1.71-.71l.41-.41A3,3,0,0,0,35,46.76v-.52a3,3,0,0,0-.88-2.12h0A3.82,3.82,0,0,1,33,41.41V40l-3.14,3.93A3.89,3.89,0,0,0,29,46.38h0a3.9,3.9,0,0,0,1.15,2.77l.14.14A2.41,2.41,0,0,0,32,50Z"/>
-<line class="cls-1" x1="41" x2="41" y1="36" y2="54"/>
-<rect class="cls-1" height="6" width="60" x="2" y="2"/>
-<rect class="cls-1" height="6" width="52" x="6" y="8"/>
-<polyline class="cls-1" points="48 58 62 58 62 52 46 52"/>
-<polyline class="cls-1" points="18 52 2 52 2 58 16 58"/>
-<polyline class="cls-1" points="23 46 6 46 6 52 18 52"/>
-<polyline class="cls-1" points="46 52 58 52 58 46 41 46"/>
-<polyline class="cls-1" points="23 46 10 46 10 14 54 14 54 46 41 46"/>
-<path class="cls-1" d="M37.33,28l-.71-.86A11.31,11.31,0,0,1,34,19.91V18l-4.94,4.94A3.62,3.62,0,0,0,28,25.5h0a3.62,3.62,0,0,1-1.06,2.56"/>
-</g>
-</svg>
+<svg width="776" height="776" viewBox="0 0 776 776" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M550.5 713H225.5V763H550.5V713Z" stroke="#FCD34D" stroke-width="25" stroke-linejoin="round"/>
+<path d="M525.5 663H250.5V713H525.5V663Z" stroke="#FCD34D" stroke-width="25" stroke-linejoin="round"/>
+<path d="M550.5 338H225.5V388H550.5V338Z" stroke="#FCD34D" stroke-width="25" stroke-linejoin="round"/>
+<path d="M525.5 388H250.5V438H525.5V388Z" stroke="#FCD34D" stroke-width="25" stroke-linejoin="round"/>
+<path d="M275.5 663V438" stroke="#FCD34D" stroke-width="25" stroke-linejoin="round"/>
+<path d="M388 613V663" stroke="#FCD34D" stroke-width="25" stroke-linejoin="round"/>
+<path d="M388 613C391.972 613.003 395.906 612.22 399.574 610.697C403.242 609.174 406.573 606.94 409.375 604.125L414.5 599C421.535 591.974 425.491 582.442 425.5 572.5V566C425.491 556.058 421.535 546.526 414.5 539.5C410.05 535.054 406.523 529.773 404.12 523.959C401.718 518.146 400.488 511.915 400.5 505.625V488L361.25 537.125C354.265 545.801 350.47 556.612 350.5 567.75C350.493 574.185 351.759 580.557 354.226 586.5C356.693 592.442 360.313 597.838 364.875 602.375L366.625 604.125C369.427 606.94 372.758 609.174 376.426 610.697C380.095 612.22 384.028 613.003 388 613Z" stroke="#FCD34D" stroke-width="25" stroke-linejoin="round"/>
+<path d="M500.5 438V663" stroke="#FCD34D" stroke-width="25" stroke-linejoin="round"/>
+<path d="M763 13H13V88H763V13Z" stroke="#FCD34D" stroke-width="25" stroke-linejoin="round"/>
+<path d="M713 88H63V163H713V88Z" stroke="#FCD34D" stroke-width="25" stroke-linejoin="round"/>
+<path d="M588 713H763V638H563" stroke="#FCD34D" stroke-width="25" stroke-linejoin="round"/>
+<path d="M213 638H13V713H188" stroke="#FCD34D" stroke-width="25" stroke-linejoin="round"/>
+<path d="M275.5 563H63V638H213" stroke="#FCD34D" stroke-width="25" stroke-linejoin="round"/>
+<path d="M563 638H713V563H500.5" stroke="#FCD34D" stroke-width="25" stroke-linejoin="round"/>
+<path d="M275.5 563H113V163H663V563H500.5" stroke="#FCD34D" stroke-width="25" stroke-linejoin="round"/>
+<path d="M454.625 338L445.75 327.25C424.612 301.875 413.026 269.901 413 236.875V213L351.25 274.75C347.048 278.953 343.716 283.942 341.442 289.432C339.169 294.923 337.999 300.807 338 306.75C338.001 312.693 336.831 318.577 334.558 324.068C332.284 329.558 328.952 334.547 324.75 338.75" stroke="#FCD34D" stroke-width="25" stroke-linejoin="round"/>
+</svg>

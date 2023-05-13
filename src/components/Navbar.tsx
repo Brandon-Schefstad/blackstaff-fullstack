@@ -4,21 +4,25 @@ const NavBar: NextPage = () => {
   const liClass = `border-b-2 border-transparent hover:border-b-2 hover:border-solid hover:border-black`;
   return (
     <nav>
-
-      <ul className="flex w-full justify-end gap-4 border-b-2 border-solid border-black bg-black p-4 font-[Amagro] text-xs text-white md:gap-48 ">
-
-        <a className={liClass} href="/classes">
-          <li>Classes</li>
-        </a>
-        <a className={liClass} href="/about">
-          <li>About</li>
-        </a>
-        <a
-          className={liClass}
-          href="https://www.dmsguild.com/product/302120/The-Blackstaffs-Book-of-1000-Spells"
-        >
-          <li>Purchase</li>
-        </a>
+      <ul className="flex w-full justify-end gap-10 border-b-2 border-solid border-black bg-zinc-900 p-4 font-[Amagro] text-xs text-white md:gap-48 ">
+        <li>
+          <a className={liClass} href="/classes">
+            Classes
+          </a>
+        </li>
+        <li>
+          <a className={liClass} href="/about">
+            About
+          </a>
+        </li>
+        <li>
+          <a
+            className={liClass}
+            href="https://www.dmsguild.com/product/302120/The-Blackstaffs-Book-of-1000-Spells"
+          >
+            Purchase
+          </a>
+        </li>
       </ul>
     </nav>
   );
