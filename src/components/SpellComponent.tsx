@@ -98,20 +98,24 @@ const SpellComponent = ({ spell, id }: SpellComponentTypes) => {
   return (
     <li
       key={spell.id}
+      tabIndex={0}
       className={
-        " relative flex-col rounded-xl    outline outline-4 " + spellColor9
+        " relative h-[570px] min-w-full flex-col  rounded-xl  outline outline-4   focus:outline-lime-400 lg:min-w-fit " +
+        spellColor9
       }
     >
-      <div className=" card-compact max-h-full min-w-[325px] rounded-t-lg">
-
-        <h3
-
-          className={` card-title mb-[-0.25rem] flex h-[45px] rounded-t-lg bg-black py-[0.75rem] pl-2  text-left font-[Amagro] text-white ${
-            spell.name.length > 23 ? "text-sm" : "text-lg "
-          }`}
+      <div className=" card-compact  rounded-t-lg  ">
+        <h2
+          className={` mb-[-0.25rem] flex h-[45px] items-end rounded-t-lg bg-[#1B0000]  pl-4 text-left font-[Amagro]  font-bold tracking-wide text-amber-50 ${
+            spell.name.length > 22
+              ? "pb-2 text-xs"
+              : spell.name.length > 14
+              ? "pb-[6px] text-sm"
+              : "text-md pb-1 "
+          } `}
         >
           {spell.name}
-        </h3>
+        </h2>
 
         <section className={inconsolata.className + "    mt-[-0.25rem]  "}>
           <section className={""}>

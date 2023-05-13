@@ -6,13 +6,7 @@ import ritualLogo from "../../public/ritual.svg";
 const SpellFooter = ({ spell }: { spell: Spell }) => {
   return (
     <section
-
-      className={` absolute bottom-0 grid min-w-full  grid-cols-3  items-center  justify-center rounded-b-lg  text-center text-zinc-900  ${
-
-        spell.ritual || spell.concentration || spell.S || spell.M || spell.V
-          ? "bg-white "
-          : ""
-      }
+      className={` absolute bottom-0 grid min-w-full  grid-cols-3  items-center  justify-center rounded-b-lg  bg-[#1B0000] text-center text-amber-400
           `}
     >
       {spell.ritual && (
@@ -20,8 +14,8 @@ const SpellFooter = ({ spell }: { spell: Spell }) => {
           <Image
             src={ritualLogo}
             alt={"Ritual"}
-            height={35}
-            width={35}
+            height={25}
+            width={25}
             className="col-start-1 m-auto  self-center"
           />
         </div>
@@ -31,8 +25,8 @@ const SpellFooter = ({ spell }: { spell: Spell }) => {
         <div className="tooltip" data-tip="Concentration">
           <Image
             src={concentrationLogo}
-            // height={35}
-            width={35}
+            // height={25}
+            width={25}
             className="col-start-2 m-auto self-center"
             alt={"Concentration"}
           />
@@ -41,15 +35,17 @@ const SpellFooter = ({ spell }: { spell: Spell }) => {
       {spell.S || spell.M || spell.V ? (
         <section
           className={
-
-            " col-start-3  grid min-h-[50px] min-w-full items-center justify-center font-bold"
-
+            " col-start-3  grid min-h-[45px] min-w-full items-center justify-center font-bold"
           }
         >
-          <div className="tooltip" data-tip={spell.material}>
+          <div>
             <section className="  m-auto flex flex-row">
               {spell.S && <h3 className="">S</h3>}
-              {spell.M && <h3>M</h3>}
+              {spell.M && (
+                <h3 tabIndex={0} className="tooltip" data-tip={spell.material}>
+                  M
+                </h3>
+              )}
               {spell.V && <h3>V</h3>}
             </section>
           </div>

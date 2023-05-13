@@ -26,20 +26,17 @@ const ClassSheet = (props: any) => {
     setLevel(event.target.value);
   };
   return (
-
-    <section className="overflow-x-hidden text-black ">
+    <section className="flex flex-col  gap-12 overflow-x-hidden text-black">
       <NavBar />
-      <section className="relative ">
-        <h1 className=" mt-4 text-center font-[amagro] text-3xl font-bold   underline lg:text-6xl">
+      <section className="relative flex flex-col gap-2  pt-8 lg:p-4">
+        <h1 className="  text-center font-[amagro] text-3xl   font-bold underline lg:text-5xl">
           {router.query.name}
         </h1>
-        <h1 className="mb-8  text-center font-[amagro] text-xl font-bold  lg:text-6xl">
-          {level === "0" ? "Cantrips" : `Level ${level}`}
-        </h1>
+
         <select
           name="level"
           id="level"
-          className="m-auto mb-8 block  w-24 rounded-lg p-2 text-center text-white"
+          className="m-auto  block  w-24 rounded-lg p-2 text-center text-white"
           onChange={(e) => handleOptionChange(e)}
           value={level}
         >
@@ -53,15 +50,14 @@ const ClassSheet = (props: any) => {
                 <option value={level} className="">
                   {level === "0" ? "Cantrips" : "Level " + level}
                 </option>
-
               );
             })}
         </select>
-        <section className="chooseSpell  relative min-w-full gap-12">
-          <section className="artBoard min-h-screen min-w-full   border-y-2 border-zinc-800 bg-zinc-600  text-white">
-            {/* @ts-ignore */}
-            <SpellLevel spellList={levelHashMap[level]} level={level} />
-          </section>
+      </section>
+      <section className="chooseSpell  relative min-w-full gap-12">
+        <section className="artBoard lg:border-zing-900 min-h-screen min-w-full   border-y-2 border-zinc-800 bg-zinc-600 text-white lg:border-2 lg:bg-amber-300">
+          {/* @ts-ignore */}
+          <SpellLevel spellList={levelHashMap[level]} level={level} />
         </section>
       </section>
     </section>
