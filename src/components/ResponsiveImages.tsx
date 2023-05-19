@@ -29,7 +29,7 @@ const ResponsiveImage = ({
       src={isMobile ? mobileSrc : desktopSrc}
       alt={alt}
       width={isMobile ? " " : 1480}
-      height={isMobile ? 500 : ""}
+      height={isMobile ? `${500}` : " "}
       className={isMobile ? "m-auto" : "m-auto max-h-screen"}
     />
   );
