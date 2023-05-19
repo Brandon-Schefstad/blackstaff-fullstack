@@ -20,7 +20,9 @@ interface spellState {
 const ClassSheet = (props: any) => {
   const router = useRouter();
   const { levelHashMap }: { levelHashMap: spellState } = props;
-  const [level, setLevel] = useState("0");
+  const startingLevel = levelHashMap["0"].length === 0 ? "1" : "0";
+
+  const [level, setLevel] = useState(startingLevel);
   const [drawer, setDrawer] = useState(false);
   const handleOptionChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setLevel(event.target.value);
@@ -55,7 +57,9 @@ const ClassSheet = (props: any) => {
         </select>
       </section>
       <section className="chooseSpell  relative min-w-full gap-12">
+
         <section className="artBoard lg:border-zing-900 min-h-screen min-w-full   border-y-2 border-zinc-800 bg-zinc-600 text-white lg:border-2 lg:bg-amber-300">
+
           {/* @ts-ignore */}
           <SpellLevel spellList={levelHashMap[level]} level={level} />
         </section>
