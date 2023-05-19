@@ -15,7 +15,11 @@ const Home: NextPage = () => {
         <div className=" row-start-2 grid  bg-black px-4  py-4 text-center  text-sm text-white lg:bottom-auto lg:mx-6 lg:my-1 lg:border-2 lg:border-zinc-300 lg:text-6xl lg:tracking-wider">
           <span className="">Blackstaff's Spell Emporium</span>
         </div>
-        <ResponsiveImage mobileSrc={mobileBg} desktopSrc={desktopBg} />
+        <ResponsiveImage
+          mobileSrc={mobileBg.src}
+          desktopSrc={desktopBg.src}
+          alt="A sketch of a skull, on top of a desk."
+        />
         <Footer />
       </div>
     </section>
