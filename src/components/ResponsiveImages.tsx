@@ -28,8 +28,8 @@ const ResponsiveImage = ({
     <Image
       src={isMobile ? mobileSrc : desktopSrc}
       alt={alt}
-      width={isMobile ? " " : 1480}
-      height={isMobile ? `${500}` : " "}
+      width={isMobile ? 750 : 1480}
+      height={isMobile ? 500 : "0"}
       className={isMobile ? "m-auto" : "m-auto max-h-screen"}
     />
   );
