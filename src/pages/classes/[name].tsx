@@ -57,7 +57,9 @@ const ClassSheet = (props: any) => {
         </select>
       </section>
       <section className="chooseSpell  relative min-w-full gap-12">
-        <section className="artBoard lg:border-zing-900 min-w-full   border-y-2 border-zinc-800 bg-zinc-600 text-white lg:border-2 lg:bg-amber-300">
+
+        <section className="artBoard lg:border-zing-900 min-h-screen min-w-full   border-y-2 border-zinc-800 bg-zinc-600 text-white lg:border-2 lg:bg-amber-300">
+
           {/* @ts-ignore */}
           <SpellLevel spellList={levelHashMap[level]} level={level} />
         </section>
