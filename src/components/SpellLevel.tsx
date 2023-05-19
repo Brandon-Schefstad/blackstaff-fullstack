@@ -8,7 +8,7 @@ type SpellLevelPropTypes = {
 const SpellLevel = ({ level: level, spellList }: SpellLevelPropTypes) => {
   return (
     <>
-      {spellList ? (
+      {spellList.length ? (
         <section
           className="carousel w-screen p-2 md:p-2 lg:w-auto 
            "
