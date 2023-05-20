@@ -11,24 +11,24 @@ const SpellDescription = ({
 }) => {
   const [higherCast, setHigherCast] = useState(false);
   return (
-    <section className=" flex max-h-[490px] flex-col gap-2 p-3">
+    <section className=" flex max-h-[490px] flex-col gap-[2px]    ">
       <section
         className={
           font +
-          ` description  outline-6  overflow-y-scroll bg-amber-100 bg-opacity-70 p-4 text-left indent-4 text-base leading-tight text-black outline outline-white lg:max-w-[90ch]
+          ` description outline-6  h-[200%]  overflow-y-scroll bg-amber-100 bg-opacity-70 p-4 text-left indent-4 text-base leading-tight tracking-tight text-black outline outline-white focus:bg-opacity-95 focus:outline-4 focus:outline-lime-400 lg:max-w-[90ch] 
            ${
              spellDescription[1] && longCastTime
-               ? "max-h-[270px]"
+               ? "max-h-[250px]"
                : spellDescription[1]
-               ? "max-h-[385px]"
+               ? "max-h-[300px]"
                : longCastTime
-               ? "max-h-[370px]"
-               : "max-h-full"
+               ? "max-h-[300px]"
+               : "max-h-[360px]"
            } `
         }
       >
         {spellDescription[0] ? (
-          <p>
+          <p className="">
             {spellDescription[0]
               //this creates lists!  
               //
@@ -61,20 +61,20 @@ const SpellDescription = ({
           <section
             onClick={() => setHigherCast(false)}
             className={
-              "  description  max-h-[90px]  overflow-y-scroll bg-amber-50 bg-opacity-90 p-2 text-left  indent-4 text-sm leading-tight text-gray-800"
+              "  description  max-h-[80px] overflow-y-scroll bg-amber-50 bg-opacity-80 p-2  text-left  indent-4 text-sm leading-tight  tracking-tight text-gray-800"
             }
           >
             <span className={font + " p-2"}>{spellDescription[1]}</span>
           </section>
         ) : (
-          <section
+          <button
             onClick={() => setHigherCast(true)}
             className={
-              "   description  max-h-[125px]   bg-amber-50 bg-opacity-90 p-2 text-left  indent-4 text-sm leading-tight text-gray-800"
+              "   description  max-h-[125px] bg-amber-200    bg-opacity-30  py-3  text-center  text-sm font-bold leading-tight text-white "
             }
           >
-            <span className={font + " p-2"}>{"UpCast"}</span>
-          </section>
+            <span className={font + " p-2 "}>{"UpCast"}</span>
+          </button>
         )
       ) : (
         <></>
