@@ -16,7 +16,7 @@ const SpellStats = ({
 
   return (
     <>
-      <section className={" px-2 py-4 " + spellColor + "-box"}>
+      <section className={" py-4 " + spellColor + "-box"}>
         <section
           className={
             spellBlockStyle +

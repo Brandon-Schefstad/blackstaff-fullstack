@@ -11,19 +11,19 @@ const SpellDescription = ({
 }) => {
   const [higherCast, setHigherCast] = useState(false);
   return (
-    <section className=" flex max-h-[490px] flex-col gap-[2px]    ">
+    <section className=" flex max-h-[380px]  flex-col gap-[2px]   ">
       <section
         className={
           font +
-          ` description outline-6  h-[200%]  overflow-y-scroll bg-amber-100 bg-opacity-70 p-4 text-left indent-4 text-base leading-tight tracking-tight text-black outline outline-white focus:bg-opacity-95 focus:outline-4 focus:outline-lime-400 lg:max-w-[90ch] 
+          ` description outline-6 overflow-y-scroll  bg-amber-100 bg-opacity-70 p-4 text-left indent-4 text-base leading-tight tracking-tighter  text-black outline outline-white focus:bg-opacity-95 focus:outline-4 focus:outline-lime-400 lg:max-w-[90ch] 
            ${
              spellDescription[1] && longCastTime
-               ? "max-h-[250px]"
+               ? "flex-grow-3 h-[320px] py-4"
                : spellDescription[1]
-               ? "max-h-[300px]"
+               ? "flex-grow-1 h-[325px]  py-4"
                : longCastTime
-               ? "max-h-[300px]"
-               : "max-h-[360px]"
+               ? "flex-grow-3 h-[350px]  py-4"
+               : "flex-grow-3  h-full py-4"
            } `
         }
       >
@@ -61,7 +61,7 @@ const SpellDescription = ({
           <section
             onClick={() => setHigherCast(false)}
             className={
-              "  description  max-h-[80px] overflow-y-scroll bg-amber-50 bg-opacity-80 p-2  text-left  indent-4 text-sm leading-tight  tracking-tight text-gray-800"
+              "  description  flex-grow-2 h-[120px] overflow-y-scroll bg-amber-50 bg-opacity-80 p-2  text-left  indent-4 text-sm leading-tight  tracking-tight text-gray-800"
             }
           >
             <span className={font + " p-2"}>{spellDescription[1]}</span>
