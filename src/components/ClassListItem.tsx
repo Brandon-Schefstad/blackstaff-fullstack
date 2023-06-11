@@ -1,5 +1,3 @@
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 type ClassListItemProps = {
   name: string;
   i: number;
@@ -7,16 +5,13 @@ type ClassListItemProps = {
 const ClassListItem = ({ name, i }: ClassListItemProps) => {
   return (
     <li
-      className={
-        " grid items-center border-b-2 border-solid border-black bg-slate-300 py-2 hover:bg-black hover:text-white sm:h-[100px]"
-      }
+      className={`  grid h-[90px] items-center rounded-xl border-2 border-solid border-primary bg-primaryLight py-2  text-center hover:bg-primary hover:text-primaryLight ${
+        i === 8 ? "col-span-2  m-auto w-1/2" : ""
+      }`}
       key={i}
     >
       <a className=" hover:text-white" href={`/classes/${name}`}>
-        <section className="flex justify-between  px-4 pr-4 align-middle sm:flex ">
-          <span className="block  sm:text-right">{name}</span>
-          <FontAwesomeIcon icon={faArrowRight} className={"my-auto"} />
-        </section>
+        <span className="mobile-class-name block ">{name}</span>
       </a>
     </li>
   );

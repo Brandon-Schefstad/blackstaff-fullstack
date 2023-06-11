@@ -1,26 +1,32 @@
 import { type NextPage } from "next";
+import Link from "next/link";
 import ResponsiveImage from "~/components/ResponsiveImages";
-import Footer from "../components/Footer";
-import NavBar from "../components/Navbar";
-
 import desktopBg from "../../public/bg-skull-desktop.svg";
 import mobileBg from "../../public/bg-skull-mobile.png";
 
 const Home: NextPage = () => {
   return (
-    <section className="flex h-full flex-col justify-evenly  overflow-y-hidden font-[amagro]">
-      <NavBar />
-
-      <div className="main  grid">
-        <div className=" row-start-2 grid  bg-black px-4  py-4 text-center  text-sm text-white lg:bottom-auto lg:mx-6 lg:my-1 lg:border-2 lg:border-zinc-300 lg:text-6xl lg:tracking-wider">
-          <span className="">Blackstaff's Spell Emporium</span>
+    <section className=" ">
+      <div className="main  flex min-h-screen flex-col justify-between p-8">
+        <div className="  relative z-10 bg-black py-4 pl-3 pr-8 text-left text-sm text-white ">
+          <h1 className="title ">Blackstaff's Spell Emporium</h1>
         </div>
         <ResponsiveImage
           mobileSrc={mobileBg.src}
           desktopSrc={desktopBg.src}
           alt="A sketch of a skull, on top of a desk."
         />
-        <Footer />
+        <section className="welcome z-0 mx-auto flex h-[10rem] w-full flex-col justify-between gap-4 border-2 border-solid border-primary bg-primaryLightest px-8 py-8 text-primary">
+          <h2 className="text-center font-[Lato] font-bold italic">
+            A companion site to D&D's largest book of spells!
+          </h2>
+          <Link
+            href="/classes"
+            className=" buttonText mx-auto rounded-md bg-secondary px-2 py-1 "
+          >
+            Enter
+          </Link>
+        </section>
       </div>
     </section>
   );

@@ -30,7 +30,11 @@ const ResponsiveImage = ({
       alt={alt}
       width={isMobile ? 750 : 1480}
       height={isMobile ? 500 : "0"}
-      className={isMobile ? "m-auto" : "m-auto max-h-screen"}
+      className={
+        isMobile
+          ? "absolute left-0 top-[6rem] -z-0 m-auto"
+          : "m-auto max-h-screen"
+      }
     />
   );
 };

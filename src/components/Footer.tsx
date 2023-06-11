@@ -5,7 +5,7 @@ import Link from "next/link";
 const Footer = () => {
   return (
     <nav>
-      <ul className="absolute bottom-0 flex w-full justify-start gap-4 border-b-2 border-solid  border-black bg-zinc-900 p-4 font-[Amagro] text-xs text-white md:gap-48 md:pl-16 ">
+      <ul className="  absolute bottom-0 flex w-full justify-start gap-4 border-b-2 border-solid  border-black bg-zinc-900 p-4 font-[Amagro] text-xs text-white md:gap-48 md:pl-16 ">
         <li>
           <Link href="/" aria-label="Home">
             <FontAwesomeIcon icon={faHome} />
