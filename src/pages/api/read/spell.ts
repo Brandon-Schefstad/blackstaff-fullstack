@@ -12,7 +12,7 @@ export default async function handler(
       where: {
         classes: {
           some: {
-            name: `${name}`,
+            name: `${typeof name === "string" ? name : "N/A"}`,
           },
         },
       },

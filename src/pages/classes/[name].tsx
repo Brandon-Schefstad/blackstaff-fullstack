@@ -1,4 +1,9 @@
+/* eslint-disable @typescript-eslint/require-await */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { Spell } from "@prisma/client";
+import { GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import SpellLevel from "~/components/SpellLevel";
@@ -17,49 +22,42 @@ interface spellState {
   "9": Spell[];
 }
 
-const ClassSheet = (props: any) => {
+const ClassSheet = (props: { levelHashMap: spellState }) => {
   const router = useRouter();
   const { levelHashMap }: { levelHashMap: spellState } = props;
   const startingLevel = levelHashMap["0"].length === 0 ? "1" : "0";
-
   const [level, setLevel] = useState(startingLevel);
-  const [drawer, setDrawer] = useState(false);
-  const handleOptionChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setLevel(event.target.value);
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    if (event.currentTarget.value) {
+      setLevel(event.currentTarget.value);
+    }
   };
+
   return (
-    <section className="flex flex-col  gap-12 overflow-x-hidden text-black">
+    <section className=" text-primary">
       <NavBar />
-      <section className="relative flex flex-col gap-2  pt-8 lg:p-4">
-        <h1 className="  text-center font-[amagro] text-3xl   font-bold underline lg:text-5xl">
-          {router.query.name}
-        </h1>
+      <section className="">
+        <h1 className="  ">{router.query.name}</h1>
 
-        <select
-          name="level"
-          id="level"
-          className="m-auto  block  w-24 rounded-lg p-2 text-center text-white"
-          onChange={(e) => handleOptionChange(e)}
-          value={level}
-        >
-          {Object.keys(levelHashMap)
-            .filter((level) => {
-              //@ts-ignore
-              return levelHashMap[level].length;
-            })
-            .map((level) => {
-              return (
-                <option value={level} className="">
-                  {level === "0" ? "Cantrips" : "Level " + level}
-                </option>
-              );
-            })}
-        </select>
+        {Object.keys(levelHashMap)
+          .filter((level: string) => {
+            //@ts-ignore
+            return levelHashMap[level].length > 0;
+          })
+          .map((level) => {
+            return (
+              <button
+                onClick={(e) => handleClick(e)}
+                value={level}
+                className=""
+              >
+                {level === "0" ? "Cantrips" : "Level " + level}
+              </button>
+            );
+          })}
       </section>
-      <section className="chooseSpell  relative min-w-full gap-12">
-
-        <section className="artBoard lg:border-zing-900 min-h-screen min-w-full   border-y-2 border-zinc-800 bg-zinc-600 text-white lg:border-2 lg:bg-amber-300">
-
+      <section className="">
+        <section className="">
           {/* @ts-ignore */}
           <SpellLevel spellList={levelHashMap[level]} level={level} />
         </section>
@@ -70,7 +68,7 @@ const ClassSheet = (props: any) => {
 
 export default ClassSheet;
 
-export async function getStaticProps({ params }: any) {
+export async function getStaticProps({ params }: { params: GetStaticProps }) {
   const levelHashMap = {
     "0": [],
     "1": [],
