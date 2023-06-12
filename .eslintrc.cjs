@@ -18,8 +18,12 @@ const config = {
   parserOptions: {
     project: path.join(__dirname, "tsconfig.json"),
   },
-  plugins: ["@typescript-eslint"],
-  extends: ["next/core-web-vitals", "plugin:@typescript-eslint/recommended"],
+  plugins: ["@typescript-eslint", "jsx-a11y"],
+  extends: [
+    "next/core-web-vitals",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:jsx-a11y/recommended",
+  ],
   rules: {
     "@typescript-eslint/consistent-type-imports": "off",
     "@typescript-eslint/no-unsafe-argument": "off",
@@ -31,8 +35,9 @@ const config = {
     "@typescript-eslint/ban-ts-comment": "off",
     "react/jsx-key": "off",
     "react/no-unescaped-entities": "off",
-    "@typescript-eslint/restrict-template-expressions": "off",
+
     "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
+    "@typescript-eslint/restrict-template-expressions": "off",
   },
 };
 
