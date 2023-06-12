@@ -9,7 +9,7 @@ const SpellLevel = ({ level: level, spellList }: SpellLevelPropTypes) => {
   return (
     <>
       {spellList.length ? (
-        <ol className="flex  gap-16 overflow-y-hidden overflow-x-scroll bg-zinc-900 p-8 align-middle  lg:grid lg:h-auto  lg:grid-cols-4  lg:gap-12 lg:overflow-x-hidden lg:py-8 lg:px-24">
+        <ol className="">
           {spellList.map((spell: Spell, key) => {
             return <SpellComponent spell={spell} id={key} />;
           })}

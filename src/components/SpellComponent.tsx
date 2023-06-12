@@ -1,40 +1,129 @@
 import { Spell } from "@prisma/client";
-import { Inconsolata } from "next/font/google";
+import { useState } from "react";
 
 type SpellComponentTypes = {
   spell: Spell;
   id: number;
 };
 
-const inconsolata = Inconsolata({ subsets: ["latin"] });
 const SpellComponent = ({ spell }: SpellComponentTypes) => {
-  const spellDescription = spell.description.split("At Higher Levels.");
+  const [open, setOpen] = useState(false);
 
-  const longCastTime = spell.castTime.includes(", which you take when");
   return (
     <li
       key={spell.id}
-      className={
-        " relative  h-[570px]  min-w-full flex-col rounded-xl    outline outline-4   focus:outline-lime-400 lg:min-w-fit "
-      }
+      className={" ml-2 mr-3 border-b-2 border-solid border-primary py-1  "}
     >
-      <div className=" card-compact flex h-full flex-col rounded-t-lg pb-12">
-        <h2
-          className={` mb-[-0.25rem] flex min-h-[45px] items-end rounded-t-lg bg-[#1B0000]  pl-4 text-left font-[Amagro]  font-bold tracking-wide text-amber-50 ${
-            spell.name.length > 22
-              ? "pb-2 text-xs"
-              : spell.name.length > 14
-              ? "pb-[6px] text-sm"
-              : "text-md pb-1 "
-          } `}
-        >
-          {spell.name}
-        </h2>
+      <button
+        onClick={() => setOpen(!open)}
+        className=" grid w-full grid-cols-3 items-center gap-2 bg-primaryLightest  "
+      >
+        <h2 className="  text-left text-primary ">{spell.name}</h2>
+        <h2 className=" text-left text-primary">{spell.castTimeBase}</h2>
+        <h2 className=" text-right text-primary">{spell.range}</h2>
+      </button>
+      {open && (
+        <section className="bg-primaryLight px-6 pt-3 pb-6">
+          <section className="border-2 border-solid border-primary bg-secondaryLight ">
+            <section className="grid grid-cols-2 gap-4 border-b-2 border-solid border-primary px-3 py-2 ">
+              <section className="flex flex-col">
+                <span className="buttonText">Casting Time</span>
+                <span>{spell.castTimeBase}</span>
+              </section>
+              <section className="flex flex-col">
+                <span className="buttonText">Range</span>
+                <span>{spell.range}</span>
+              </section>
+              <section className="flex flex-col">
+                <span className="buttonText">Duration</span>
+                <span>{spell.duration}</span>
+              </section>
 
-        <section className={inconsolata.className + "    mt-[-0.25rem] "}>
-          <section className={""}></section>
+              <section className="flex flex-col">
+                <span className="buttonText">School</span>
+                <span>{spell.school}</span>
+              </section>
+              <section className="flex flex-col">
+                <span className="buttonText">Damage</span>
+                <span>Psychic</span>
+              </section>
+
+              <section className="flex flex-col">
+                <span className="buttonText">Save</span>
+                <span>CON</span>
+              </section>
+              <section className="flex flex-col">
+                <span className="buttonText">Components</span>
+                <span className="">
+                  {spell.S && "S "}
+                  {spell.M && "M "}
+                  {spell.V && "V"}
+                </span>
+              </section>
+              <section className="flex flex-col">
+                <span className="buttonText">Materials</span>
+                <span className="">{spell.material}</span>
+              </section>
+            </section>
+            <section className="description flex flex-col gap-2 py-6 px-3 ">
+              <h2 className="base-header">Description</h2>
+              <p className="body-small">
+                {spell.description
+                  .split(String.fromCodePoint(61618))
+                  .map((str: string, i: number) =>
+                    i !== 0 ? (
+                      <p className="decoration-dotted first-letter:text-lg first-letter:underline first-line:mt-4">
+                        +{" "}
+                        {str.split(" ").map((word) => {
+                          const regexp = /[1-9]+d[0-9]+/gm;
+                          return regexp.test(word) ? (
+                            <span className="font-bold"> {word} </span>
+                          ) : (
+                            <>{word} </>
+                          );
+                        })}
+                      </p>
+                    ) : (
+                      <>
+                        {str.split(" ").map((word) => {
+                          const regexp = /[1-9]+d[0-9]+/gm;
+                          return regexp.test(word) ? (
+                            <span className="font-bold"> {word} </span>
+                          ) : (
+                            <>{word} </>
+                          );
+                        })}
+                      </>
+                    )
+                  )}
+              </p>
+              {spell.upCast && (
+                <section className="mt-2 flex flex-col gap-2 ">
+                  <p className="base-header">Upcasting:</p>
+                  <p className="body-small">
+                    {spell.upCast.split(" ").map((word) => {
+                      const regexp = /[1-9]+d[0-9]+/gm;
+                      return regexp.test(word) ? (
+                        <span className="font-bold"> {word} </span>
+                      ) : (
+                        <>{word} </>
+                      );
+                    })}
+                  </p>
+                </section>
+              )}
+              <p className="body-xsmall">
+                {spell.castTimeBaseExtended
+                  ? `*${spell.castTimeBaseExtended}`
+                  : ""}
+                {spell.rangeExtended
+                  ? `**${spell.rangeExtended.slice(0, -1)}.`
+                  : ""}
+              </p>
+            </section>
+          </section>
         </section>
-      </div>
+      )}
     </li>
   );
 };

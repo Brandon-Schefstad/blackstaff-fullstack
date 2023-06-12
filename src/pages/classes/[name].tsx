@@ -26,40 +26,53 @@ const ClassSheet = (props: { levelHashMap: spellState }) => {
   const router = useRouter();
   const { levelHashMap }: { levelHashMap: spellState } = props;
   const startingLevel = levelHashMap["0"].length === 0 ? "1" : "0";
-  const [level, setLevel] = useState(startingLevel);
+  const [currentLevel, setCurrentLevel] = useState(startingLevel);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     if (event.currentTarget.value) {
-      setLevel(event.currentTarget.value);
+      setCurrentLevel(event.currentTarget.value);
     }
   };
 
   return (
     <section className=" text-primary">
       <NavBar />
-      <section className="">
-        <h1 className="  ">{router.query.name}</h1>
-
-        {Object.keys(levelHashMap)
-          .filter((level: string) => {
-            //@ts-ignore
-            return levelHashMap[level].length > 0;
-          })
-          .map((level) => {
-            return (
-              <button
-                onClick={(e) => handleClick(e)}
-                value={level}
-                className=""
-              >
-                {level === "0" ? "Cantrips" : "Level " + level}
-              </button>
-            );
-          })}
+      <section className="flex flex-col gap-8 px-6 py-4">
+        <h1 className=" h3 tracking-wide">{router.query.name}</h1>
+        <section className="levels grid grid-cols-5 gap-4">
+          {Object.keys(levelHashMap)
+            .filter((level: string) => {
+              //@ts-ignore
+              return levelHashMap[level].length > 0;
+            })
+            .map((level) => {
+              return (
+                <button
+                  onClick={(e) => handleClick(e)}
+                  value={level}
+                  className={`buttonText rounded-lg border-2 border-solid py-2  font-bold  ${
+                    level == currentLevel
+                      ? "bg-secondaryDark text-primaryLight"
+                      : "border-secondaryDark bg-secondary shadow-md  shadow-secondaryDark"
+                  }`}
+                >
+                  {level === "0" ? "C" : level}
+                </button>
+              );
+            })}
+        </section>
       </section>
       <section className="">
         <section className="">
-          {/* @ts-ignore */}
-          <SpellLevel spellList={levelHashMap[level]} level={level} />
+          <section className="spellGuide grid grid-cols-3  justify-between bg-primary px-2 text-primaryLightest">
+            <span className="text-left">Spell Name</span>
+            <span className="">Casting Time</span>
+            <span className="text-right">Range</span>
+          </section>
+          <SpellLevel
+            /* @ts-ignore */
+            spellList={levelHashMap[currentLevel]}
+            level={currentLevel}
+          />
         </section>
       </section>
     </section>
