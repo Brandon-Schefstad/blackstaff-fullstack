@@ -47,25 +47,25 @@ const SpellComponent = ({ spell, level }: SpellComponentTypes) => {
           <section className="border-2 border-solid border-primary bg-secondaryLight ">
             <section className="grid grid-cols-2 gap-4 border-b-2 border-solid border-primary px-4 py-2 ">
               <section className="flex flex-col">
-                <span className="buttonText">Casting Time</span>
+                <span className="buttonTextCormorant ">Casting Time</span>
                 <span>{spell.castTimeBase}</span>
               </section>
               <section className="flex flex-col text-right">
-                <span className="buttonText">Range</span>
+                <span className="buttonTextCormorant">Range</span>
                 <span>{spell.range}</span>
               </section>
               <section className="flex flex-col">
-                <span className="buttonText">Duration</span>
+                <span className="buttonTextCormorant">Duration</span>
                 <span>{spell.duration}</span>
               </section>
 
               <section className="flex flex-col text-right">
-                <span className="buttonText">School</span>
+                <span className="buttonTextCormorant">School</span>
                 <span>{spell.school}</span>
               </section>
 
               <section className="flex flex-col">
-                <span className="buttonText">Components</span>
+                <span className="buttonTextCormorant">Components</span>
                 <span className="">
                   {spell.S && "S "}
                   {spell.M && "M "}
@@ -73,12 +73,17 @@ const SpellComponent = ({ spell, level }: SpellComponentTypes) => {
                 </span>
               </section>
               <section className="flex flex-col text-right">
-                <span className="buttonText">Materials</span>
-                <span className="">{spell.material}</span>
+                {spell.material && (
+                  <>
+                    {" "}
+                    <span className="buttonTextCormorant">Materials</span>
+                    <span className="">{spell.material}</span>
+                  </>
+                )}
               </section>
             </section>
             <section className="description flex flex-col gap-2 py-6 px-4 ">
-              <h2 className="base-header">Description</h2>
+              <h2 className="base-header font-[Cormorant]">Description</h2>
               <p className="body-small leading-5">
                 {spell.effect
                   .split(String.fromCodePoint(61618))
@@ -111,7 +116,7 @@ const SpellComponent = ({ spell, level }: SpellComponentTypes) => {
               </p>
               {spell.upCast && (
                 <section className="mt-2 flex flex-col gap-2 ">
-                  <p className="base-header">Upcasting:</p>
+                  <p className="base-header font-[Cormorant] ">Upcasting</p>
                   <p className="body-small">
                     {spell.upCast.split(" ").map((word) => {
                       const regexp = /[1-9]+d[0-9]+/gm;

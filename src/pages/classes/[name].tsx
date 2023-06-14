@@ -44,7 +44,7 @@ const ClassSheet = (props: { levelHashMap: spellState }) => {
           <h1 className=" h3 tracking-wide md:text-3xl">{router.query.name}</h1>
         </section>
 
-        <section className="levels grid grid-cols-5 gap-4 sm:grid-cols-9 sm:gap-0">
+        <section className="levels grid grid-cols-5 gap-4 sm:flex sm:items-stretch sm:gap-0">
           {Object.keys(levelHashMap)
             .filter((level: string) => {
               //@ts-ignore
@@ -55,7 +55,7 @@ const ClassSheet = (props: { levelHashMap: spellState }) => {
                 <button
                   onClick={(e) => handleClick(e)}
                   value={level}
-                  className={`buttonText rounded-lg border-2 border-solid py-2  font-bold sm:rounded-b-none sm:text-xl ${
+                  className={`buttonText rounded-lg border-2 border-solid py-2 font-bold sm:min-w-[6rem] sm:rounded-b-none sm:text-xl ${
                     level == currentLevel
                       ? " text-bold border-secondaryDark bg-secondaryDark text-primaryLight underline"
                       : "border-secondaryDark bg-secondary shadow-md  shadow-secondaryDark"
