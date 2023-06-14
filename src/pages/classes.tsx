@@ -17,11 +17,13 @@ const Classes: NextPage = () => {
   ];
 
   return (
-    <div className="   text-black">
+    <div className=" text-black lg:min-h-screen">
       <NavBar />
-      <div className="mt-6 grid gap-6 px-6 ">
-        <h1 className=" font-[Lato]  ">Select Your Class</h1>
-        <ul className="grid grid-cols-2 gap-4">
+      <div className="my-6 flex  flex-col gap-6 px-6">
+        <h1 className=" font-[Lato] tracking-wider md:text-base  lg:text-2xl ">
+          Choose Your Class
+        </h1>
+        <ul className="grid grid-cols-2 gap-4  md:grid-cols-3">
           {names.map((name: string, i) => {
             return <ClassListItem name={name} i={i} />;
           })}

@@ -16,11 +16,13 @@ const SpellComponent = ({ spell, level }: SpellComponentTypes) => {
   return (
     <li
       key={spell.id}
-      className={"  ml-2 mr-3 border-b-2 border-solid border-primary py-1  "}
+      className={
+        "  ml-2 mr-3 border-b-2 border-solid border-primary py-1 md:ml-0 md:mr-0 md:py-4 "
+      }
     >
       <button
         onClick={() => setOpen(!open)}
-        className=" spellEntry grid w-full grid-cols-3 items-center gap-2 bg-primaryLightest  "
+        className=" spellEntry grid w-full grid-cols-3 items-center gap-2 bg-primaryLightest md:grid-cols-4 md:px-2 md:text-xl lg:grid-cols-5 "
       >
         <h2 className="  text-left text-primary ">{spell.name}</h2>
         <h2 className=" text-left text-primary">
@@ -32,6 +34,12 @@ const SpellComponent = ({ spell, level }: SpellComponentTypes) => {
         </h2>
         <h2 className=" text-right text-primary">
           {spell.rangeExtended ? <p>{`${spell.range}**`}</p> : spell.range}
+        </h2>
+        <h2 className="  hidden text-right text-primary md:block">
+          {spell.school}
+        </h2>
+        <h2 className="  hidden text-right text-primary lg:block">
+          {spell.duration}
         </h2>
       </button>
       {open && (

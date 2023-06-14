@@ -4,6 +4,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { Spell } from "@prisma/client";
 import { GetStaticProps } from "next";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import SpellLevel from "~/components/SpellLevel";
@@ -37,9 +38,13 @@ const ClassSheet = (props: { levelHashMap: spellState }) => {
   return (
     <section className=" text-primary">
       <NavBar />
-      <section className="flex flex-col gap-8 px-6 py-4">
-        <h1 className=" h3 tracking-wide">{router.query.name}</h1>
-        <section className="levels grid grid-cols-5 gap-4">
+      <section className="flex flex-col gap-8 py-4 px-6 md:gap-16 md:py-0 md:pt-8">
+        <section className="flex gap-4 ">
+          <Link href={"/classes"}>Back</Link>
+          <h1 className=" h3 tracking-wide md:text-3xl">{router.query.name}</h1>
+        </section>
+
+        <section className="levels grid grid-cols-5 gap-4 md:grid-cols-9 md:gap-0">
           {Object.keys(levelHashMap)
             .filter((level: string) => {
               //@ts-ignore
@@ -50,9 +55,9 @@ const ClassSheet = (props: { levelHashMap: spellState }) => {
                 <button
                   onClick={(e) => handleClick(e)}
                   value={level}
-                  className={`buttonText rounded-lg border-2 border-solid py-2  font-bold  ${
+                  className={`buttonText rounded-lg border-2 border-solid py-2  font-bold md:rounded-b-none md:text-xl ${
                     level == currentLevel
-                      ? "bg-secondaryDark text-primaryLight"
+                      ? " text-bold border-secondaryDark bg-secondaryDark text-primaryLight underline"
                       : "border-secondaryDark bg-secondary shadow-md  shadow-secondaryDark"
                   }`}
                 >
@@ -62,12 +67,14 @@ const ClassSheet = (props: { levelHashMap: spellState }) => {
             })}
         </section>
       </section>
-      <section className="">
-        <section className="">
-          <section className="spellGuide grid grid-cols-3  justify-between bg-primary px-2 text-primaryLightest">
+      <section className="md:mx-6">
+        <section className=" ">
+          <section className="spellGuide grid grid-cols-3  justify-between bg-primary px-2  text-primaryLightest md:grid-cols-4 lg:grid-cols-5">
             <span className="text-left">Spell Name</span>
             <span className="">Casting Time</span>
             <span className="text-right">Range</span>
+            <span className="hidden text-right  md:block ">School</span>
+            <span className="hidden text-right   lg:block">Duration</span>
           </section>
           <SpellLevel
             /* @ts-ignore */

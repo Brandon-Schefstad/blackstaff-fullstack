@@ -8,8 +8,8 @@ import mobileBg from "../../public/bg-skull-mobile.png";
 
 const Home: NextPage = () => {
   return (
-    <section className=" ">
-      <div className="main  flex min-h-screen flex-col justify-between p-8">
+    <section className=" min-h-[700px] ">
+      <div className="main  flex min-h-screen flex-col justify-between  p-8">
         <div className="  relative z-10 bg-black py-4 pl-3 pr-8 text-left text-sm text-white ">
           <h1 className="title ">Blackstaff's Spell Emporium</h1>
         </div>
