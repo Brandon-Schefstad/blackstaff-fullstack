@@ -69,11 +69,11 @@ const ClassSheet = (props: { levelHashMap: spellState }) => {
       </section>
       <section className="md:mx-6">
         <section className=" ">
-          <section className="spellGuide grid grid-cols-3  justify-between bg-primary px-2  text-primaryLightest md:grid-cols-4 lg:grid-cols-5">
+          <section className="spellGuide grid grid-cols-3  justify-between bg-primary px-2  text-primaryLightest sm:grid-cols-4 lg:grid-cols-5">
             <span className="text-left">Spell Name</span>
             <span className="">Casting Time</span>
             <span className="text-right">Range</span>
-            <span className="hidden text-right  md:block ">School</span>
+            <span className="hidden text-right  sm:block ">School</span>
             <span className="hidden text-right   lg:block">Duration</span>
           </section>
           <SpellLevel
