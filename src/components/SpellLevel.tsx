@@ -5,13 +5,13 @@ type SpellLevelPropTypes = {
   level: string;
   spellList: Spell[];
 };
-const SpellLevel = ({ level: level, spellList }: SpellLevelPropTypes) => {
+const SpellLevel = ({ level, spellList }: SpellLevelPropTypes) => {
   return (
     <>
       {spellList.length ? (
         <ol className="">
-          {spellList.map((spell: Spell, key) => {
-            return <SpellComponent spell={spell} id={key} />;
+          {spellList.map((spell: Spell) => {
+            return <SpellComponent level={level} spell={spell} />;
           })}
         </ol>
       ) : (
