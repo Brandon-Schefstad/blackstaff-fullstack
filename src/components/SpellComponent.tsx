@@ -1,22 +1,26 @@
 import { Spell } from "@prisma/client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type SpellComponentTypes = {
   spell: Spell;
-  id: number;
+  level: string;
 };
 
-const SpellComponent = ({ spell }: SpellComponentTypes) => {
+const SpellComponent = ({ spell, level }: SpellComponentTypes) => {
   const [open, setOpen] = useState(false);
 
+  useEffect(() => {
+    setOpen(false);
+    console.log(open);
+  }, [level]);
   return (
     <li
       key={spell.id}
-      className={" ml-2 mr-3 border-b-2 border-solid border-primary py-1  "}
+      className={"  ml-2 mr-3 border-b-2 border-solid border-primary py-1  "}
     >
       <button
         onClick={() => setOpen(!open)}
-        className=" grid w-full grid-cols-3 items-center gap-2 bg-primaryLightest  "
+        className=" spellEntry grid w-full grid-cols-3 items-center gap-2 bg-primaryLightest  "
       >
         <h2 className="  text-left text-primary ">{spell.name}</h2>
         <h2 className=" text-left text-primary">

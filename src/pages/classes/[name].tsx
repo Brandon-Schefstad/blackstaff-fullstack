@@ -27,6 +27,7 @@ const ClassSheet = (props: { levelHashMap: spellState }) => {
   const { levelHashMap }: { levelHashMap: spellState } = props;
   const startingLevel = levelHashMap["0"].length === 0 ? "1" : "0";
   const [currentLevel, setCurrentLevel] = useState(startingLevel);
+
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     if (event.currentTarget.value) {
       setCurrentLevel(event.currentTarget.value);
