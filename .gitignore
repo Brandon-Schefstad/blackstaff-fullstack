@@ -5,7 +5,7 @@
 /.pnp
 .pnp.js
 /testing/node_modules
-
+/src/pages/api/create/allSpells.ts
 # testing
 /coverage
 

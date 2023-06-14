@@ -27,7 +27,7 @@ model Spell {
   school        String
   castTimeBase  String
   range         String
-  castTimeBaseExtended      String?
+  castTimeExtended String?
   rangeExtended String?
   upCast        String?
   S             Boolean?
@@ -37,7 +37,7 @@ model Spell {
   duration      String
   concentration Boolean?           @default(false)
   ritual        Boolean?           @default(false)
-  description   String
+  effect   String
   quote         String?
   classes       ClassDescription[] @relation("ClassDescriptionToSpell")
 }

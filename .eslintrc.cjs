@@ -24,6 +24,7 @@ const config = {
     "plugin:@typescript-eslint/recommended",
     "plugin:jsx-a11y/recommended",
   ],
+  ignorePatterns: ["src/pages/api/create/allSpells.ts"],
   rules: {
     "@typescript-eslint/consistent-type-imports": "off",
     "@typescript-eslint/no-unsafe-argument": "off",

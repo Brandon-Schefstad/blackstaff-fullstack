@@ -19,18 +19,26 @@ const SpellComponent = ({ spell }: SpellComponentTypes) => {
         className=" grid w-full grid-cols-3 items-center gap-2 bg-primaryLightest  "
       >
         <h2 className="  text-left text-primary ">{spell.name}</h2>
-        <h2 className=" text-left text-primary">{spell.castTimeBase}</h2>
-        <h2 className=" text-right text-primary">{spell.range}</h2>
+        <h2 className=" text-left text-primary">
+          {spell.castTimeExtended ? (
+            <p>{`${spell.castTimeBase}*`}</p>
+          ) : (
+            <p>{spell.castTimeBase}</p>
+          )}
+        </h2>
+        <h2 className=" text-right text-primary">
+          {spell.rangeExtended ? <p>{`${spell.range}**`}</p> : spell.range}
+        </h2>
       </button>
       {open && (
         <section className="bg-primaryLight px-6 pt-3 pb-6">
           <section className="border-2 border-solid border-primary bg-secondaryLight ">
-            <section className="grid grid-cols-2 gap-4 border-b-2 border-solid border-primary px-3 py-2 ">
+            <section className="grid grid-cols-2 gap-4 border-b-2 border-solid border-primary px-4 py-2 ">
               <section className="flex flex-col">
                 <span className="buttonText">Casting Time</span>
                 <span>{spell.castTimeBase}</span>
               </section>
-              <section className="flex flex-col">
+              <section className="flex flex-col text-right">
                 <span className="buttonText">Range</span>
                 <span>{spell.range}</span>
               </section>
@@ -39,19 +47,11 @@ const SpellComponent = ({ spell }: SpellComponentTypes) => {
                 <span>{spell.duration}</span>
               </section>
 
-              <section className="flex flex-col">
+              <section className="flex flex-col text-right">
                 <span className="buttonText">School</span>
                 <span>{spell.school}</span>
               </section>
-              <section className="flex flex-col">
-                <span className="buttonText">Damage</span>
-                <span>Psychic</span>
-              </section>
 
-              <section className="flex flex-col">
-                <span className="buttonText">Save</span>
-                <span>CON</span>
-              </section>
               <section className="flex flex-col">
                 <span className="buttonText">Components</span>
                 <span className="">
@@ -60,15 +60,15 @@ const SpellComponent = ({ spell }: SpellComponentTypes) => {
                   {spell.V && "V"}
                 </span>
               </section>
-              <section className="flex flex-col">
+              <section className="flex flex-col text-right">
                 <span className="buttonText">Materials</span>
                 <span className="">{spell.material}</span>
               </section>
             </section>
-            <section className="description flex flex-col gap-2 py-6 px-3 ">
+            <section className="description flex flex-col gap-2 py-6 px-4 ">
               <h2 className="base-header">Description</h2>
-              <p className="body-small">
-                {spell.description
+              <p className="body-small leading-5">
+                {spell.effect
                   .split(String.fromCodePoint(61618))
                   .map((str: string, i: number) =>
                     i !== 0 ? (
@@ -112,13 +112,11 @@ const SpellComponent = ({ spell }: SpellComponentTypes) => {
                   </p>
                 </section>
               )}
-              <p className="body-xsmall">
-                {spell.castTimeBaseExtended
-                  ? `*${spell.castTimeBaseExtended}`
-                  : ""}
-                {spell.rangeExtended
-                  ? `**${spell.rangeExtended.slice(0, -1)}.`
-                  : ""}
+              <p className="body-xsmall ">
+                {spell.castTimeExtended ? `*${spell.castTimeExtended}` : ""}
+              </p>
+              <p className="body-xsmall leading-1">
+                {spell.rangeExtended ? `**${spell.rangeExtended}.` : ""}
               </p>
             </section>
           </section>
