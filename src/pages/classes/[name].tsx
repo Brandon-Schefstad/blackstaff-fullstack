@@ -38,13 +38,13 @@ const ClassSheet = (props: { levelHashMap: spellState }) => {
   return (
     <section className=" text-primary">
       <NavBar />
-      <section className="flex flex-col gap-8 py-4 px-6 md:gap-16 md:py-0 md:pt-8">
+      <section className="flex flex-col gap-8 py-4 px-6 sm:gap-16 sm:py-0 sm:pt-8">
         <section className="flex gap-4 ">
           <Link href={"/classes"}>Back</Link>
           <h1 className=" h3 tracking-wide md:text-3xl">{router.query.name}</h1>
         </section>
 
-        <section className="levels grid grid-cols-5 gap-4 md:grid-cols-9 md:gap-0">
+        <section className="levels grid grid-cols-5 gap-4 sm:grid-cols-9 sm:gap-0">
           {Object.keys(levelHashMap)
             .filter((level: string) => {
               //@ts-ignore
@@ -55,7 +55,7 @@ const ClassSheet = (props: { levelHashMap: spellState }) => {
                 <button
                   onClick={(e) => handleClick(e)}
                   value={level}
-                  className={`buttonText rounded-lg border-2 border-solid py-2  font-bold md:rounded-b-none md:text-xl ${
+                  className={`buttonText rounded-lg border-2 border-solid py-2  font-bold sm:rounded-b-none sm:text-xl ${
                     level == currentLevel
                       ? " text-bold border-secondaryDark bg-secondaryDark text-primaryLight underline"
                       : "border-secondaryDark bg-secondary shadow-md  shadow-secondaryDark"
@@ -67,7 +67,7 @@ const ClassSheet = (props: { levelHashMap: spellState }) => {
             })}
         </section>
       </section>
-      <section className="md:mx-6">
+      <section className="sm:mx-6">
         <section className=" ">
           <section className="spellGuide grid grid-cols-3  justify-between bg-primary px-2  text-primaryLightest sm:grid-cols-4 lg:grid-cols-5">
             <span className="text-left">Spell Name</span>

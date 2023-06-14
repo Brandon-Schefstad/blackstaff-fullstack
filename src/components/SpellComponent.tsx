@@ -17,7 +17,7 @@ const SpellComponent = ({ spell, level }: SpellComponentTypes) => {
     <li
       key={spell.id}
       className={
-        "  ml-2 mr-3 border-b-2 border-solid border-primary py-1 md:ml-0 md:mr-0 md:py-4 "
+        "  ml-2 mr-3 border-b-2 border-solid border-primary py-1 sm:ml-0 sm:mr-0 sm:py-2 md:py-4 "
       }
     >
       <button
