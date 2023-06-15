@@ -22,23 +22,23 @@ const SpellComponent = ({ spell, level }: SpellComponentTypes) => {
     >
       <button
         onClick={() => setOpen(!open)}
-        className=" spellEntry grid w-full grid-cols-3 items-center gap-2 bg-primaryLightest sm:grid-cols-4 md:px-2 md:text-xl lg:grid-cols-5 "
+        className=" spellEntry grid w-full grid-cols-3 items-center  bg-primaryLightest sm:grid-cols-4 md:px-2 md:text-xl lg:grid-cols-5 "
       >
         <h2 className="  text-left text-primary ">{spell.name}</h2>
-        <h2 className=" text-left text-primary">
+        <h2 className="  text-center text-primary sm:text-left">
           {spell.castTimeExtended ? (
-            <p>{`${spell.castTimeBase}*`}</p>
+            <>{`${spell.castTimeBase}*`}</>
           ) : (
-            <p>{spell.castTimeBase}</p>
+            <>{spell.castTimeBase}</>
           )}
         </h2>
-        <h2 className=" text-right text-primary">
-          {spell.rangeExtended ? <p>{`${spell.range}**`}</p> : spell.range}
+        <h2 className="  text-right text-primary sm:text-left">
+          {spell.rangeExtended ? <>{`${spell.range}**`}</> : spell.range}
         </h2>
-        <h2 className="  hidden text-right text-primary sm:block">
+        <h2 className="   hidden text-left text-primary sm:block">
           {spell.school}
         </h2>
-        <h2 className="  hidden text-right text-primary lg:block">
+        <h2 className="  hidden text-left text-primary lg:block">
           {spell.duration}
         </h2>
       </button>
@@ -83,7 +83,9 @@ const SpellComponent = ({ spell, level }: SpellComponentTypes) => {
               </section>
             </section>
             <section className="description flex flex-col gap-2 py-6 px-4 ">
-              <h2 className="base-header font-[Cormorant]">Description</h2>
+              <h2 className="buttonTextCormorant font-[Cormorant]">
+                Description
+              </h2>
               <p className="body-small leading-5">
                 {spell.effect
                   .split(String.fromCodePoint(61618))
@@ -116,7 +118,9 @@ const SpellComponent = ({ spell, level }: SpellComponentTypes) => {
               </p>
               {spell.upCast && (
                 <section className="mt-2 flex flex-col gap-2 ">
-                  <p className="base-header font-[Cormorant] ">Upcasting</p>
+                  <p className="buttonTextCormorant font-[Cormorant] ">
+                    Upcasting
+                  </p>
                   <p className="body-small">
                     {spell.upCast.split(" ").map((word) => {
                       const regexp = /[1-9]+d[0-9]+/gm;
