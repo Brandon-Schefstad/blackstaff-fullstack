@@ -38,7 +38,7 @@ const ClassSheet = (props: { levelHashMap: spellState }) => {
   return (
     <section className=" text-primary">
       <NavBar />
-      <section className="flex flex-col gap-8 py-4 px-6 sm:gap-16 sm:py-0 sm:pt-8">
+      <section className="flex flex-col gap-8 py-4 px-6 sm:gap-16 sm:px-24 sm:py-0 sm:pt-8">
         <section className="flex gap-4 ">
           <Link href={"/classes"}>Back</Link>
           <h1 className=" h3 tracking-wide md:text-3xl">{router.query.name}</h1>
@@ -55,7 +55,7 @@ const ClassSheet = (props: { levelHashMap: spellState }) => {
                 <button
                   onClick={(e) => handleClick(e)}
                   value={level}
-                  className={`buttonText rounded-lg border-2 border-solid py-2 font-bold sm:min-w-[6rem] sm:rounded-b-none sm:text-xl ${
+                  className={`buttonText rounded-lg border-2 border-solid py-2 font-bold sm:min-w-[4rem] sm:rounded-b-none sm:text-xl ${
                     level == currentLevel
                       ? " text-bold border-secondaryDark bg-secondaryDark text-primaryLight underline"
                       : "border-secondaryDark bg-secondary shadow-md  shadow-secondaryDark"
@@ -67,14 +67,14 @@ const ClassSheet = (props: { levelHashMap: spellState }) => {
             })}
         </section>
       </section>
-      <section className="sm:mx-6">
+      <section className=" sm:px-24">
         <section className=" ">
           <section className="spellGuide grid grid-cols-3  justify-between bg-primary px-2 py-4 text-primaryLightest sm:grid-cols-4 sm:text-xl lg:grid-cols-5">
             <span className="">Spell Name</span>
             <span className="text-center sm:text-left">Casting Time</span>
             <span className="text-right sm:text-left">Range</span>
-            <span className="hidden text-left  sm:block ">School</span>
             <span className="hidden text-left   lg:block">Duration</span>
+            <span className="hidden text-left  sm:block ">School</span>
           </section>
           <SpellLevel
             /* @ts-ignore */

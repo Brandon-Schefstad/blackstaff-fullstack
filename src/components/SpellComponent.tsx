@@ -4,9 +4,10 @@ import { useEffect, useState } from "react";
 type SpellComponentTypes = {
   spell: Spell;
   level: string;
+  index: number;
 };
 
-const SpellComponent = ({ spell, level }: SpellComponentTypes) => {
+const SpellComponent = ({ spell, level, index }: SpellComponentTypes) => {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -15,17 +16,19 @@ const SpellComponent = ({ spell, level }: SpellComponentTypes) => {
   }, [level]);
   return (
     <li
-      key={spell.id}
+      key={index}
       className={
-        "  ml-2 mr-3 border-b-2 border-solid border-primary py-1 sm:ml-0 sm:mr-0 sm:py-2 md:py-4 "
+        "  ml-2 mr-3 border-b-2 border-solid border-primary  sm:ml-0 sm:mr-0  "
       }
     >
       <button
         onClick={() => setOpen(!open)}
-        className=" spellEntry grid w-full grid-cols-3 items-center  bg-primaryLightest sm:grid-cols-4 md:px-2 md:text-xl lg:grid-cols-5 "
+        className={` spellEntry  grid w-full grid-cols-3 items-center py-2  sm:grid-cols-4 md:py-6 md:px-2  md:text-xl lg:grid-cols-5 ${
+          index % 2 === 0 ? "bg-primaryLightest" : "bg-primaryLight"
+        }`}
       >
-        <h2 className="  text-left text-primary ">{spell.name}</h2>
-        <h2 className="  text-center text-primary sm:text-left">
+        <h2 className="  text-left  text-primary ">{spell.name}</h2>
+        <h2 className="  text-left text-primary sm:text-left">
           {spell.castTimeExtended ? (
             <>{`${spell.castTimeBase}*`}</>
           ) : (
@@ -35,22 +38,22 @@ const SpellComponent = ({ spell, level }: SpellComponentTypes) => {
         <h2 className="  text-right text-primary sm:text-left">
           {spell.rangeExtended ? <>{`${spell.range}**`}</> : spell.range}
         </h2>
-        <h2 className="   hidden text-left text-primary sm:block">
-          {spell.school}
-        </h2>
         <h2 className="  hidden text-left text-primary lg:block">
           {spell.duration}
         </h2>
+        <h2 className="   hidden text-left text-primary sm:block">
+          {spell.school}
+        </h2>
       </button>
       {open && (
-        <section className="bg-primaryLight px-6 pt-3 pb-6">
+        <section className="bg-secondaryLight px-6 pt-3 pb-6 sm:px-16 md:px-32">
           <section className="border-2 border-solid border-primary bg-secondaryLight ">
-            <section className="grid grid-cols-2 gap-4 border-b-2 border-solid border-primary px-4 py-2 ">
+            <section className="grid grid-cols-2 gap-4 border-b-2 border-solid border-primary px-4 py-2 sm:grid-cols-3 ">
               <section className="flex flex-col">
                 <span className="buttonTextCormorant ">Casting Time</span>
                 <span>{spell.castTimeBase}</span>
               </section>
-              <section className="flex flex-col text-right">
+              <section className="flex flex-col text-right sm:text-left">
                 <span className="buttonTextCormorant">Range</span>
                 <span>{spell.range}</span>
               </section>
@@ -59,7 +62,7 @@ const SpellComponent = ({ spell, level }: SpellComponentTypes) => {
                 <span>{spell.duration}</span>
               </section>
 
-              <section className="flex flex-col text-right">
+              <section className="flex flex-col text-right sm:text-left">
                 <span className="buttonTextCormorant">School</span>
                 <span>{spell.school}</span>
               </section>
@@ -72,7 +75,7 @@ const SpellComponent = ({ spell, level }: SpellComponentTypes) => {
                   {spell.V && "V"}
                 </span>
               </section>
-              <section className="flex flex-col text-right">
+              <section className="flex flex-col text-right sm:text-left">
                 {spell.material && (
                   <>
                     {" "}
