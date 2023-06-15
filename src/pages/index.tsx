@@ -19,7 +19,7 @@ const Home: NextPage = () => {
           alt="A sketch of a skull, on top of a desk."
         /> */}
 
-        <section className="welcome  z-0 mx-auto flex h-[10rem] w-full flex-col gap-6 rounded-md border-2 border-solid border-primary bg-primaryLightest bg-opacity-80 px-8 py-8 text-primary   md:mb-12 md:mr-12 md:w-fit">
+        <section className="welcome  z-0 mx-auto flex h-[10rem] w-full flex-col gap-6 rounded-md border-2 border-solid border-primary bg-primaryLightest bg-opacity-90 px-8 py-8 text-primary   md:mb-12 md:mr-12 md:w-fit">
           <h2 className="text-center font-[Lato] font-bold italic sm:text-xl md:inline md:text-2xl  lg:text-3xl">
             A companion site to D&D's largest book of spells!
           </h2>
