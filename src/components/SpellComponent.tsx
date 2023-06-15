@@ -55,27 +55,27 @@ const SpellComponent = ({ spell, level, index }: SpellComponentTypes) => {
                 <span className="buttonTextCormorant md:text-xl ">
                   Casting Time
                 </span>
-                <span>{spell.castTimeBase}</span>
+                <span className="font-light">{spell.castTimeBase}</span>
               </section>
               <section className="flex flex-col text-right sm:text-left">
                 <span className="buttonTextCormorant md:text-xl">Range</span>
-                <span>{spell.range}</span>
+                <span className="font-light">{spell.range}</span>
               </section>
               <section className="flex flex-col">
                 <span className="buttonTextCormorant md:text-xl">Duration</span>
-                <span>{spell.duration}</span>
+                <span className="font-light">{spell.duration}</span>
               </section>
 
               <section className="flex flex-col text-right sm:text-left">
                 <span className="buttonTextCormorant md:text-xl">School</span>
-                <span>{spell.school}</span>
+                <span className="font-light">{spell.school}</span>
               </section>
 
               <section className="flex flex-col">
                 <span className="buttonTextCormorant md:text-xl">
                   Components
                 </span>
-                <span className="">
+                <span className="font-light">
                   {spell.S && "S "}
                   {spell.M && "M "}
                   {spell.V && "V"}
@@ -85,10 +85,10 @@ const SpellComponent = ({ spell, level, index }: SpellComponentTypes) => {
                 {spell.material && (
                   <>
                     {" "}
-                    <span className="buttonTextCormorant md:text-xl">
+                    <span className="buttonTextCormorant md:text-xl ">
                       Materials
                     </span>
-                    <span className="">{spell.material}</span>
+                    <span className="font-light">{spell.material}</span>
                   </>
                 )}
               </section>
