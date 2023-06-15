@@ -21,7 +21,7 @@ const SpellComponent = ({ spell, level, index }: SpellComponentTypes) => {
     >
       <button
         onClick={() => setOpen(!open)}
-        className={` spellEntry  grid w-full grid-cols-3 items-center py-2 pl-2 pr-3  sm:grid-cols-4 md:py-6 md:px-2  md:text-xl lg:grid-cols-5 ${
+        className={` spellEntry  grid w-full grid-cols-3 items-center gap-4 py-2 pl-2 pr-3  sm:grid-cols-4 md:py-6 md:px-2  md:text-xl lg:grid-cols-5 ${
           index % 2 === 0 ? "bg-primaryLightest" : "bg-primaryLight"
         }`}
       >
