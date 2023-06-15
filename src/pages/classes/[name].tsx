@@ -7,6 +7,7 @@ import { GetStaticProps } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import Footer from "~/components/Footer";
 import SpellLevel from "~/components/SpellLevel";
 import NavBar from "../../components/Navbar";
 import { handler2 } from "../api/read/spell";
@@ -83,6 +84,7 @@ const ClassSheet = (props: { levelHashMap: spellState }) => {
           />
         </section>
       </section>
+      <Footer />
     </section>
   );
 };

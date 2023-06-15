@@ -28,12 +28,12 @@ const ResponsiveImage = ({
     <Image
       src={isMobile ? mobileSrc : desktopSrc}
       alt={alt}
-      width={isMobile ? 750 : 1480}
-      height={isMobile ? 500 : "0"}
+      width={isMobile ? 750 : 1700}
+      height={isMobile ? 500 : 1400}
       className={
         isMobile
           ? "absolute left-0 top-[6rem] -z-0 m-auto"
-          : "m-auto max-h-screen"
+          : " m-auto  max-h-screen"
       }
     />
   );
