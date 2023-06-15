@@ -23,14 +23,14 @@
   text-transform: uppercase;
 }
 .buttonTextCormorant {
-  font-family: Cormorant;
-  font-weight: 800;
-  letter-spacing: 0.18ch;
+  font-family: Lato;
+  font-weight: 200;
+  letter-spacing: 0.15ch;
   font-size: 16px;
   text-transform: uppercase;
 }
 .mobile-nav {
-  font-family: "Lato";
+  font-family: "Cormorant";
   font-style: normal;
   font-weight: 800;
   font-size: 12px;
@@ -38,8 +38,15 @@
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
+.spellGuide {
+  font-family: "Lato";
+  font-weight: 800;
+  letter-spacing: 0.15ch;
+  font-size: 16px;
+  text-transform: uppercase;
+}
 .mobile-class-name {
-  font-family: "Cormorant";
+  font-family: "Lato";
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
@@ -49,7 +56,7 @@
 }
 
 .h3 {
-  font-family: "Lato";
+  font-family: "Cormorant";
   font-style: normal;
   font-weight: 700;
   font-size: 24px;
