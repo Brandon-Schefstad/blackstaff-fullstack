@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Home: NextPage = () => {
   return (
-    <section className="  min-h-[700px] bg-skullMobile bg-center bg-no-repeat md:bg-skull ">
+    <section className="   bg-skullMobile bg-center bg-no-repeat md:bg-skull ">
       <div className="main max-w-screen  relative flex min-h-screen  flex-col justify-between  p-8 pt-12 pb-8  ">
         <div className="  relative z-10 bg-black py-4 pl-3 pr-8 text-left text-sm text-white sm:py-8 md:w-fit ">
           <h1 className="title sm:text-center sm:text-3xl md:inline md:text-4xl  lg:text-5xl">
