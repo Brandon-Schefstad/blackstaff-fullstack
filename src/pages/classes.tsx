@@ -1,4 +1,5 @@
 import { type NextPage } from "next";
+import Head from "next/head";
 import ClassListItem from "../components/ClassListItem";
 import Footer from "../components/Footer";
 import NavBar from "../components/Navbar";
@@ -18,6 +19,9 @@ const Classes: NextPage = () => {
 
   return (
     <div className=" text-black lg:min-h-screen ">
+      <Head>
+        <title>Classes</title>
+      </Head>
       <NavBar />
       <div className="my-6 flex  flex-col gap-6 px-6 lg:px-24 lg:py-9">
         <h1 className=" h3 tracking-wider md:text-base  lg:text-2xl ">

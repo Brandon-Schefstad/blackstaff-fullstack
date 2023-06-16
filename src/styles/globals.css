@@ -6,6 +6,12 @@
   font-family: amagro;
   src: url(Amagro.ttf);
 }
+.lightFocus:focus {
+  outline: 5px solid yellow;
+}
+*:focus {
+  outline: 5px solid rgb(44, 71, 158);
+}
 
 .title {
   font-family: amagro;

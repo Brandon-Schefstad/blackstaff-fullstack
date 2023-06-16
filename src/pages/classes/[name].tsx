@@ -4,6 +4,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { Spell } from "@prisma/client";
 import { GetStaticProps } from "next";
+import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -38,6 +39,12 @@ const ClassSheet = (props: { levelHashMap: spellState }) => {
 
   return (
     <section className=" text-primary">
+      <Head>
+        <title>
+          {router.query.name} Spells -{" "}
+          {currentLevel === "0" ? "Cantrips" : "Level " + currentLevel}
+        </title>
+      </Head>
       <NavBar />
       <section className="flex flex-col gap-8 py-4 px-6 sm:gap-16 sm:px-24 sm:py-0 sm:pt-8">
         <section className="flex gap-4 ">
