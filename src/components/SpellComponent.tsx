@@ -55,27 +55,27 @@ const SpellComponent = ({ spell, level, index }: SpellComponentTypes) => {
                 <span className="buttonTextCormorant md:text-xl ">
                   Casting Time
                 </span>
-                <span className="font-light">{spell.castTimeBase}</span>
+                <span className="font-base">{spell.castTimeBase}</span>
               </section>
               <section className="flex flex-col text-right sm:text-left">
                 <span className="buttonTextCormorant md:text-xl">Range</span>
-                <span className="font-light">{spell.range}</span>
+                <span className="font-base">{spell.range}</span>
               </section>
               <section className="flex flex-col">
                 <span className="buttonTextCormorant md:text-xl">Duration</span>
-                <span className="font-light">{spell.duration}</span>
+                <span className="font-base">{spell.duration}</span>
               </section>
 
               <section className="flex flex-col text-right sm:text-left">
                 <span className="buttonTextCormorant md:text-xl">School</span>
-                <span className="font-light">{spell.school}</span>
+                <span className="font-base">{spell.school}</span>
               </section>
 
               <section className="flex flex-col">
                 <span className="buttonTextCormorant md:text-xl">
                   Components
                 </span>
-                <span className="font-light">
+                <span className="font-base">
                   {spell.S && "S "}
                   {spell.M && "M "}
                   {spell.V && "V"}
@@ -88,7 +88,7 @@ const SpellComponent = ({ spell, level, index }: SpellComponentTypes) => {
                     <span className="buttonTextCormorant md:text-xl ">
                       Materials
                     </span>
-                    <span className="font-light">{spell.material}</span>
+                    <span className="font-base">{spell.material}</span>
                   </>
                 )}
               </section>
