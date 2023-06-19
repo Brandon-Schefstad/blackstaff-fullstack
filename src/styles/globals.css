@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: amagro;
-  src: url(Amagro.ttf);
-}
 .lightFocus:focus {
   outline: 5px solid yellow;
 }
@@ -36,33 +32,31 @@
   text-transform: uppercase;
 }
 .mobile-nav {
-  font-family: "Cormorant";
+  font-family: "Lato";
   font-style: normal;
   font-weight: 800;
   font-size: 12px;
   line-height: 14px;
-  letter-spacing: 0.06em;
+  letter-spacing: 4px;
   text-transform: uppercase;
 }
 .spellGuide {
-  font-family: "Lato";
+  font-family: "amagro";
   font-weight: 800;
   letter-spacing: 0.15ch;
-  font-size: 16px;
+
   text-transform: uppercase;
 }
 .mobile-class-name {
-  font-family: "Lato";
+  font-family: "Amagro";
   font-style: normal;
   font-weight: 700;
-  font-size: 20px;
-  line-height: 21px;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 .h3 {
-  font-family: "Cormorant";
+  font-family: "Lato";
   font-style: normal;
   font-weight: 700;
   font-size: 24px;
@@ -75,6 +69,19 @@
   font-size: 14px;
 
   letter-spacing: 0.02em;
+}
+.skip-link-content {
+  background: #e77e23;
+  width: 10rem;
+  left: 25%;
+  padding: 16px;
+  position: absolute;
+  transform: translateY(-100%);
+  transition: transform 0.3s;
+}
+
+.skip-link-content:focus {
+  transform: translateY(10%);
 }
 .body-xsmall {
   font-family: "Lato";

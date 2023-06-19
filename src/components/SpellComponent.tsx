@@ -12,40 +12,37 @@ const SpellComponent = ({ spell, level, index }: SpellComponentTypes) => {
 
   useEffect(() => {
     setOpen(false);
-    console.log(open);
   }, [level]);
   return (
-    <li
-      key={index}
-      className={"  border-b-2 border-solid border-primary  sm:ml-0 sm:mr-0  "}
-    >
+    <>
       <button
         onClick={() => setOpen(!open)}
-        className={` spellEntry  grid w-full grid-cols-3 items-center gap-4 py-2 pl-2 pr-3  sm:grid-cols-4 md:py-6 md:px-2  md:text-xl lg:grid-cols-5 ${
+        tabIndex={0}
+        className={`spellEntry grid w-full  grid-cols-3 gap-4 border-b-2 border-solid  border-primary py-2 pl-2 pr-3 sm:ml-0 sm:mr-0 sm:grid-cols-4  md:py-6 md:px-2 md:pl-12  md:text-xl lg:grid-cols-5 ${
           index % 2 === 0 ? "bg-primaryLightest" : "bg-primaryLight"
         }`}
       >
-        <h2 className="  text-left  text-primary ">{spell.name}</h2>
-        <h2 className="  text-left text-primary sm:text-left">
+        <span className="  text-left  text-primary ">{spell.name}</span>
+        <span className="  text-left text-primary sm:text-left">
           {spell.castTimeExtended ? (
             <>{`${spell.castTimeBase}*`}</>
           ) : (
             <>{spell.castTimeBase}</>
           )}
-        </h2>
-        <h2 className="  text-right text-primary sm:text-left">
+        </span>
+        <span className="   text-left text-primary">
           {spell.rangeExtended ? <>{`${spell.range}**`}</> : spell.range}
-        </h2>
-        <h2 className="  hidden text-left text-primary lg:block">
+        </span>
+        <span className="  hidden text-left text-primary lg:block">
           {spell.duration}
-        </h2>
-        <h2 className="   hidden text-left text-primary sm:block">
+        </span>
+        <span className="   hidden text-left text-primary sm:block">
           {spell.school}
-        </h2>
+        </span>
       </button>
       {open && (
         <section
-          className={`px-6 pt-3 pb-6 sm:px-16 md:px-32 ${
+          className={` col-span-3 px-6 pt-3 pb-6 sm:px-16 md:col-span-4 md:px-32 lg:col-span-5 ${
             index % 2 === 0 ? "bg-primaryLightest" : "bg-primaryLight"
           }`}
         >
@@ -97,7 +94,7 @@ const SpellComponent = ({ spell, level, index }: SpellComponentTypes) => {
               <h2 className="buttonTextCormorant font-[Cormorant] md:text-xl">
                 Description
               </h2>
-              <p className="body-small leading-5 sm:text-lg">
+              <p className="body-small  sm:text-lg">
                 {spell.effect
                   .split(String.fromCodePoint(61618))
                   .map((str: string, i: number) =>
@@ -145,7 +142,9 @@ const SpellComponent = ({ spell, level, index }: SpellComponentTypes) => {
                 </section>
               )}
               <p className="body-xsmall ">
-                {spell.castTimeExtended ? `*${spell.castTimeExtended}` : ""}
+                {spell.castTimeExtended
+                  ? `*A reaction when ${spell.castTimeExtended}`
+                  : ""}
               </p>
               <p className="body-xsmall leading-1">
                 {spell.rangeExtended ? `**${spell.rangeExtended}.` : ""}
@@ -154,7 +153,7 @@ const SpellComponent = ({ spell, level, index }: SpellComponentTypes) => {
           </section>
         </section>
       )}
-    </li>
+    </>
   );
 };
 

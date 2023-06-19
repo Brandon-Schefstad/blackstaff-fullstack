@@ -9,11 +9,18 @@ const SpellLevel = ({ level, spellList }: SpellLevelPropTypes) => {
   return (
     <>
       {spellList.length ? (
-        <ol className="">
+        <section>
           {spellList.map((spell: Spell, index) => {
-            return <SpellComponent index={index} level={level} spell={spell} />;
+            return (
+              <SpellComponent
+                key={index}
+                index={index}
+                level={level}
+                spell={spell}
+              />
+            );
           })}
-        </ol>
+        </section>
       ) : (
         <></>
       )}
