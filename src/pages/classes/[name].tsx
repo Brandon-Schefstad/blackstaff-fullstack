@@ -72,10 +72,11 @@ const ClassSheet = (props: { levelHashMap: spellState }) => {
               //@ts-ignore
               return levelHashMap[level].length > 0;
             })
-            .map((level) => {
+            .map((level, index) => {
               return (
                 <button
                   role="tab"
+                  key={index}
                   onClick={(e) => handleClick(e)}
                   value={level}
                   className={`buttonText rounded-lg border-2 border-solid py-2 font-bold sm:min-w-[4rem] sm:rounded-b-none sm:text-xl ${
