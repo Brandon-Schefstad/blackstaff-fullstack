@@ -4,10 +4,12 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { Spell } from "@prisma/client";
 import { GetStaticProps } from "next";
+import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import Footer from "~/components/Footer";
+import SkipLink from "~/components/SkipLink";
 import SpellLevel from "~/components/SpellLevel";
 import NavBar from "../../components/Navbar";
 import { handler2 } from "../api/read/spell";
@@ -35,17 +37,36 @@ const ClassSheet = (props: { levelHashMap: spellState }) => {
       setCurrentLevel(event.currentTarget.value);
     }
   };
+  // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+  const title = `${router.query.name} Spells - ${
+    currentLevel === "0" ? "Cantrips" : "Level " + currentLevel
+  }`;
 
   return (
     <section className=" text-primary">
+      <Head>
+        <title>{title}</title>
+      </Head>
+      <SkipLink />
       <NavBar />
       <section className="flex flex-col gap-8 py-4 px-6 sm:gap-16 sm:px-24 sm:py-0 sm:pt-8">
-        <section className="flex gap-4 ">
-          <Link href={"/classes"}>Back</Link>
+        <section className="flex max-w-fit flex-col gap-4      ">
+          <Link
+            className=" max-w-fit items-baseline pr-8 tracking-wide text-gray-500 underline"
+            href={"/classes"}
+          >
+            Back
+          </Link>
           <h1 className=" h3 tracking-wide md:text-3xl">{router.query.name}</h1>
         </section>
 
-        <section className="levels grid grid-cols-5 gap-4 sm:flex sm:items-stretch sm:gap-0">
+        <section
+          data-skip-link="main"
+          id="main"
+          role="tabpanel"
+          title="Available Spell Levels"
+          className="levels grid grid-cols-5 gap-4 sm:flex sm:items-stretch sm:gap-0"
+        >
           {Object.keys(levelHashMap)
             .filter((level: string) => {
               //@ts-ignore
@@ -54,6 +75,7 @@ const ClassSheet = (props: { levelHashMap: spellState }) => {
             .map((level) => {
               return (
                 <button
+                  role="tab"
                   onClick={(e) => handleClick(e)}
                   value={level}
                   className={`buttonText rounded-lg border-2 border-solid py-2 font-bold sm:min-w-[4rem] sm:rounded-b-none sm:text-xl ${
@@ -70,7 +92,7 @@ const ClassSheet = (props: { levelHashMap: spellState }) => {
       </section>
       <section className=" sm:px-24">
         <section className=" ">
-          <section className="spellGuide grid grid-cols-3  justify-between gap-4 bg-primary px-2 py-4 text-primaryLightest sm:grid-cols-4 sm:text-xl md:text-xl lg:grid-cols-5">
+          <section className="spellGuide  grid  grid-cols-3 justify-between gap-4 bg-primary px-2 py-4 text-primaryLightest sm:grid-cols-4 sm:text-xl md:pl-12 md:text-lg lg:grid-cols-5">
             <span className="">Spell Name</span>
             <span className="text-center sm:text-left">Casting Time</span>
             <span className="text-right sm:text-left">Range</span>
