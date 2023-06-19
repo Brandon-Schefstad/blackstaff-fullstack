@@ -37,6 +37,7 @@ const ClassSheet = (props: { levelHashMap: spellState }) => {
       setCurrentLevel(event.currentTarget.value);
     }
   };
+  // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
   const title = `${router.query.name} Spells - ${
     currentLevel === "0" ? "Cantrips" : "Level " + currentLevel
   }`;
@@ -62,7 +63,7 @@ const ClassSheet = (props: { levelHashMap: spellState }) => {
         <section
           data-skip-link="main"
           id="main"
-          role="tablist"
+          role="tabpanel"
           title="Available Spell Levels"
           className="levels grid grid-cols-5 gap-4 sm:flex sm:items-stretch sm:gap-0"
         >
