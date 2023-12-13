@@ -52,28 +52,26 @@ const SpellComponent = ({ spell, level, index }: SpellComponentTypes) => {
                 <span className="buttonTextCormorant underline  md:text-xl ">
                   Casting Time
                 </span>
-                <span className="font-base xl:text-xl">
-                  {spell.castTimeBase}
-                </span>
+                <span className="xl:text-xl">{spell.castTimeBase}</span>
               </section>
               <section className="flex flex-col text-left">
                 <span className="buttonTextCormorant underline  md:text-xl">
                   Range
                 </span>
-                <span className="font-base xl:text-xl">{spell.range}</span>
+                <span className="xl:text-xl">{spell.range}</span>
               </section>
               <section className="flex flex-col">
                 <span className="buttonTextCormorant underline  md:text-xl">
                   Duration
                 </span>
-                <span className="font-base xl:text-xl">{spell.duration}</span>
+                <span className="xl:text-xl">{spell.duration}</span>
               </section>
 
               <section className="flex flex-col text-left">
                 <span className="buttonTextCormorant underline  md:text-xl">
                   School
                 </span>
-                <span className="font-base xl:text-xl">{spell.school}</span>
+                <span className="xl:text-xl">{spell.school}</span>
               </section>
 
               <section className="flex flex-col">
@@ -93,9 +91,7 @@ const SpellComponent = ({ spell, level, index }: SpellComponentTypes) => {
                     <span className="buttonTextCormorant underline  md:text-xl ">
                       Materials
                     </span>
-                    <span className="font-base xl:text-xl">
-                      {spell.material}
-                    </span>
+                    <span className="xl:text-xl">{spell.material}</span>
                   </>
                 )}
               </section>
