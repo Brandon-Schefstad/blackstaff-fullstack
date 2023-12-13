@@ -42,35 +42,43 @@ const SpellComponent = ({ spell, level, index }: SpellComponentTypes) => {
       </button>
       {open && (
         <section
-          className={` col-span-3 px-6 pt-3 pb-6 sm:px-16 md:col-span-4 md:px-32 lg:col-span-5 ${
+          className={`col-span-3 m-auto max-w-[1350px] px-6 pt-3 pb-6 sm:px-16 md:col-span-4 md:px-32 lg:col-span-5 ${
             index % 2 === 0 ? "bg-primaryLightest" : "bg-primaryLight"
           }`}
         >
-          <section className="border-2 border-solid border-primary bg-secondaryLight ">
-            <section className="grid grid-cols-2 gap-4 border-b-2 border-solid border-primary px-4 py-2 sm:grid-cols-3 ">
+          <section className="flex flex-col gap-6 border-2 border-solid border-primary bg-secondaryLight p-8 xl:flex-row ">
+            <section className="grid grid-cols-2 gap-4 border-solid border-primary px-4  sm:grid-cols-3 ">
               <section className="flex flex-col">
-                <span className="buttonTextCormorant md:text-xl ">
+                <span className="buttonTextCormorant underline  md:text-xl ">
                   Casting Time
                 </span>
-                <span className="font-base">{spell.castTimeBase}</span>
+                <span className="font-base xl:text-xl">
+                  {spell.castTimeBase}
+                </span>
               </section>
               <section className="flex flex-col text-right sm:text-left">
-                <span className="buttonTextCormorant md:text-xl">Range</span>
-                <span className="font-base">{spell.range}</span>
+                <span className="buttonTextCormorant underline  md:text-xl">
+                  Range
+                </span>
+                <span className="font-base xl:text-xl">{spell.range}</span>
               </section>
               <section className="flex flex-col">
-                <span className="buttonTextCormorant md:text-xl">Duration</span>
-                <span className="font-base">{spell.duration}</span>
+                <span className="buttonTextCormorant underline  md:text-xl">
+                  Duration
+                </span>
+                <span className="font-base xl:text-xl">{spell.duration}</span>
               </section>
 
               <section className="flex flex-col text-right sm:text-left">
-                <span className="buttonTextCormorant md:text-xl">School</span>
-                <span className="font-base">{spell.school}</span>
+                <span className="buttonTextCormorant underline  md:text-xl">
+                  School
+                </span>
+                <span className="font-base xl:text-xl">{spell.school}</span>
               </section>
 
               <section className="flex flex-col">
-                <span className="buttonTextCormorant md:text-xl">
-                  Components
+                <span className="buttonTextCormorant underline  md:text-xl">
+                  Comp.
                 </span>
                 <span className="font-base">
                   {spell.S && "S "}
@@ -82,16 +90,18 @@ const SpellComponent = ({ spell, level, index }: SpellComponentTypes) => {
                 {spell.material && (
                   <>
                     {" "}
-                    <span className="buttonTextCormorant md:text-xl ">
+                    <span className="buttonTextCormorant underline  md:text-xl ">
                       Materials
                     </span>
-                    <span className="font-base">{spell.material}</span>
+                    <span className="font-base xl:text-xl">
+                      {spell.material}
+                    </span>
                   </>
                 )}
               </section>
             </section>
-            <section className="description flex flex-col gap-2 py-6 px-4 ">
-              <h2 className="buttonTextCormorant font-[Cormorant] md:text-xl">
+            <section className="description flex max-w-[30rem] flex-col gap-2   px-4 ">
+              <h2 className="buttonTextCormorant font-[Cormorant]  underline md:text-xl">
                 Description
               </h2>
               <p className="body-small  sm:text-lg">
@@ -126,7 +136,7 @@ const SpellComponent = ({ spell, level, index }: SpellComponentTypes) => {
               </p>
               {spell.upCast && (
                 <section className="mt-2 flex flex-col gap-2 ">
-                  <p className="buttonTextCormorant font-[Cormorant] md:text-xl ">
+                  <p className="buttonTextCormorant font-[Cormorant]  underline md:text-xl ">
                     Upcasting
                   </p>
                   <p className="body-small">
