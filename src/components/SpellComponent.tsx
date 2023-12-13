@@ -56,7 +56,7 @@ const SpellComponent = ({ spell, level, index }: SpellComponentTypes) => {
                   {spell.castTimeBase}
                 </span>
               </section>
-              <section className="flex flex-col text-right sm:text-left">
+              <section className="flex flex-col text-left">
                 <span className="buttonTextCormorant underline  md:text-xl">
                   Range
                 </span>
@@ -69,7 +69,7 @@ const SpellComponent = ({ spell, level, index }: SpellComponentTypes) => {
                 <span className="font-base xl:text-xl">{spell.duration}</span>
               </section>
 
-              <section className="flex flex-col text-right sm:text-left">
+              <section className="flex flex-col text-left">
                 <span className="buttonTextCormorant underline  md:text-xl">
                   School
                 </span>
@@ -86,7 +86,7 @@ const SpellComponent = ({ spell, level, index }: SpellComponentTypes) => {
                   {spell.V && "V"}
                 </span>
               </section>
-              <section className="flex flex-col text-right sm:text-left">
+              <section className="flex flex-col text-left">
                 {spell.material && (
                   <>
                     {" "}
