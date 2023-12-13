@@ -46,7 +46,7 @@ const SpellComponent = ({ spell, level, index }: SpellComponentTypes) => {
             index % 2 === 0 ? "bg-primaryLightest" : "bg-primaryLight"
           }`}
         >
-          <section className="flex flex-col gap-6 border-2 border-solid border-primary bg-secondaryLight p-8 xl:flex-row ">
+          <section className="flex flex-col gap-6 border-2 border-solid border-primary bg-secondaryLight p-4 lg:p-8 xl:flex-row ">
             <section className="grid grid-cols-2 gap-4 border-solid border-primary px-4  sm:grid-cols-3 ">
               <section className="flex flex-col">
                 <span className="buttonTextCormorant underline  md:text-xl ">
